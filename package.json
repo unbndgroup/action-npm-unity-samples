@@ -1,0 +1,51 @@
+{
+    "name": "action-npm-unity-samples",
+    "version": "1.0.0",
+    "description": "This GitHub Action helps edit package json file to add samples from assets",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "ncc build src/main.js",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/unbndgroup/action-npm-unity-samples"
+    },
+    "keywords": [
+        "actions",
+        "set json",
+        "edit json",
+        "node"
+    ],
+    "author": {
+        "name": "Aura Labs",
+        "email": "contact@thisisaura.com",
+        "url": "https://thisisaura.com"
+    },
+    "contributors": [{
+            "name": "Aura Labs",
+            "email": "contact@thisisaura.com",
+            "url": "https://thisisaura.com"
+        },
+        {
+            "name": "Luke Monaghan",
+            "email": "l.monaghan@thisisaura.com",
+            "url": "https://lukemonaghan.com"
+        },
+        {
+            "name": "Samuel Moloney",
+            "email": "s.moloney@thisisaura.com",
+            "url": "https://thisisaura.com"
+        }
+    ],
+    "license": "MIT",
+    "dependencies": {
+        "@actions/core": "^1.2.3",
+        "build": "^0.1.4",
+        "fs-extra": "^10.1.0",
+        "jest": "^28.1.1"
+    },
+    "devDependencies": {
+        "@zeit/ncc": "^0.20.4"
+    }
+}
