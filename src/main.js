@@ -57,7 +57,7 @@ async function main() {
             packageJSON.samples.push({
                 displayName: PackageFolderName + " " + foldername + " Samples",
                 description: dsc,
-                path: "Samples~/" + PackageFolderName + "/" + foldername,
+                path: "Samples~/" + foldername,
             });
 
 
