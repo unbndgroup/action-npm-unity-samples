@@ -46,7 +46,7 @@ async function main() {
             // check if we have a description.txt in the sample folder
             let dscDir = PackageSampleFolder + "/" + foldername + "/description.txt";
             // add its description to the package json 
-            let dsc = "This is an example of sample files of " + PackageFolderName + " " + foldername;
+            let dsc = "This is an example of sample files of " + foldername;
             try {
                 dsc = fs.readFileSync(dscDir, 'utf8');
                 // dont need the description file anymore YEEET
@@ -55,7 +55,7 @@ async function main() {
 
             console.log("Editing Package.json File with Folder Name: " + foldername);
             packageJSON.samples.push({
-                displayName: PackageFolderName + " " + foldername + " Samples",
+                displayName: foldername + " Samples",
                 description: dsc,
                 path: "Samples~/" + foldername,
             });
