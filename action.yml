@@ -3,7 +3,7 @@ description: 'This GitHub Action helps edit package json file to add samples fro
 author: 'AuraLabs'
 inputs:
   packageFolderName:
-    required: true
+    required: false
     description: "Folder name of Package to copy into e.g"
   assetSampleFolder:
     required: true

@@ -4,7 +4,13 @@ const fs = require('fs-extra');
 async function main() {
     try {
 
-        let PackageFolderName = core.getInput('packageFolderName', { required: true }); //"Package";
+        let PackageFolderName = core.getInput('packageFolderName', { required: false }); //"Package";
+
+        if (PackageFolderName == null || PackageFolderName == undefined || PackageFolderName == "") {
+            let folders = fs.readdirSync("Packages/", { withFileTypes: true });
+            let folderNames = folders.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
+            PackageFolderName = "Packages/" + folderNames[0];
+        }
         //let PackageFolderName = "Package";
         // Get Directory of AssetsSampleFolder
         let AssetFolder = core.getInput('assetSampleFolder', { required: true }); //"Assets/Samples"; 
