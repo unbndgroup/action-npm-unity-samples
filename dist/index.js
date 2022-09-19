@@ -1,945 +1,355 @@
-/******/ (() => { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
+module.exports =
+/******/ (function(modules, runtime) { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	__webpack_require__.ab = __dirname + "/";
+/******/
+/******/ 	// the startup function
+/******/ 	function startup() {
+/******/ 		// Load entry module and return exports
+/******/ 		return __webpack_require__(31);
+/******/ 	};
+/******/
+/******/ 	// run startup
+/******/ 	return startup();
+/******/ })
+/************************************************************************/
+/******/ ({
 
-/***/ 140:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 16:
+/***/ (function(module) {
 
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.issue = exports.issueCommand = void 0;
-const os = __importStar(__nccwpck_require__(2037));
-const utils_1 = __nccwpck_require__(596);
-/**
- * Commands
- *
- * Command Format:
- *   ::name key=value,key=value::message
- *
- * Examples:
- *   ::warning::This is the message
- *   ::set-env name=MY_VAR::some value
- */
-function issueCommand(command, properties, message) {
-    const cmd = new Command(command, properties, message);
-    process.stdout.write(cmd.toString() + os.EOL);
-}
-exports.issueCommand = issueCommand;
-function issue(name, message = '') {
-    issueCommand(name, {}, message);
-}
-exports.issue = issue;
-const CMD_STRING = '::';
-class Command {
-    constructor(command, properties, message) {
-        if (!command) {
-            command = 'missing.command';
-        }
-        this.command = command;
-        this.properties = properties;
-        this.message = message;
-    }
-    toString() {
-        let cmdStr = CMD_STRING + this.command;
-        if (this.properties && Object.keys(this.properties).length > 0) {
-            cmdStr += ' ';
-            let first = true;
-            for (const key in this.properties) {
-                if (this.properties.hasOwnProperty(key)) {
-                    const val = this.properties[key];
-                    if (val) {
-                        if (first) {
-                            first = false;
-                        }
-                        else {
-                            cmdStr += ',';
-                        }
-                        cmdStr += `${key}=${escapeProperty(val)}`;
-                    }
-                }
-            }
-        }
-        cmdStr += `${CMD_STRING}${escapeData(this.message)}`;
-        return cmdStr;
-    }
-}
-function escapeData(s) {
-    return utils_1.toCommandValue(s)
-        .replace(/%/g, '%25')
-        .replace(/\r/g, '%0D')
-        .replace(/\n/g, '%0A');
-}
-function escapeProperty(s) {
-    return utils_1.toCommandValue(s)
-        .replace(/%/g, '%25')
-        .replace(/\r/g, '%0D')
-        .replace(/\n/g, '%0A')
-        .replace(/:/g, '%3A')
-        .replace(/,/g, '%2C');
-}
-//# sourceMappingURL=command.js.map
+module.exports = require("tls");
 
 /***/ }),
 
-/***/ 3722:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 22:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __nccwpck_require__(140);
-const file_command_1 = __nccwpck_require__(2197);
-const utils_1 = __nccwpck_require__(596);
-const os = __importStar(__nccwpck_require__(2037));
-const path = __importStar(__nccwpck_require__(1017));
-const uuid_1 = __nccwpck_require__(5650);
-const oidc_utils_1 = __nccwpck_require__(5395);
-/**
- * The code to exit an action
- */
-var ExitCode;
-(function (ExitCode) {
-    /**
-     * A code indicating that the action was successful
-     */
-    ExitCode[ExitCode["Success"] = 0] = "Success";
-    /**
-     * A code indicating that the action was a failure
-     */
-    ExitCode[ExitCode["Failure"] = 1] = "Failure";
-})(ExitCode = exports.ExitCode || (exports.ExitCode = {}));
-//-----------------------------------------------------------------------
-// Variables
-//-----------------------------------------------------------------------
-/**
- * Sets env variable for this action and future actions in the job
- * @param name the name of the variable to set
- * @param val the value of the variable. Non-string values will be converted to a string via JSON.stringify
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function exportVariable(name, val) {
-    const convertedVal = utils_1.toCommandValue(val);
-    process.env[name] = convertedVal;
-    const filePath = process.env['GITHUB_ENV'] || '';
-    if (filePath) {
-        const delimiter = `ghadelimiter_${uuid_1.v4()}`;
-        // These should realistically never happen, but just in case someone finds a way to exploit uuid generation let's not allow keys or values that contain the delimiter.
-        if (name.includes(delimiter)) {
-            throw new Error(`Unexpected input: name should not contain the delimiter "${delimiter}"`);
-        }
-        if (convertedVal.includes(delimiter)) {
-            throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
-        }
-        const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
-        file_command_1.issueCommand('ENV', commandValue);
-    }
-    else {
-        command_1.issueCommand('set-env', { name }, convertedVal);
-    }
+exports.default = void 0;
+
+var _validate = _interopRequireDefault(__webpack_require__(78));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function parse(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  let v;
+  const arr = new Uint8Array(16); // Parse ########-....-....-....-............
+
+  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+  arr[1] = v >>> 16 & 0xff;
+  arr[2] = v >>> 8 & 0xff;
+  arr[3] = v & 0xff; // Parse ........-####-....-....-............
+
+  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+  arr[5] = v & 0xff; // Parse ........-....-####-....-............
+
+  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+  arr[7] = v & 0xff; // Parse ........-....-....-####-............
+
+  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+  arr[9] = v & 0xff; // Parse ........-....-....-....-############
+  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
+
+  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
+  arr[11] = v / 0x100000000 & 0xff;
+  arr[12] = v >>> 24 & 0xff;
+  arr[13] = v >>> 16 & 0xff;
+  arr[14] = v >>> 8 & 0xff;
+  arr[15] = v & 0xff;
+  return arr;
 }
-exports.exportVariable = exportVariable;
-/**
- * Registers a secret which will get masked from logs
- * @param secret value of the secret
- */
-function setSecret(secret) {
-    command_1.issueCommand('add-mask', {}, secret);
-}
-exports.setSecret = setSecret;
-/**
- * Prepends inputPath to the PATH (for this action and future actions)
- * @param inputPath
- */
-function addPath(inputPath) {
-    const filePath = process.env['GITHUB_PATH'] || '';
-    if (filePath) {
-        file_command_1.issueCommand('PATH', inputPath);
-    }
-    else {
-        command_1.issueCommand('add-path', {}, inputPath);
-    }
-    process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
-}
-exports.addPath = addPath;
-/**
- * Gets the value of an input.
- * Unless trimWhitespace is set to false in InputOptions, the value is also trimmed.
- * Returns an empty string if the value is not defined.
- *
- * @param     name     name of the input to get
- * @param     options  optional. See InputOptions.
- * @returns   string
- */
-function getInput(name, options) {
-    const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
-    if (options && options.required && !val) {
-        throw new Error(`Input required and not supplied: ${name}`);
-    }
-    if (options && options.trimWhitespace === false) {
-        return val;
-    }
-    return val.trim();
-}
-exports.getInput = getInput;
-/**
- * Gets the values of an multiline input.  Each value is also trimmed.
- *
- * @param     name     name of the input to get
- * @param     options  optional. See InputOptions.
- * @returns   string[]
- *
- */
-function getMultilineInput(name, options) {
-    const inputs = getInput(name, options)
-        .split('\n')
-        .filter(x => x !== '');
-    return inputs;
-}
-exports.getMultilineInput = getMultilineInput;
-/**
- * Gets the input value of the boolean type in the YAML 1.2 "core schema" specification.
- * Support boolean input list: `true | True | TRUE | false | False | FALSE` .
- * The return value is also in boolean type.
- * ref: https://yaml.org/spec/1.2/spec.html#id2804923
- *
- * @param     name     name of the input to get
- * @param     options  optional. See InputOptions.
- * @returns   boolean
- */
-function getBooleanInput(name, options) {
-    const trueValue = ['true', 'True', 'TRUE'];
-    const falseValue = ['false', 'False', 'FALSE'];
-    const val = getInput(name, options);
-    if (trueValue.includes(val))
-        return true;
-    if (falseValue.includes(val))
-        return false;
-    throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}\n` +
-        `Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
-}
-exports.getBooleanInput = getBooleanInput;
-/**
- * Sets the value of an output.
- *
- * @param     name     name of the output to set
- * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function setOutput(name, value) {
-    process.stdout.write(os.EOL);
-    command_1.issueCommand('set-output', { name }, value);
-}
-exports.setOutput = setOutput;
-/**
- * Enables or disables the echoing of commands into stdout for the rest of the step.
- * Echoing is disabled by default if ACTIONS_STEP_DEBUG is not set.
- *
- */
-function setCommandEcho(enabled) {
-    command_1.issue('echo', enabled ? 'on' : 'off');
-}
-exports.setCommandEcho = setCommandEcho;
-//-----------------------------------------------------------------------
-// Results
-//-----------------------------------------------------------------------
-/**
- * Sets the action status to failed.
- * When the action exits it will be with an exit code of 1
- * @param message add error issue message
- */
-function setFailed(message) {
-    process.exitCode = ExitCode.Failure;
-    error(message);
-}
-exports.setFailed = setFailed;
-//-----------------------------------------------------------------------
-// Logging Commands
-//-----------------------------------------------------------------------
-/**
- * Gets whether Actions Step Debug is on or not
- */
-function isDebug() {
-    return process.env['RUNNER_DEBUG'] === '1';
-}
-exports.isDebug = isDebug;
-/**
- * Writes debug message to user log
- * @param message debug message
- */
-function debug(message) {
-    command_1.issueCommand('debug', {}, message);
-}
-exports.debug = debug;
-/**
- * Adds an error issue
- * @param message error issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-function error(message, properties = {}) {
-    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-exports.error = error;
-/**
- * Adds a warning issue
- * @param message warning issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-function warning(message, properties = {}) {
-    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-exports.warning = warning;
-/**
- * Adds a notice issue
- * @param message notice issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-function notice(message, properties = {}) {
-    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-exports.notice = notice;
-/**
- * Writes info to log with console.log.
- * @param message info message
- */
-function info(message) {
-    process.stdout.write(message + os.EOL);
-}
-exports.info = info;
-/**
- * Begin an output group.
- *
- * Output until the next `groupEnd` will be foldable in this group
- *
- * @param name The name of the output group
- */
-function startGroup(name) {
-    command_1.issue('group', name);
-}
-exports.startGroup = startGroup;
-/**
- * End an output group.
- */
-function endGroup() {
-    command_1.issue('endgroup');
-}
-exports.endGroup = endGroup;
-/**
- * Wrap an asynchronous function call in a group.
- *
- * Returns the same type as the function itself.
- *
- * @param name The name of the group
- * @param fn The function to wrap in the group
- */
-function group(name, fn) {
-    return __awaiter(this, void 0, void 0, function* () {
-        startGroup(name);
-        let result;
-        try {
-            result = yield fn();
-        }
-        finally {
-            endGroup();
-        }
-        return result;
-    });
-}
-exports.group = group;
-//-----------------------------------------------------------------------
-// Wrapper action state
-//-----------------------------------------------------------------------
-/**
- * Saves state for current action, the state can only be retrieved by this action's post job execution.
- *
- * @param     name     name of the state to store
- * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function saveState(name, value) {
-    command_1.issueCommand('save-state', { name }, value);
-}
-exports.saveState = saveState;
-/**
- * Gets the value of an state set by this action's main execution.
- *
- * @param     name     name of the state to get
- * @returns   string
- */
-function getState(name) {
-    return process.env[`STATE_${name}`] || '';
-}
-exports.getState = getState;
-function getIDToken(aud) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield oidc_utils_1.OidcClient.getIDToken(aud);
-    });
-}
-exports.getIDToken = getIDToken;
-/**
- * Summary exports
- */
-var summary_1 = __nccwpck_require__(9475);
-Object.defineProperty(exports, "summary", ({ enumerable: true, get: function () { return summary_1.summary; } }));
-/**
- * @deprecated use core.summary
- */
-var summary_2 = __nccwpck_require__(9475);
-Object.defineProperty(exports, "markdownSummary", ({ enumerable: true, get: function () { return summary_2.markdownSummary; } }));
-/**
- * Path exports
- */
-var path_utils_1 = __nccwpck_require__(1528);
-Object.defineProperty(exports, "toPosixPath", ({ enumerable: true, get: function () { return path_utils_1.toPosixPath; } }));
-Object.defineProperty(exports, "toWin32Path", ({ enumerable: true, get: function () { return path_utils_1.toWin32Path; } }));
-Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: function () { return path_utils_1.toPlatformPath; } }));
-//# sourceMappingURL=core.js.map
+
+var _default = parse;
+exports.default = _default;
 
 /***/ }),
 
-/***/ 2197:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 31:
+/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
-"use strict";
+const core = __webpack_require__(470);
+const fs = __webpack_require__(226);
 
-// For internal use, subject to change.
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.issueCommand = void 0;
-// We use any as a valid input type
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const fs = __importStar(__nccwpck_require__(7147));
-const os = __importStar(__nccwpck_require__(2037));
-const utils_1 = __nccwpck_require__(596);
-function issueCommand(command, message) {
-    const filePath = process.env[`GITHUB_${command}`];
-    if (!filePath) {
-        throw new Error(`Unable to find environment variable for file command ${command}`);
-    }
-    if (!fs.existsSync(filePath)) {
-        throw new Error(`Missing file at path: ${filePath}`);
-    }
-    fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
-        encoding: 'utf8'
-    });
-}
-exports.issueCommand = issueCommand;
-//# sourceMappingURL=file-command.js.map
+async function main() {
+    try {
 
-/***/ }),
+        let PackageFolderName = core.getInput('packageFolderName', { required: false }); //"Package";
 
-/***/ 5395:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.OidcClient = void 0;
-const http_client_1 = __nccwpck_require__(3774);
-const auth_1 = __nccwpck_require__(6187);
-const core_1 = __nccwpck_require__(3722);
-class OidcClient {
-    static createHttpClient(allowRetry = true, maxRetry = 10) {
-        const requestOptions = {
-            allowRetries: allowRetry,
-            maxRetries: maxRetry
-        };
-        return new http_client_1.HttpClient('actions/oidc-client', [new auth_1.BearerCredentialHandler(OidcClient.getRequestToken())], requestOptions);
-    }
-    static getRequestToken() {
-        const token = process.env['ACTIONS_ID_TOKEN_REQUEST_TOKEN'];
-        if (!token) {
-            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable');
+        if (PackageFolderName == null || PackageFolderName == undefined || PackageFolderName == "") {
+            let folders = fs.readdirSync("Packages/", { withFileTypes: true });
+            let folderNames = folders.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
+            PackageFolderName = "Packages/" + folderNames[0];
         }
-        return token;
-    }
-    static getIDTokenUrl() {
-        const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL'];
-        if (!runtimeUrl) {
-            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable');
+        //let PackageFolderName = "Package";
+        // Get Directory of AssetsSampleFolder
+        let AssetFolder = core.getInput('assetSampleFolder', { required: true }); //"Assets/Samples"; 
+        //let AssetFolder = "Assets/Samples";
+        if (fs.access(AssetFolder) == false) {
+            console.log("Asset Sample Folder does not exist");
+            return;
         }
-        return runtimeUrl;
-    }
-    static getCall(id_token_url) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function* () {
-            const httpclient = OidcClient.createHttpClient();
-            const res = yield httpclient
-                .getJson(id_token_url)
-                .catch(error => {
-                throw new Error(`Failed to get ID Token. \n 
-        Error Code : ${error.statusCode}\n 
-        Error Message: ${error.result.message}`);
+        // Get Directory of PackageFolder
+        let PackageSampleFolder = PackageFolderName + "/Samples~";
+
+        // check if we have a package sample folder
+        if (fs.access(PackageSampleFolder)) {
+            fs.emptyDirSync(PackageSampleFolder);
+            console.log("Package Folder Exists Clearing Content");
+        } else {
+            fs.mkdirSync(PackageSampleFolder);
+            console.log("Package Folder Does Not Exist Creating Folder");
+        }
+
+        console.log("Copying Files From Asset Folder To Package Folder");
+        fs.copySync(AssetFolder, PackageSampleFolder);
+
+        // get all the folders in the sample package folder
+        let folders = fs.readdirSync(PackageSampleFolder, { withFileTypes: true });
+        // get all there names
+        let folderNames = folders.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
+
+        // load the package json file
+        let rawdata = fs.readFileSync(PackageFolderName + "/package.json");
+        // convert to json
+        let packageJSON = JSON.parse(rawdata);
+        // clear sample array
+        packageJSON.samples = [];
+
+        // go through the top level folders
+        folderNames.forEach(foldername => {
+
+            // check if we have a description.txt in the sample folder
+            let dscDir = PackageSampleFolder + "/" + foldername + "/description.txt";
+            // add its description to the package json 
+            let dsc = "This is an example of sample files of " + foldername;
+            try {
+                dsc = fs.readFileSync(dscDir, 'utf8');
+                // dont need the description file anymore YEEET
+                fs.removeSync(dscDir);
+            } catch (err) {}
+
+            console.log("Editing Package.json File with Folder Name: " + foldername);
+            packageJSON.samples.push({
+                displayName: foldername + " Samples",
+                description: dsc,
+                path: "Samples~/" + foldername,
             });
-            const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
-            if (!id_token) {
-                throw new Error('Response json body do not have ID Token field');
-            }
-            return id_token;
+
+
         });
-    }
-    static getIDToken(audience) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                // New ID Token is requested from action service
-                let id_token_url = OidcClient.getIDTokenUrl();
-                if (audience) {
-                    const encodedAudience = encodeURIComponent(audience);
-                    id_token_url = `${id_token_url}&audience=${encodedAudience}`;
-                }
-                core_1.debug(`ID token url is ${id_token_url}`);
-                const id_token = yield OidcClient.getCall(id_token_url);
-                core_1.setSecret(id_token);
-                return id_token;
-            }
-            catch (error) {
-                throw new Error(`Error message: ${error.message}`);
-            }
-        });
+        // write the package json file
+        let resultJson = JSON.stringify(packageJSON, null, 2);
+        // write back to folder
+        fs.writeFileSync(PackageFolderName + "/package.json", resultJson);
+
+    } catch (error) {
+        core.setFailed(error.message);
+        throw error;
     }
 }
-exports.OidcClient = OidcClient;
-//# sourceMappingURL=oidc-utils.js.map
+
+if (require.main === require.cache[eval('__filename')]) {
+    main()
+        .then(() => process.exit(0))
+        .catch(e => {
+            console.error(e);
+            process.exit(1);
+        });
+}
 
 /***/ }),
 
-/***/ 1528:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 54:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
+const fs = __webpack_require__(869)
+const { checkPath } = __webpack_require__(534)
+
+const getMode = options => {
+  const defaults = { mode: 0o777 }
+  if (typeof options === 'number') return options
+  return ({ ...defaults, ...options }).mode
+}
+
+module.exports.makeDir = async (dir, options) => {
+  checkPath(dir)
+
+  return fs.mkdir(dir, {
+    mode: getMode(options),
+    recursive: true
+  })
+}
+
+module.exports.makeDirSync = (dir, options) => {
+  checkPath(dir)
+
+  return fs.mkdirSync(dir, {
+    mode: getMode(options),
+    recursive: true
+  })
+}
+
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
-const path = __importStar(__nccwpck_require__(1017));
-/**
- * toPosixPath converts the given path to the posix form. On Windows, \\ will be
- * replaced with /.
- *
- * @param pth. Path to transform.
- * @return string Posix path.
- */
-function toPosixPath(pth) {
-    return pth.replace(/[\\]/g, '/');
-}
-exports.toPosixPath = toPosixPath;
-/**
- * toWin32Path converts the given path to the win32 form. On Linux, / will be
- * replaced with \\.
- *
- * @param pth. Path to transform.
- * @return string Win32 path.
- */
-function toWin32Path(pth) {
-    return pth.replace(/[/]/g, '\\');
-}
-exports.toWin32Path = toWin32Path;
-/**
- * toPlatformPath converts the given path to a platform-specific path. It does
- * this by replacing instances of / and \ with the platform-specific path
- * separator.
- *
- * @param pth The path to platformize.
- * @return string The platform-specific path.
- */
-function toPlatformPath(pth) {
-    return pth.replace(/[/\\]/g, path.sep);
-}
-exports.toPlatformPath = toPlatformPath;
-//# sourceMappingURL=path-utils.js.map
+Object.defineProperty(exports, "v1", {
+  enumerable: true,
+  get: function () {
+    return _v.default;
+  }
+});
+Object.defineProperty(exports, "v3", {
+  enumerable: true,
+  get: function () {
+    return _v2.default;
+  }
+});
+Object.defineProperty(exports, "v4", {
+  enumerable: true,
+  get: function () {
+    return _v3.default;
+  }
+});
+Object.defineProperty(exports, "v5", {
+  enumerable: true,
+  get: function () {
+    return _v4.default;
+  }
+});
+Object.defineProperty(exports, "NIL", {
+  enumerable: true,
+  get: function () {
+    return _nil.default;
+  }
+});
+Object.defineProperty(exports, "version", {
+  enumerable: true,
+  get: function () {
+    return _version.default;
+  }
+});
+Object.defineProperty(exports, "validate", {
+  enumerable: true,
+  get: function () {
+    return _validate.default;
+  }
+});
+Object.defineProperty(exports, "stringify", {
+  enumerable: true,
+  get: function () {
+    return _stringify.default;
+  }
+});
+Object.defineProperty(exports, "parse", {
+  enumerable: true,
+  get: function () {
+    return _parse.default;
+  }
+});
+
+var _v = _interopRequireDefault(__webpack_require__(893));
+
+var _v2 = _interopRequireDefault(__webpack_require__(209));
+
+var _v3 = _interopRequireDefault(__webpack_require__(733));
+
+var _v4 = _interopRequireDefault(__webpack_require__(384));
+
+var _nil = _interopRequireDefault(__webpack_require__(327));
+
+var _version = _interopRequireDefault(__webpack_require__(695));
+
+var _validate = _interopRequireDefault(__webpack_require__(78));
+
+var _stringify = _interopRequireDefault(__webpack_require__(411));
+
+var _parse = _interopRequireDefault(__webpack_require__(22));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 
-/***/ 9475:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 78:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
-const os_1 = __nccwpck_require__(2037);
-const fs_1 = __nccwpck_require__(7147);
-const { access, appendFile, writeFile } = fs_1.promises;
-exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
-exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
-class Summary {
-    constructor() {
-        this._buffer = '';
-    }
-    /**
-     * Finds the summary file path from the environment, rejects if env var is not found or file does not exist
-     * Also checks r/w permissions.
-     *
-     * @returns step summary file path
-     */
-    filePath() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (this._filePath) {
-                return this._filePath;
-            }
-            const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
-            if (!pathFromEnv) {
-                throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
-            }
-            try {
-                yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
-            }
-            catch (_a) {
-                throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
-            }
-            this._filePath = pathFromEnv;
-            return this._filePath;
-        });
-    }
-    /**
-     * Wraps content in an HTML tag, adding any HTML attributes
-     *
-     * @param {string} tag HTML tag to wrap
-     * @param {string | null} content content within the tag
-     * @param {[attribute: string]: string} attrs key-value list of HTML attributes to add
-     *
-     * @returns {string} content wrapped in HTML element
-     */
-    wrap(tag, content, attrs = {}) {
-        const htmlAttrs = Object.entries(attrs)
-            .map(([key, value]) => ` ${key}="${value}"`)
-            .join('');
-        if (!content) {
-            return `<${tag}${htmlAttrs}>`;
-        }
-        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
-    }
-    /**
-     * Writes text in the buffer to the summary buffer file and empties buffer. Will append by default.
-     *
-     * @param {SummaryWriteOptions} [options] (optional) options for write operation
-     *
-     * @returns {Promise<Summary>} summary instance
-     */
-    write(options) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
-            const filePath = yield this.filePath();
-            const writeFunc = overwrite ? writeFile : appendFile;
-            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
-            return this.emptyBuffer();
-        });
-    }
-    /**
-     * Clears the summary buffer and wipes the summary file
-     *
-     * @returns {Summary} summary instance
-     */
-    clear() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.emptyBuffer().write({ overwrite: true });
-        });
-    }
-    /**
-     * Returns the current summary buffer as a string
-     *
-     * @returns {string} string of summary buffer
-     */
-    stringify() {
-        return this._buffer;
-    }
-    /**
-     * If the summary buffer is empty
-     *
-     * @returns {boolen} true if the buffer is empty
-     */
-    isEmptyBuffer() {
-        return this._buffer.length === 0;
-    }
-    /**
-     * Resets the summary buffer without writing to summary file
-     *
-     * @returns {Summary} summary instance
-     */
-    emptyBuffer() {
-        this._buffer = '';
-        return this;
-    }
-    /**
-     * Adds raw text to the summary buffer
-     *
-     * @param {string} text content to add
-     * @param {boolean} [addEOL=false] (optional) append an EOL to the raw text (default: false)
-     *
-     * @returns {Summary} summary instance
-     */
-    addRaw(text, addEOL = false) {
-        this._buffer += text;
-        return addEOL ? this.addEOL() : this;
-    }
-    /**
-     * Adds the operating system-specific end-of-line marker to the buffer
-     *
-     * @returns {Summary} summary instance
-     */
-    addEOL() {
-        return this.addRaw(os_1.EOL);
-    }
-    /**
-     * Adds an HTML codeblock to the summary buffer
-     *
-     * @param {string} code content to render within fenced code block
-     * @param {string} lang (optional) language to syntax highlight code
-     *
-     * @returns {Summary} summary instance
-     */
-    addCodeBlock(code, lang) {
-        const attrs = Object.assign({}, (lang && { lang }));
-        const element = this.wrap('pre', this.wrap('code', code), attrs);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML list to the summary buffer
-     *
-     * @param {string[]} items list of items to render
-     * @param {boolean} [ordered=false] (optional) if the rendered list should be ordered or not (default: false)
-     *
-     * @returns {Summary} summary instance
-     */
-    addList(items, ordered = false) {
-        const tag = ordered ? 'ol' : 'ul';
-        const listItems = items.map(item => this.wrap('li', item)).join('');
-        const element = this.wrap(tag, listItems);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML table to the summary buffer
-     *
-     * @param {SummaryTableCell[]} rows table rows
-     *
-     * @returns {Summary} summary instance
-     */
-    addTable(rows) {
-        const tableBody = rows
-            .map(row => {
-            const cells = row
-                .map(cell => {
-                if (typeof cell === 'string') {
-                    return this.wrap('td', cell);
-                }
-                const { header, data, colspan, rowspan } = cell;
-                const tag = header ? 'th' : 'td';
-                const attrs = Object.assign(Object.assign({}, (colspan && { colspan })), (rowspan && { rowspan }));
-                return this.wrap(tag, data, attrs);
-            })
-                .join('');
-            return this.wrap('tr', cells);
-        })
-            .join('');
-        const element = this.wrap('table', tableBody);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds a collapsable HTML details element to the summary buffer
-     *
-     * @param {string} label text for the closed state
-     * @param {string} content collapsable content
-     *
-     * @returns {Summary} summary instance
-     */
-    addDetails(label, content) {
-        const element = this.wrap('details', this.wrap('summary', label) + content);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML image tag to the summary buffer
-     *
-     * @param {string} src path to the image you to embed
-     * @param {string} alt text description of the image
-     * @param {SummaryImageOptions} options (optional) addition image attributes
-     *
-     * @returns {Summary} summary instance
-     */
-    addImage(src, alt, options) {
-        const { width, height } = options || {};
-        const attrs = Object.assign(Object.assign({}, (width && { width })), (height && { height }));
-        const element = this.wrap('img', null, Object.assign({ src, alt }, attrs));
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML section heading element
-     *
-     * @param {string} text heading text
-     * @param {number | string} [level=1] (optional) the heading level, default: 1
-     *
-     * @returns {Summary} summary instance
-     */
-    addHeading(text, level) {
-        const tag = `h${level}`;
-        const allowedTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)
-            ? tag
-            : 'h1';
-        const element = this.wrap(allowedTag, text);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML thematic break (<hr>) to the summary buffer
-     *
-     * @returns {Summary} summary instance
-     */
-    addSeparator() {
-        const element = this.wrap('hr', null);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML line break (<br>) to the summary buffer
-     *
-     * @returns {Summary} summary instance
-     */
-    addBreak() {
-        const element = this.wrap('br', null);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML blockquote to the summary buffer
-     *
-     * @param {string} text quote text
-     * @param {string} cite (optional) citation url
-     *
-     * @returns {Summary} summary instance
-     */
-    addQuote(text, cite) {
-        const attrs = Object.assign({}, (cite && { cite }));
-        const element = this.wrap('blockquote', text, attrs);
-        return this.addRaw(element).addEOL();
-    }
-    /**
-     * Adds an HTML anchor tag to the summary buffer
-     *
-     * @param {string} text link text/content
-     * @param {string} href hyperlink
-     *
-     * @returns {Summary} summary instance
-     */
-    addLink(text, href) {
-        const element = this.wrap('a', text, { href });
-        return this.addRaw(element).addEOL();
-    }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _regex = _interopRequireDefault(__webpack_require__(456));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validate(uuid) {
+  return typeof uuid === 'string' && _regex.default.test(uuid);
 }
-const _summary = new Summary();
-/**
- * @deprecated use `core.summary`
- */
-exports.markdownSummary = _summary;
-exports.summary = _summary;
-//# sourceMappingURL=summary.js.map
+
+var _default = validate;
+exports.default = _default;
 
 /***/ }),
 
-/***/ 596:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 82:
+/***/ (function(__unusedmodule, exports) {
 
 "use strict";
 
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-Object.defineProperty(exports, "__esModule", ({ value: true }));
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.toCommandProperties = exports.toCommandValue = void 0;
 /**
  * Sanitizes an input into a string so it can be passed into issueCommand safely
@@ -979,96 +389,1475 @@ exports.toCommandProperties = toCommandProperties;
 
 /***/ }),
 
-/***/ 6187:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ 87:
+/***/ (function(module) {
 
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.PersonalAccessTokenCredentialHandler = exports.BearerCredentialHandler = exports.BasicCredentialHandler = void 0;
-class BasicCredentialHandler {
-    constructor(username, password) {
-        this.username = username;
-        this.password = password;
-    }
-    prepareRequest(options) {
-        if (!options.headers) {
-            throw Error('The request has no headers');
-        }
-        options.headers['Authorization'] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
-    }
-    // This handler cannot handle 401
-    canHandleAuthentication() {
-        return false;
-    }
-    handleAuthentication() {
-        return __awaiter(this, void 0, void 0, function* () {
-            throw new Error('not implemented');
-        });
-    }
-}
-exports.BasicCredentialHandler = BasicCredentialHandler;
-class BearerCredentialHandler {
-    constructor(token) {
-        this.token = token;
-    }
-    // currently implements pre-authorization
-    // TODO: support preAuth = false where it hooks on 401
-    prepareRequest(options) {
-        if (!options.headers) {
-            throw Error('The request has no headers');
-        }
-        options.headers['Authorization'] = `Bearer ${this.token}`;
-    }
-    // This handler cannot handle 401
-    canHandleAuthentication() {
-        return false;
-    }
-    handleAuthentication() {
-        return __awaiter(this, void 0, void 0, function* () {
-            throw new Error('not implemented');
-        });
-    }
-}
-exports.BearerCredentialHandler = BearerCredentialHandler;
-class PersonalAccessTokenCredentialHandler {
-    constructor(token) {
-        this.token = token;
-    }
-    // currently implements pre-authorization
-    // TODO: support preAuth = false where it hooks on 401
-    prepareRequest(options) {
-        if (!options.headers) {
-            throw Error('The request has no headers');
-        }
-        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString('base64')}`;
-    }
-    // This handler cannot handle 401
-    canHandleAuthentication() {
-        return false;
-    }
-    handleAuthentication() {
-        return __awaiter(this, void 0, void 0, function* () {
-            throw new Error('not implemented');
-        });
-    }
-}
-exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;
-//# sourceMappingURL=auth.js.map
+module.exports = require("os");
 
 /***/ }),
 
-/***/ 3774:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ 93:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+var Stream = __webpack_require__(794).Stream
+
+module.exports = legacy
+
+function legacy (fs) {
+  return {
+    ReadStream: ReadStream,
+    WriteStream: WriteStream
+  }
+
+  function ReadStream (path, options) {
+    if (!(this instanceof ReadStream)) return new ReadStream(path, options);
+
+    Stream.call(this);
+
+    var self = this;
+
+    this.path = path;
+    this.fd = null;
+    this.readable = true;
+    this.paused = false;
+
+    this.flags = 'r';
+    this.mode = 438; /*=0666*/
+    this.bufferSize = 64 * 1024;
+
+    options = options || {};
+
+    // Mixin options into this
+    var keys = Object.keys(options);
+    for (var index = 0, length = keys.length; index < length; index++) {
+      var key = keys[index];
+      this[key] = options[key];
+    }
+
+    if (this.encoding) this.setEncoding(this.encoding);
+
+    if (this.start !== undefined) {
+      if ('number' !== typeof this.start) {
+        throw TypeError('start must be a Number');
+      }
+      if (this.end === undefined) {
+        this.end = Infinity;
+      } else if ('number' !== typeof this.end) {
+        throw TypeError('end must be a Number');
+      }
+
+      if (this.start > this.end) {
+        throw new Error('start must be <= end');
+      }
+
+      this.pos = this.start;
+    }
+
+    if (this.fd !== null) {
+      process.nextTick(function() {
+        self._read();
+      });
+      return;
+    }
+
+    fs.open(this.path, this.flags, this.mode, function (err, fd) {
+      if (err) {
+        self.emit('error', err);
+        self.readable = false;
+        return;
+      }
+
+      self.fd = fd;
+      self.emit('open', fd);
+      self._read();
+    })
+  }
+
+  function WriteStream (path, options) {
+    if (!(this instanceof WriteStream)) return new WriteStream(path, options);
+
+    Stream.call(this);
+
+    this.path = path;
+    this.fd = null;
+    this.writable = true;
+
+    this.flags = 'w';
+    this.encoding = 'binary';
+    this.mode = 438; /*=0666*/
+    this.bytesWritten = 0;
+
+    options = options || {};
+
+    // Mixin options into this
+    var keys = Object.keys(options);
+    for (var index = 0, length = keys.length; index < length; index++) {
+      var key = keys[index];
+      this[key] = options[key];
+    }
+
+    if (this.start !== undefined) {
+      if ('number' !== typeof this.start) {
+        throw TypeError('start must be a Number');
+      }
+      if (this.start < 0) {
+        throw new Error('start must be >= zero');
+      }
+
+      this.pos = this.start;
+    }
+
+    this.busy = false;
+    this._queue = [];
+
+    if (this.fd === null) {
+      this._open = fs.open;
+      this._queue.push([this._open, this.path, this.flags, this.mode, undefined]);
+      this.flush();
+    }
+  }
+}
+
+
+/***/ }),
+
+/***/ 102:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+// For internal use, subject to change.
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.issueCommand = void 0;
+// We use any as a valid input type
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const fs = __importStar(__webpack_require__(747));
+const os = __importStar(__webpack_require__(87));
+const utils_1 = __webpack_require__(82);
+function issueCommand(command, message) {
+    const filePath = process.env[`GITHUB_${command}`];
+    if (!filePath) {
+        throw new Error(`Unable to find environment variable for file command ${command}`);
+    }
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`Missing file at path: ${filePath}`);
+    }
+    fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+        encoding: 'utf8'
+    });
+}
+exports.issueCommand = issueCommand;
+//# sourceMappingURL=file-command.js.map
+
+/***/ }),
+
+/***/ 127:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const fs = __webpack_require__(869)
+const path = __webpack_require__(622)
+const util = __webpack_require__(669)
+
+function getStats (src, dest, opts) {
+  const statFunc = opts.dereference
+    ? (file) => fs.stat(file, { bigint: true })
+    : (file) => fs.lstat(file, { bigint: true })
+  return Promise.all([
+    statFunc(src),
+    statFunc(dest).catch(err => {
+      if (err.code === 'ENOENT') return null
+      throw err
+    })
+  ]).then(([srcStat, destStat]) => ({ srcStat, destStat }))
+}
+
+function getStatsSync (src, dest, opts) {
+  let destStat
+  const statFunc = opts.dereference
+    ? (file) => fs.statSync(file, { bigint: true })
+    : (file) => fs.lstatSync(file, { bigint: true })
+  const srcStat = statFunc(src)
+  try {
+    destStat = statFunc(dest)
+  } catch (err) {
+    if (err.code === 'ENOENT') return { srcStat, destStat: null }
+    throw err
+  }
+  return { srcStat, destStat }
+}
+
+function checkPaths (src, dest, funcName, opts, cb) {
+  util.callbackify(getStats)(src, dest, opts, (err, stats) => {
+    if (err) return cb(err)
+    const { srcStat, destStat } = stats
+
+    if (destStat) {
+      if (areIdentical(srcStat, destStat)) {
+        const srcBaseName = path.basename(src)
+        const destBaseName = path.basename(dest)
+        if (funcName === 'move' &&
+          srcBaseName !== destBaseName &&
+          srcBaseName.toLowerCase() === destBaseName.toLowerCase()) {
+          return cb(null, { srcStat, destStat, isChangingCase: true })
+        }
+        return cb(new Error('Source and destination must not be the same.'))
+      }
+      if (srcStat.isDirectory() && !destStat.isDirectory()) {
+        return cb(new Error(`Cannot overwrite non-directory '${dest}' with directory '${src}'.`))
+      }
+      if (!srcStat.isDirectory() && destStat.isDirectory()) {
+        return cb(new Error(`Cannot overwrite directory '${dest}' with non-directory '${src}'.`))
+      }
+    }
+
+    if (srcStat.isDirectory() && isSrcSubdir(src, dest)) {
+      return cb(new Error(errMsg(src, dest, funcName)))
+    }
+    return cb(null, { srcStat, destStat })
+  })
+}
+
+function checkPathsSync (src, dest, funcName, opts) {
+  const { srcStat, destStat } = getStatsSync(src, dest, opts)
+
+  if (destStat) {
+    if (areIdentical(srcStat, destStat)) {
+      const srcBaseName = path.basename(src)
+      const destBaseName = path.basename(dest)
+      if (funcName === 'move' &&
+        srcBaseName !== destBaseName &&
+        srcBaseName.toLowerCase() === destBaseName.toLowerCase()) {
+        return { srcStat, destStat, isChangingCase: true }
+      }
+      throw new Error('Source and destination must not be the same.')
+    }
+    if (srcStat.isDirectory() && !destStat.isDirectory()) {
+      throw new Error(`Cannot overwrite non-directory '${dest}' with directory '${src}'.`)
+    }
+    if (!srcStat.isDirectory() && destStat.isDirectory()) {
+      throw new Error(`Cannot overwrite directory '${dest}' with non-directory '${src}'.`)
+    }
+  }
+
+  if (srcStat.isDirectory() && isSrcSubdir(src, dest)) {
+    throw new Error(errMsg(src, dest, funcName))
+  }
+  return { srcStat, destStat }
+}
+
+// recursively check if dest parent is a subdirectory of src.
+// It works for all file types including symlinks since it
+// checks the src and dest inodes. It starts from the deepest
+// parent and stops once it reaches the src parent or the root path.
+function checkParentPaths (src, srcStat, dest, funcName, cb) {
+  const srcParent = path.resolve(path.dirname(src))
+  const destParent = path.resolve(path.dirname(dest))
+  if (destParent === srcParent || destParent === path.parse(destParent).root) return cb()
+  fs.stat(destParent, { bigint: true }, (err, destStat) => {
+    if (err) {
+      if (err.code === 'ENOENT') return cb()
+      return cb(err)
+    }
+    if (areIdentical(srcStat, destStat)) {
+      return cb(new Error(errMsg(src, dest, funcName)))
+    }
+    return checkParentPaths(src, srcStat, destParent, funcName, cb)
+  })
+}
+
+function checkParentPathsSync (src, srcStat, dest, funcName) {
+  const srcParent = path.resolve(path.dirname(src))
+  const destParent = path.resolve(path.dirname(dest))
+  if (destParent === srcParent || destParent === path.parse(destParent).root) return
+  let destStat
+  try {
+    destStat = fs.statSync(destParent, { bigint: true })
+  } catch (err) {
+    if (err.code === 'ENOENT') return
+    throw err
+  }
+  if (areIdentical(srcStat, destStat)) {
+    throw new Error(errMsg(src, dest, funcName))
+  }
+  return checkParentPathsSync(src, srcStat, destParent, funcName)
+}
+
+function areIdentical (srcStat, destStat) {
+  return destStat.ino && destStat.dev && destStat.ino === srcStat.ino && destStat.dev === srcStat.dev
+}
+
+// return true if dest is a subdir of src, otherwise false.
+// It only checks the path strings.
+function isSrcSubdir (src, dest) {
+  const srcArr = path.resolve(src).split(path.sep).filter(i => i)
+  const destArr = path.resolve(dest).split(path.sep).filter(i => i)
+  return srcArr.reduce((acc, cur, i) => acc && destArr[i] === cur, true)
+}
+
+function errMsg (src, dest, funcName) {
+  return `Cannot ${funcName} '${src}' to a subdirectory of itself, '${dest}'.`
+}
+
+module.exports = {
+  checkPaths,
+  checkPathsSync,
+  checkParentPaths,
+  checkParentPathsSync,
+  isSrcSubdir,
+  areIdentical
+}
+
+
+/***/ }),
+
+/***/ 141:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+var net = __webpack_require__(631);
+var tls = __webpack_require__(16);
+var http = __webpack_require__(605);
+var https = __webpack_require__(211);
+var events = __webpack_require__(614);
+var assert = __webpack_require__(357);
+var util = __webpack_require__(669);
+
+
+exports.httpOverHttp = httpOverHttp;
+exports.httpsOverHttp = httpsOverHttp;
+exports.httpOverHttps = httpOverHttps;
+exports.httpsOverHttps = httpsOverHttps;
+
+
+function httpOverHttp(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = http.request;
+  return agent;
+}
+
+function httpsOverHttp(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = http.request;
+  agent.createSocket = createSecureSocket;
+  agent.defaultPort = 443;
+  return agent;
+}
+
+function httpOverHttps(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = https.request;
+  return agent;
+}
+
+function httpsOverHttps(options) {
+  var agent = new TunnelingAgent(options);
+  agent.request = https.request;
+  agent.createSocket = createSecureSocket;
+  agent.defaultPort = 443;
+  return agent;
+}
+
+
+function TunnelingAgent(options) {
+  var self = this;
+  self.options = options || {};
+  self.proxyOptions = self.options.proxy || {};
+  self.maxSockets = self.options.maxSockets || http.Agent.defaultMaxSockets;
+  self.requests = [];
+  self.sockets = [];
+
+  self.on('free', function onFree(socket, host, port, localAddress) {
+    var options = toOptions(host, port, localAddress);
+    for (var i = 0, len = self.requests.length; i < len; ++i) {
+      var pending = self.requests[i];
+      if (pending.host === options.host && pending.port === options.port) {
+        // Detect the request to connect same origin server,
+        // reuse the connection.
+        self.requests.splice(i, 1);
+        pending.request.onSocket(socket);
+        return;
+      }
+    }
+    socket.destroy();
+    self.removeSocket(socket);
+  });
+}
+util.inherits(TunnelingAgent, events.EventEmitter);
+
+TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
+  var self = this;
+  var options = mergeOptions({request: req}, self.options, toOptions(host, port, localAddress));
+
+  if (self.sockets.length >= this.maxSockets) {
+    // We are over limit so we'll add it to the queue.
+    self.requests.push(options);
+    return;
+  }
+
+  // If we are under maxSockets create a new one.
+  self.createSocket(options, function(socket) {
+    socket.on('free', onFree);
+    socket.on('close', onCloseOrRemove);
+    socket.on('agentRemove', onCloseOrRemove);
+    req.onSocket(socket);
+
+    function onFree() {
+      self.emit('free', socket, options);
+    }
+
+    function onCloseOrRemove(err) {
+      self.removeSocket(socket);
+      socket.removeListener('free', onFree);
+      socket.removeListener('close', onCloseOrRemove);
+      socket.removeListener('agentRemove', onCloseOrRemove);
+    }
+  });
+};
+
+TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
+  var self = this;
+  var placeholder = {};
+  self.sockets.push(placeholder);
+
+  var connectOptions = mergeOptions({}, self.proxyOptions, {
+    method: 'CONNECT',
+    path: options.host + ':' + options.port,
+    agent: false,
+    headers: {
+      host: options.host + ':' + options.port
+    }
+  });
+  if (options.localAddress) {
+    connectOptions.localAddress = options.localAddress;
+  }
+  if (connectOptions.proxyAuth) {
+    connectOptions.headers = connectOptions.headers || {};
+    connectOptions.headers['Proxy-Authorization'] = 'Basic ' +
+        new Buffer(connectOptions.proxyAuth).toString('base64');
+  }
+
+  debug('making CONNECT request');
+  var connectReq = self.request(connectOptions);
+  connectReq.useChunkedEncodingByDefault = false; // for v0.6
+  connectReq.once('response', onResponse); // for v0.6
+  connectReq.once('upgrade', onUpgrade);   // for v0.6
+  connectReq.once('connect', onConnect);   // for v0.7 or later
+  connectReq.once('error', onError);
+  connectReq.end();
+
+  function onResponse(res) {
+    // Very hacky. This is necessary to avoid http-parser leaks.
+    res.upgrade = true;
+  }
+
+  function onUpgrade(res, socket, head) {
+    // Hacky.
+    process.nextTick(function() {
+      onConnect(res, socket, head);
+    });
+  }
+
+  function onConnect(res, socket, head) {
+    connectReq.removeAllListeners();
+    socket.removeAllListeners();
+
+    if (res.statusCode !== 200) {
+      debug('tunneling socket could not be established, statusCode=%d',
+        res.statusCode);
+      socket.destroy();
+      var error = new Error('tunneling socket could not be established, ' +
+        'statusCode=' + res.statusCode);
+      error.code = 'ECONNRESET';
+      options.request.emit('error', error);
+      self.removeSocket(placeholder);
+      return;
+    }
+    if (head.length > 0) {
+      debug('got illegal response body from proxy');
+      socket.destroy();
+      var error = new Error('got illegal response body from proxy');
+      error.code = 'ECONNRESET';
+      options.request.emit('error', error);
+      self.removeSocket(placeholder);
+      return;
+    }
+    debug('tunneling connection has established');
+    self.sockets[self.sockets.indexOf(placeholder)] = socket;
+    return cb(socket);
+  }
+
+  function onError(cause) {
+    connectReq.removeAllListeners();
+
+    debug('tunneling socket could not be established, cause=%s\n',
+          cause.message, cause.stack);
+    var error = new Error('tunneling socket could not be established, ' +
+                          'cause=' + cause.message);
+    error.code = 'ECONNRESET';
+    options.request.emit('error', error);
+    self.removeSocket(placeholder);
+  }
+};
+
+TunnelingAgent.prototype.removeSocket = function removeSocket(socket) {
+  var pos = this.sockets.indexOf(socket)
+  if (pos === -1) {
+    return;
+  }
+  this.sockets.splice(pos, 1);
+
+  var pending = this.requests.shift();
+  if (pending) {
+    // If we have pending requests and a socket gets closed a new one
+    // needs to be created to take over in the pool for the one that closed.
+    this.createSocket(pending, function(socket) {
+      pending.request.onSocket(socket);
+    });
+  }
+};
+
+function createSecureSocket(options, cb) {
+  var self = this;
+  TunnelingAgent.prototype.createSocket.call(self, options, function(socket) {
+    var hostHeader = options.request.getHeader('host');
+    var tlsOptions = mergeOptions({}, self.options, {
+      socket: socket,
+      servername: hostHeader ? hostHeader.replace(/:.*$/, '') : options.host
+    });
+
+    // 0 is dummy port for v0.6
+    var secureSocket = tls.connect(0, tlsOptions);
+    self.sockets[self.sockets.indexOf(socket)] = secureSocket;
+    cb(secureSocket);
+  });
+}
+
+
+function toOptions(host, port, localAddress) {
+  if (typeof host === 'string') { // since v0.10
+    return {
+      host: host,
+      port: port,
+      localAddress: localAddress
+    };
+  }
+  return host; // for v0.11 or later
+}
+
+function mergeOptions(target) {
+  for (var i = 1, len = arguments.length; i < len; ++i) {
+    var overrides = arguments[i];
+    if (typeof overrides === 'object') {
+      var keys = Object.keys(overrides);
+      for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
+        var k = keys[j];
+        if (overrides[k] !== undefined) {
+          target[k] = overrides[k];
+        }
+      }
+    }
+  }
+  return target;
+}
+
+
+var debug;
+if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
+  debug = function() {
+    var args = Array.prototype.slice.call(arguments);
+    if (typeof args[0] === 'string') {
+      args[0] = 'TUNNEL: ' + args[0];
+    } else {
+      args.unshift('TUNNEL:');
+    }
+    console.error.apply(console, args);
+  }
+} else {
+  debug = function() {};
+}
+exports.debug = debug; // for test
+
+
+/***/ }),
+
+/***/ 149:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const u = __webpack_require__(676).fromCallback
+const path = __webpack_require__(622)
+const fs = __webpack_require__(598)
+const mkdir = __webpack_require__(727)
+
+function createFile (file, callback) {
+  function makeFile () {
+    fs.writeFile(file, '', err => {
+      if (err) return callback(err)
+      callback()
+    })
+  }
+
+  fs.stat(file, (err, stats) => { // eslint-disable-line handle-callback-err
+    if (!err && stats.isFile()) return callback()
+    const dir = path.dirname(file)
+    fs.stat(dir, (err, stats) => {
+      if (err) {
+        // if the directory doesn't exist, make it
+        if (err.code === 'ENOENT') {
+          return mkdir.mkdirs(dir, err => {
+            if (err) return callback(err)
+            makeFile()
+          })
+        }
+        return callback(err)
+      }
+
+      if (stats.isDirectory()) makeFile()
+      else {
+        // parent is not a directory
+        // This is just to cause an internal ENOTDIR error to be thrown
+        fs.readdir(dir, err => {
+          if (err) return callback(err)
+        })
+      }
+    })
+  })
+}
+
+function createFileSync (file) {
+  let stats
+  try {
+    stats = fs.statSync(file)
+  } catch {}
+  if (stats && stats.isFile()) return
+
+  const dir = path.dirname(file)
+  try {
+    if (!fs.statSync(dir).isDirectory()) {
+      // parent is not a directory
+      // This is just to cause an internal ENOTDIR error to be thrown
+      fs.readdirSync(dir)
+    }
+  } catch (err) {
+    // If the stat call above failed because the directory doesn't exist, create it
+    if (err && err.code === 'ENOENT') mkdir.mkdirsSync(dir)
+    else throw err
+  }
+
+  fs.writeFileSync(file, '')
+}
+
+module.exports = {
+  createFile: u(createFile),
+  createFileSync
+}
+
+
+/***/ }),
+
+/***/ 171:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const u = __webpack_require__(676).fromPromise
+const jsonFile = __webpack_require__(469)
+
+jsonFile.outputJson = u(__webpack_require__(176))
+jsonFile.outputJsonSync = __webpack_require__(628)
+// aliases
+jsonFile.outputJSON = jsonFile.outputJson
+jsonFile.outputJSONSync = jsonFile.outputJsonSync
+jsonFile.writeJSON = jsonFile.writeJson
+jsonFile.writeJSONSync = jsonFile.writeJsonSync
+jsonFile.readJSON = jsonFile.readJson
+jsonFile.readJSONSync = jsonFile.readJsonSync
+
+module.exports = jsonFile
+
+
+/***/ }),
+
+/***/ 176:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const { stringify } = __webpack_require__(356)
+const { outputFile } = __webpack_require__(683)
+
+async function outputJson (file, data, options = {}) {
+  const str = stringify(data, options)
+
+  await outputFile(file, str, options)
+}
+
+module.exports = outputJson
+
+
+/***/ }),
+
+/***/ 177:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.checkBypass = exports.getProxyUrl = void 0;
+function getProxyUrl(reqUrl) {
+    const usingSsl = reqUrl.protocol === 'https:';
+    if (checkBypass(reqUrl)) {
+        return undefined;
+    }
+    const proxyVar = (() => {
+        if (usingSsl) {
+            return process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+        }
+        else {
+            return process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        }
+    })();
+    if (proxyVar) {
+        return new URL(proxyVar);
+    }
+    else {
+        return undefined;
+    }
+}
+exports.getProxyUrl = getProxyUrl;
+function checkBypass(reqUrl) {
+    if (!reqUrl.hostname) {
+        return false;
+    }
+    const noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
+    if (!noProxy) {
+        return false;
+    }
+    // Determine the request port
+    let reqPort;
+    if (reqUrl.port) {
+        reqPort = Number(reqUrl.port);
+    }
+    else if (reqUrl.protocol === 'http:') {
+        reqPort = 80;
+    }
+    else if (reqUrl.protocol === 'https:') {
+        reqPort = 443;
+    }
+    // Format the request hostname and hostname with port
+    const upperReqHosts = [reqUrl.hostname.toUpperCase()];
+    if (typeof reqPort === 'number') {
+        upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
+    }
+    // Compare request host against noproxy
+    for (const upperNoProxyItem of noProxy
+        .split(',')
+        .map(x => x.trim().toUpperCase())
+        .filter(x => x)) {
+        if (upperReqHosts.some(x => x === upperNoProxyItem)) {
+            return true;
+        }
+    }
+    return false;
+}
+exports.checkBypass = checkBypass;
+//# sourceMappingURL=proxy.js.map
+
+/***/ }),
+
+/***/ 209:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _v = _interopRequireDefault(__webpack_require__(212));
+
+var _md = _interopRequireDefault(__webpack_require__(803));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const v3 = (0, _v.default)('v3', 0x30, _md.default);
+var _default = v3;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 211:
+/***/ (function(module) {
+
+module.exports = require("https");
+
+/***/ }),
+
+/***/ 212:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+exports.URL = exports.DNS = void 0;
+
+var _stringify = _interopRequireDefault(__webpack_require__(411));
+
+var _parse = _interopRequireDefault(__webpack_require__(22));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function stringToBytes(str) {
+  str = unescape(encodeURIComponent(str)); // UTF8 escape
+
+  const bytes = [];
+
+  for (let i = 0; i < str.length; ++i) {
+    bytes.push(str.charCodeAt(i));
+  }
+
+  return bytes;
+}
+
+const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+exports.DNS = DNS;
+const URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+exports.URL = URL;
+
+function _default(name, version, hashfunc) {
+  function generateUUID(value, namespace, buf, offset) {
+    if (typeof value === 'string') {
+      value = stringToBytes(value);
+    }
+
+    if (typeof namespace === 'string') {
+      namespace = (0, _parse.default)(namespace);
+    }
+
+    if (namespace.length !== 16) {
+      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
+    } // Compute hash of namespace and value, Per 4.3
+    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
+    // hashfunc([...namespace, ... value])`
+
+
+    let bytes = new Uint8Array(16 + value.length);
+    bytes.set(namespace);
+    bytes.set(value, namespace.length);
+    bytes = hashfunc(bytes);
+    bytes[6] = bytes[6] & 0x0f | version;
+    bytes[8] = bytes[8] & 0x3f | 0x80;
+
+    if (buf) {
+      offset = offset || 0;
+
+      for (let i = 0; i < 16; ++i) {
+        buf[offset + i] = bytes[i];
+      }
+
+      return buf;
+    }
+
+    return (0, _stringify.default)(bytes);
+  } // Function#name is not settable on some platforms (#270)
+
+
+  try {
+    generateUUID.name = name; // eslint-disable-next-line no-empty
+  } catch (err) {} // For CommonJS default export support
+
+
+  generateUUID.DNS = DNS;
+  generateUUID.URL = URL;
+  return generateUUID;
+}
+
+/***/ }),
+
+/***/ 226:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  // Export promiseified graceful-fs:
+  ...__webpack_require__(869),
+  // Export extra methods:
+  ...__webpack_require__(774),
+  ...__webpack_require__(615),
+  ...__webpack_require__(472),
+  ...__webpack_require__(171),
+  ...__webpack_require__(727),
+  ...__webpack_require__(353),
+  ...__webpack_require__(683),
+  ...__webpack_require__(322),
+  ...__webpack_require__(723)
+}
+
+
+/***/ }),
+
+/***/ 250:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+var constants = __webpack_require__(619)
+
+var origCwd = process.cwd
+var cwd = null
+
+var platform = process.env.GRACEFUL_FS_PLATFORM || process.platform
+
+process.cwd = function() {
+  if (!cwd)
+    cwd = origCwd.call(process)
+  return cwd
+}
+try {
+  process.cwd()
+} catch (er) {}
+
+// This check is needed until node.js 12 is required
+if (typeof process.chdir === 'function') {
+  var chdir = process.chdir
+  process.chdir = function (d) {
+    cwd = null
+    chdir.call(process, d)
+  }
+  if (Object.setPrototypeOf) Object.setPrototypeOf(process.chdir, chdir)
+}
+
+module.exports = patch
+
+function patch (fs) {
+  // (re-)implement some things that are known busted or missing.
+
+  // lchmod, broken prior to 0.6.2
+  // back-port the fix here.
+  if (constants.hasOwnProperty('O_SYMLINK') &&
+      process.version.match(/^v0\.6\.[0-2]|^v0\.5\./)) {
+    patchLchmod(fs)
+  }
+
+  // lutimes implementation, or no-op
+  if (!fs.lutimes) {
+    patchLutimes(fs)
+  }
+
+  // https://github.com/isaacs/node-graceful-fs/issues/4
+  // Chown should not fail on einval or eperm if non-root.
+  // It should not fail on enosys ever, as this just indicates
+  // that a fs doesn't support the intended operation.
+
+  fs.chown = chownFix(fs.chown)
+  fs.fchown = chownFix(fs.fchown)
+  fs.lchown = chownFix(fs.lchown)
+
+  fs.chmod = chmodFix(fs.chmod)
+  fs.fchmod = chmodFix(fs.fchmod)
+  fs.lchmod = chmodFix(fs.lchmod)
+
+  fs.chownSync = chownFixSync(fs.chownSync)
+  fs.fchownSync = chownFixSync(fs.fchownSync)
+  fs.lchownSync = chownFixSync(fs.lchownSync)
+
+  fs.chmodSync = chmodFixSync(fs.chmodSync)
+  fs.fchmodSync = chmodFixSync(fs.fchmodSync)
+  fs.lchmodSync = chmodFixSync(fs.lchmodSync)
+
+  fs.stat = statFix(fs.stat)
+  fs.fstat = statFix(fs.fstat)
+  fs.lstat = statFix(fs.lstat)
+
+  fs.statSync = statFixSync(fs.statSync)
+  fs.fstatSync = statFixSync(fs.fstatSync)
+  fs.lstatSync = statFixSync(fs.lstatSync)
+
+  // if lchmod/lchown do not exist, then make them no-ops
+  if (fs.chmod && !fs.lchmod) {
+    fs.lchmod = function (path, mode, cb) {
+      if (cb) process.nextTick(cb)
+    }
+    fs.lchmodSync = function () {}
+  }
+  if (fs.chown && !fs.lchown) {
+    fs.lchown = function (path, uid, gid, cb) {
+      if (cb) process.nextTick(cb)
+    }
+    fs.lchownSync = function () {}
+  }
+
+  // on Windows, A/V software can lock the directory, causing this
+  // to fail with an EACCES or EPERM if the directory contains newly
+  // created files.  Try again on failure, for up to 60 seconds.
+
+  // Set the timeout this long because some Windows Anti-Virus, such as Parity
+  // bit9, may lock files for up to a minute, causing npm package install
+  // failures. Also, take care to yield the scheduler. Windows scheduling gives
+  // CPU to a busy looping process, which can cause the program causing the lock
+  // contention to be starved of CPU by node, so the contention doesn't resolve.
+  if (platform === "win32") {
+    fs.rename = typeof fs.rename !== 'function' ? fs.rename
+    : (function (fs$rename) {
+      function rename (from, to, cb) {
+        var start = Date.now()
+        var backoff = 0;
+        fs$rename(from, to, function CB (er) {
+          if (er
+              && (er.code === "EACCES" || er.code === "EPERM")
+              && Date.now() - start < 60000) {
+            setTimeout(function() {
+              fs.stat(to, function (stater, st) {
+                if (stater && stater.code === "ENOENT")
+                  fs$rename(from, to, CB);
+                else
+                  cb(er)
+              })
+            }, backoff)
+            if (backoff < 100)
+              backoff += 10;
+            return;
+          }
+          if (cb) cb(er)
+        })
+      }
+      if (Object.setPrototypeOf) Object.setPrototypeOf(rename, fs$rename)
+      return rename
+    })(fs.rename)
+  }
+
+  // if read() returns EAGAIN, then just try it again.
+  fs.read = typeof fs.read !== 'function' ? fs.read
+  : (function (fs$read) {
+    function read (fd, buffer, offset, length, position, callback_) {
+      var callback
+      if (callback_ && typeof callback_ === 'function') {
+        var eagCounter = 0
+        callback = function (er, _, __) {
+          if (er && er.code === 'EAGAIN' && eagCounter < 10) {
+            eagCounter ++
+            return fs$read.call(fs, fd, buffer, offset, length, position, callback)
+          }
+          callback_.apply(this, arguments)
+        }
+      }
+      return fs$read.call(fs, fd, buffer, offset, length, position, callback)
+    }
+
+    // This ensures `util.promisify` works as it does for native `fs.read`.
+    if (Object.setPrototypeOf) Object.setPrototypeOf(read, fs$read)
+    return read
+  })(fs.read)
+
+  fs.readSync = typeof fs.readSync !== 'function' ? fs.readSync
+  : (function (fs$readSync) { return function (fd, buffer, offset, length, position) {
+    var eagCounter = 0
+    while (true) {
+      try {
+        return fs$readSync.call(fs, fd, buffer, offset, length, position)
+      } catch (er) {
+        if (er.code === 'EAGAIN' && eagCounter < 10) {
+          eagCounter ++
+          continue
+        }
+        throw er
+      }
+    }
+  }})(fs.readSync)
+
+  function patchLchmod (fs) {
+    fs.lchmod = function (path, mode, callback) {
+      fs.open( path
+             , constants.O_WRONLY | constants.O_SYMLINK
+             , mode
+             , function (err, fd) {
+        if (err) {
+          if (callback) callback(err)
+          return
+        }
+        // prefer to return the chmod error, if one occurs,
+        // but still try to close, and report closing errors if they occur.
+        fs.fchmod(fd, mode, function (err) {
+          fs.close(fd, function(err2) {
+            if (callback) callback(err || err2)
+          })
+        })
+      })
+    }
+
+    fs.lchmodSync = function (path, mode) {
+      var fd = fs.openSync(path, constants.O_WRONLY | constants.O_SYMLINK, mode)
+
+      // prefer to return the chmod error, if one occurs,
+      // but still try to close, and report closing errors if they occur.
+      var threw = true
+      var ret
+      try {
+        ret = fs.fchmodSync(fd, mode)
+        threw = false
+      } finally {
+        if (threw) {
+          try {
+            fs.closeSync(fd)
+          } catch (er) {}
+        } else {
+          fs.closeSync(fd)
+        }
+      }
+      return ret
+    }
+  }
+
+  function patchLutimes (fs) {
+    if (constants.hasOwnProperty("O_SYMLINK") && fs.futimes) {
+      fs.lutimes = function (path, at, mt, cb) {
+        fs.open(path, constants.O_SYMLINK, function (er, fd) {
+          if (er) {
+            if (cb) cb(er)
+            return
+          }
+          fs.futimes(fd, at, mt, function (er) {
+            fs.close(fd, function (er2) {
+              if (cb) cb(er || er2)
+            })
+          })
+        })
+      }
+
+      fs.lutimesSync = function (path, at, mt) {
+        var fd = fs.openSync(path, constants.O_SYMLINK)
+        var ret
+        var threw = true
+        try {
+          ret = fs.futimesSync(fd, at, mt)
+          threw = false
+        } finally {
+          if (threw) {
+            try {
+              fs.closeSync(fd)
+            } catch (er) {}
+          } else {
+            fs.closeSync(fd)
+          }
+        }
+        return ret
+      }
+
+    } else if (fs.futimes) {
+      fs.lutimes = function (_a, _b, _c, cb) { if (cb) process.nextTick(cb) }
+      fs.lutimesSync = function () {}
+    }
+  }
+
+  function chmodFix (orig) {
+    if (!orig) return orig
+    return function (target, mode, cb) {
+      return orig.call(fs, target, mode, function (er) {
+        if (chownErOk(er)) er = null
+        if (cb) cb.apply(this, arguments)
+      })
+    }
+  }
+
+  function chmodFixSync (orig) {
+    if (!orig) return orig
+    return function (target, mode) {
+      try {
+        return orig.call(fs, target, mode)
+      } catch (er) {
+        if (!chownErOk(er)) throw er
+      }
+    }
+  }
+
+
+  function chownFix (orig) {
+    if (!orig) return orig
+    return function (target, uid, gid, cb) {
+      return orig.call(fs, target, uid, gid, function (er) {
+        if (chownErOk(er)) er = null
+        if (cb) cb.apply(this, arguments)
+      })
+    }
+  }
+
+  function chownFixSync (orig) {
+    if (!orig) return orig
+    return function (target, uid, gid) {
+      try {
+        return orig.call(fs, target, uid, gid)
+      } catch (er) {
+        if (!chownErOk(er)) throw er
+      }
+    }
+  }
+
+  function statFix (orig) {
+    if (!orig) return orig
+    // Older versions of Node erroneously returned signed integers for
+    // uid + gid.
+    return function (target, options, cb) {
+      if (typeof options === 'function') {
+        cb = options
+        options = null
+      }
+      function callback (er, stats) {
+        if (stats) {
+          if (stats.uid < 0) stats.uid += 0x100000000
+          if (stats.gid < 0) stats.gid += 0x100000000
+        }
+        if (cb) cb.apply(this, arguments)
+      }
+      return options ? orig.call(fs, target, options, callback)
+        : orig.call(fs, target, callback)
+    }
+  }
+
+  function statFixSync (orig) {
+    if (!orig) return orig
+    // Older versions of Node erroneously returned signed integers for
+    // uid + gid.
+    return function (target, options) {
+      var stats = options ? orig.call(fs, target, options)
+        : orig.call(fs, target)
+      if (stats) {
+        if (stats.uid < 0) stats.uid += 0x100000000
+        if (stats.gid < 0) stats.gid += 0x100000000
+      }
+      return stats;
+    }
+  }
+
+  // ENOSYS means that the fs doesn't support the op. Just ignore
+  // that, because it doesn't matter.
+  //
+  // if there's no getuid, or if getuid() is something other
+  // than 0, and the error is EINVAL or EPERM, then just ignore
+  // it.
+  //
+  // This specific case is a silent failure in cp, install, tar,
+  // and most other unix tools that manage permissions.
+  //
+  // When running as root, or if other types of errors are
+  // encountered, then it's strict.
+  function chownErOk (er) {
+    if (!er)
+      return true
+
+    if (er.code === "ENOSYS")
+      return true
+
+    var nonroot = !process.getuid || process.getuid() !== 0
+    if (nonroot) {
+      if (er.code === "EINVAL" || er.code === "EPERM")
+        return true
+    }
+
+    return false
+  }
+}
+
+
+/***/ }),
+
+/***/ 322:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+const u = __webpack_require__(676).fromPromise
+const fs = __webpack_require__(869)
+
+function pathExists (path) {
+  return fs.access(path).then(() => true).catch(() => false)
+}
+
+module.exports = {
+  pathExists: u(pathExists),
+  pathExistsSync: fs.existsSync
+}
+
+
+/***/ }),
+
+/***/ 327:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = '00000000-0000-0000-0000-000000000000';
+exports.default = _default;
+
+/***/ }),
+
+/***/ 353:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const u = __webpack_require__(676).fromCallback
+module.exports = {
+  move: u(__webpack_require__(500)),
+  moveSync: __webpack_require__(653)
+}
+
+
+/***/ }),
+
+/***/ 356:
+/***/ (function(module) {
+
+function stringify (obj, { EOL = '\n', finalEOL = true, replacer = null, spaces } = {}) {
+  const EOF = finalEOL ? EOL : ''
+  const str = JSON.stringify(obj, replacer, spaces)
+
+  return str.replace(/\n/g, EOL) + EOF
+}
+
+function stripBom (content) {
+  // we do this because JSON.parse would convert it to a utf8 string if encoding wasn't specified
+  if (Buffer.isBuffer(content)) content = content.toString('utf8')
+  return content.replace(/^\uFEFF/, '')
+}
+
+module.exports = { stringify, stripBom }
+
+
+/***/ }),
+
+/***/ 357:
+/***/ (function(module) {
+
+module.exports = require("assert");
+
+/***/ }),
+
+/***/ 384:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _v = _interopRequireDefault(__webpack_require__(212));
+
+var _sha = _interopRequireDefault(__webpack_require__(498));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const v5 = (0, _v.default)('v5', 0x50, _sha.default);
+var _default = v5;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 411:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _validate = _interopRequireDefault(__webpack_require__(78));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+const byteToHex = [];
+
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).substr(1));
+}
+
+function stringify(arr, offset = 0) {
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+var _default = stringify;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 413:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+module.exports = __webpack_require__(141);
+
+
+/***/ }),
+
+/***/ 417:
+/***/ (function(module) {
+
+module.exports = require("crypto");
+
+/***/ }),
+
+/***/ 425:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
@@ -1101,12 +1890,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", ({ value: true }));
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
-const http = __importStar(__nccwpck_require__(3685));
-const https = __importStar(__nccwpck_require__(5687));
-const pm = __importStar(__nccwpck_require__(7650));
-const tunnel = __importStar(__nccwpck_require__(9866));
+const http = __importStar(__webpack_require__(605));
+const https = __importStar(__webpack_require__(211));
+const pm = __importStar(__webpack_require__(177));
+const tunnel = __importStar(__webpack_require__(413));
 var HttpCodes;
 (function (HttpCodes) {
     HttpCodes[HttpCodes["OK"] = 200] = "OK";
@@ -1679,642 +2468,492 @@ const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCa
 
 /***/ }),
 
-/***/ 7650:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 431:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.checkBypass = exports.getProxyUrl = void 0;
-function getProxyUrl(reqUrl) {
-    const usingSsl = reqUrl.protocol === 'https:';
-    if (checkBypass(reqUrl)) {
-        return undefined;
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.issue = exports.issueCommand = void 0;
+const os = __importStar(__webpack_require__(87));
+const utils_1 = __webpack_require__(82);
+/**
+ * Commands
+ *
+ * Command Format:
+ *   ::name key=value,key=value::message
+ *
+ * Examples:
+ *   ::warning::This is the message
+ *   ::set-env name=MY_VAR::some value
+ */
+function issueCommand(command, properties, message) {
+    const cmd = new Command(command, properties, message);
+    process.stdout.write(cmd.toString() + os.EOL);
+}
+exports.issueCommand = issueCommand;
+function issue(name, message = '') {
+    issueCommand(name, {}, message);
+}
+exports.issue = issue;
+const CMD_STRING = '::';
+class Command {
+    constructor(command, properties, message) {
+        if (!command) {
+            command = 'missing.command';
+        }
+        this.command = command;
+        this.properties = properties;
+        this.message = message;
     }
-    const proxyVar = (() => {
-        if (usingSsl) {
-            return process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+    toString() {
+        let cmdStr = CMD_STRING + this.command;
+        if (this.properties && Object.keys(this.properties).length > 0) {
+            cmdStr += ' ';
+            let first = true;
+            for (const key in this.properties) {
+                if (this.properties.hasOwnProperty(key)) {
+                    const val = this.properties[key];
+                    if (val) {
+                        if (first) {
+                            first = false;
+                        }
+                        else {
+                            cmdStr += ',';
+                        }
+                        cmdStr += `${key}=${escapeProperty(val)}`;
+                    }
+                }
+            }
         }
-        else {
-            return process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        cmdStr += `${CMD_STRING}${escapeData(this.message)}`;
+        return cmdStr;
+    }
+}
+function escapeData(s) {
+    return utils_1.toCommandValue(s)
+        .replace(/%/g, '%25')
+        .replace(/\r/g, '%0D')
+        .replace(/\n/g, '%0A');
+}
+function escapeProperty(s) {
+    return utils_1.toCommandValue(s)
+        .replace(/%/g, '%25')
+        .replace(/\r/g, '%0D')
+        .replace(/\n/g, '%0A')
+        .replace(/:/g, '%3A')
+        .replace(/,/g, '%2C');
+}
+//# sourceMappingURL=command.js.map
+
+/***/ }),
+
+/***/ 456:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 469:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const jsonFile = __webpack_require__(666)
+
+module.exports = {
+  // jsonfile exports
+  readJson: jsonFile.readFile,
+  readJsonSync: jsonFile.readFileSync,
+  writeJson: jsonFile.writeFile,
+  writeJsonSync: jsonFile.writeFileSync
+}
+
+
+/***/ }),
+
+/***/ 470:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+const command_1 = __webpack_require__(431);
+const file_command_1 = __webpack_require__(102);
+const utils_1 = __webpack_require__(82);
+const os = __importStar(__webpack_require__(87));
+const path = __importStar(__webpack_require__(622));
+const uuid_1 = __webpack_require__(62);
+const oidc_utils_1 = __webpack_require__(742);
+/**
+ * The code to exit an action
+ */
+var ExitCode;
+(function (ExitCode) {
+    /**
+     * A code indicating that the action was successful
+     */
+    ExitCode[ExitCode["Success"] = 0] = "Success";
+    /**
+     * A code indicating that the action was a failure
+     */
+    ExitCode[ExitCode["Failure"] = 1] = "Failure";
+})(ExitCode = exports.ExitCode || (exports.ExitCode = {}));
+//-----------------------------------------------------------------------
+// Variables
+//-----------------------------------------------------------------------
+/**
+ * Sets env variable for this action and future actions in the job
+ * @param name the name of the variable to set
+ * @param val the value of the variable. Non-string values will be converted to a string via JSON.stringify
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function exportVariable(name, val) {
+    const convertedVal = utils_1.toCommandValue(val);
+    process.env[name] = convertedVal;
+    const filePath = process.env['GITHUB_ENV'] || '';
+    if (filePath) {
+        const delimiter = `ghadelimiter_${uuid_1.v4()}`;
+        // These should realistically never happen, but just in case someone finds a way to exploit uuid generation let's not allow keys or values that contain the delimiter.
+        if (name.includes(delimiter)) {
+            throw new Error(`Unexpected input: name should not contain the delimiter "${delimiter}"`);
         }
-    })();
-    if (proxyVar) {
-        return new URL(proxyVar);
+        if (convertedVal.includes(delimiter)) {
+            throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
+        }
+        const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
+        file_command_1.issueCommand('ENV', commandValue);
     }
     else {
-        return undefined;
+        command_1.issueCommand('set-env', { name }, convertedVal);
     }
 }
-exports.getProxyUrl = getProxyUrl;
-function checkBypass(reqUrl) {
-    if (!reqUrl.hostname) {
+exports.exportVariable = exportVariable;
+/**
+ * Registers a secret which will get masked from logs
+ * @param secret value of the secret
+ */
+function setSecret(secret) {
+    command_1.issueCommand('add-mask', {}, secret);
+}
+exports.setSecret = setSecret;
+/**
+ * Prepends inputPath to the PATH (for this action and future actions)
+ * @param inputPath
+ */
+function addPath(inputPath) {
+    const filePath = process.env['GITHUB_PATH'] || '';
+    if (filePath) {
+        file_command_1.issueCommand('PATH', inputPath);
+    }
+    else {
+        command_1.issueCommand('add-path', {}, inputPath);
+    }
+    process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
+}
+exports.addPath = addPath;
+/**
+ * Gets the value of an input.
+ * Unless trimWhitespace is set to false in InputOptions, the value is also trimmed.
+ * Returns an empty string if the value is not defined.
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   string
+ */
+function getInput(name, options) {
+    const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
+    if (options && options.required && !val) {
+        throw new Error(`Input required and not supplied: ${name}`);
+    }
+    if (options && options.trimWhitespace === false) {
+        return val;
+    }
+    return val.trim();
+}
+exports.getInput = getInput;
+/**
+ * Gets the values of an multiline input.  Each value is also trimmed.
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   string[]
+ *
+ */
+function getMultilineInput(name, options) {
+    const inputs = getInput(name, options)
+        .split('\n')
+        .filter(x => x !== '');
+    return inputs;
+}
+exports.getMultilineInput = getMultilineInput;
+/**
+ * Gets the input value of the boolean type in the YAML 1.2 "core schema" specification.
+ * Support boolean input list: `true | True | TRUE | false | False | FALSE` .
+ * The return value is also in boolean type.
+ * ref: https://yaml.org/spec/1.2/spec.html#id2804923
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   boolean
+ */
+function getBooleanInput(name, options) {
+    const trueValue = ['true', 'True', 'TRUE'];
+    const falseValue = ['false', 'False', 'FALSE'];
+    const val = getInput(name, options);
+    if (trueValue.includes(val))
+        return true;
+    if (falseValue.includes(val))
         return false;
-    }
-    const noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
-    if (!noProxy) {
-        return false;
-    }
-    // Determine the request port
-    let reqPort;
-    if (reqUrl.port) {
-        reqPort = Number(reqUrl.port);
-    }
-    else if (reqUrl.protocol === 'http:') {
-        reqPort = 80;
-    }
-    else if (reqUrl.protocol === 'https:') {
-        reqPort = 443;
-    }
-    // Format the request hostname and hostname with port
-    const upperReqHosts = [reqUrl.hostname.toUpperCase()];
-    if (typeof reqPort === 'number') {
-        upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
-    }
-    // Compare request host against noproxy
-    for (const upperNoProxyItem of noProxy
-        .split(',')
-        .map(x => x.trim().toUpperCase())
-        .filter(x => x)) {
-        if (upperReqHosts.some(x => x === upperNoProxyItem)) {
-            return true;
-        }
-    }
-    return false;
+    throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}\n` +
+        `Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 }
-exports.checkBypass = checkBypass;
-//# sourceMappingURL=proxy.js.map
+exports.getBooleanInput = getBooleanInput;
+/**
+ * Sets the value of an output.
+ *
+ * @param     name     name of the output to set
+ * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function setOutput(name, value) {
+    process.stdout.write(os.EOL);
+    command_1.issueCommand('set-output', { name }, value);
+}
+exports.setOutput = setOutput;
+/**
+ * Enables or disables the echoing of commands into stdout for the rest of the step.
+ * Echoing is disabled by default if ACTIONS_STEP_DEBUG is not set.
+ *
+ */
+function setCommandEcho(enabled) {
+    command_1.issue('echo', enabled ? 'on' : 'off');
+}
+exports.setCommandEcho = setCommandEcho;
+//-----------------------------------------------------------------------
+// Results
+//-----------------------------------------------------------------------
+/**
+ * Sets the action status to failed.
+ * When the action exits it will be with an exit code of 1
+ * @param message add error issue message
+ */
+function setFailed(message) {
+    process.exitCode = ExitCode.Failure;
+    error(message);
+}
+exports.setFailed = setFailed;
+//-----------------------------------------------------------------------
+// Logging Commands
+//-----------------------------------------------------------------------
+/**
+ * Gets whether Actions Step Debug is on or not
+ */
+function isDebug() {
+    return process.env['RUNNER_DEBUG'] === '1';
+}
+exports.isDebug = isDebug;
+/**
+ * Writes debug message to user log
+ * @param message debug message
+ */
+function debug(message) {
+    command_1.issueCommand('debug', {}, message);
+}
+exports.debug = debug;
+/**
+ * Adds an error issue
+ * @param message error issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function error(message, properties = {}) {
+    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+exports.error = error;
+/**
+ * Adds a warning issue
+ * @param message warning issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function warning(message, properties = {}) {
+    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+exports.warning = warning;
+/**
+ * Adds a notice issue
+ * @param message notice issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function notice(message, properties = {}) {
+    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+exports.notice = notice;
+/**
+ * Writes info to log with console.log.
+ * @param message info message
+ */
+function info(message) {
+    process.stdout.write(message + os.EOL);
+}
+exports.info = info;
+/**
+ * Begin an output group.
+ *
+ * Output until the next `groupEnd` will be foldable in this group
+ *
+ * @param name The name of the output group
+ */
+function startGroup(name) {
+    command_1.issue('group', name);
+}
+exports.startGroup = startGroup;
+/**
+ * End an output group.
+ */
+function endGroup() {
+    command_1.issue('endgroup');
+}
+exports.endGroup = endGroup;
+/**
+ * Wrap an asynchronous function call in a group.
+ *
+ * Returns the same type as the function itself.
+ *
+ * @param name The name of the group
+ * @param fn The function to wrap in the group
+ */
+function group(name, fn) {
+    return __awaiter(this, void 0, void 0, function* () {
+        startGroup(name);
+        let result;
+        try {
+            result = yield fn();
+        }
+        finally {
+            endGroup();
+        }
+        return result;
+    });
+}
+exports.group = group;
+//-----------------------------------------------------------------------
+// Wrapper action state
+//-----------------------------------------------------------------------
+/**
+ * Saves state for current action, the state can only be retrieved by this action's post job execution.
+ *
+ * @param     name     name of the state to store
+ * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function saveState(name, value) {
+    command_1.issueCommand('save-state', { name }, value);
+}
+exports.saveState = saveState;
+/**
+ * Gets the value of an state set by this action's main execution.
+ *
+ * @param     name     name of the state to get
+ * @returns   string
+ */
+function getState(name) {
+    return process.env[`STATE_${name}`] || '';
+}
+exports.getState = getState;
+function getIDToken(aud) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield oidc_utils_1.OidcClient.getIDToken(aud);
+    });
+}
+exports.getIDToken = getIDToken;
+/**
+ * Summary exports
+ */
+var summary_1 = __webpack_require__(665);
+Object.defineProperty(exports, "summary", { enumerable: true, get: function () { return summary_1.summary; } });
+/**
+ * @deprecated use core.summary
+ */
+var summary_2 = __webpack_require__(665);
+Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function () { return summary_2.markdownSummary; } });
+/**
+ * Path exports
+ */
+var path_utils_1 = __webpack_require__(573);
+Object.defineProperty(exports, "toPosixPath", { enumerable: true, get: function () { return path_utils_1.toPosixPath; } });
+Object.defineProperty(exports, "toWin32Path", { enumerable: true, get: function () { return path_utils_1.toWin32Path; } });
+Object.defineProperty(exports, "toPlatformPath", { enumerable: true, get: function () { return path_utils_1.toPlatformPath; } });
+//# sourceMappingURL=core.js.map
 
 /***/ }),
 
-/***/ 2092:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 472:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-const fs = __nccwpck_require__(2353)
-const path = __nccwpck_require__(1017)
-const mkdirsSync = (__nccwpck_require__(5367).mkdirsSync)
-const utimesMillisSync = (__nccwpck_require__(3024).utimesMillisSync)
-const stat = __nccwpck_require__(4397)
-
-function copySync (src, dest, opts) {
-  if (typeof opts === 'function') {
-    opts = { filter: opts }
-  }
-
-  opts = opts || {}
-  opts.clobber = 'clobber' in opts ? !!opts.clobber : true // default to true for now
-  opts.overwrite = 'overwrite' in opts ? !!opts.overwrite : opts.clobber // overwrite falls back to clobber
-
-  // Warn about using preserveTimestamps on 32-bit node
-  if (opts.preserveTimestamps && process.arch === 'ia32') {
-    process.emitWarning(
-      'Using the preserveTimestamps option in 32-bit node is not recommended;\n\n' +
-      '\tsee https://github.com/jprichardson/node-fs-extra/issues/269',
-      'Warning', 'fs-extra-WARN0002'
-    )
-  }
-
-  const { srcStat, destStat } = stat.checkPathsSync(src, dest, 'copy', opts)
-  stat.checkParentPathsSync(src, srcStat, dest, 'copy')
-  return handleFilterAndCopy(destStat, src, dest, opts)
-}
-
-function handleFilterAndCopy (destStat, src, dest, opts) {
-  if (opts.filter && !opts.filter(src, dest)) return
-  const destParent = path.dirname(dest)
-  if (!fs.existsSync(destParent)) mkdirsSync(destParent)
-  return getStats(destStat, src, dest, opts)
-}
-
-function startCopy (destStat, src, dest, opts) {
-  if (opts.filter && !opts.filter(src, dest)) return
-  return getStats(destStat, src, dest, opts)
-}
-
-function getStats (destStat, src, dest, opts) {
-  const statSync = opts.dereference ? fs.statSync : fs.lstatSync
-  const srcStat = statSync(src)
-
-  if (srcStat.isDirectory()) return onDir(srcStat, destStat, src, dest, opts)
-  else if (srcStat.isFile() ||
-           srcStat.isCharacterDevice() ||
-           srcStat.isBlockDevice()) return onFile(srcStat, destStat, src, dest, opts)
-  else if (srcStat.isSymbolicLink()) return onLink(destStat, src, dest, opts)
-  else if (srcStat.isSocket()) throw new Error(`Cannot copy a socket file: ${src}`)
-  else if (srcStat.isFIFO()) throw new Error(`Cannot copy a FIFO pipe: ${src}`)
-  throw new Error(`Unknown file: ${src}`)
-}
-
-function onFile (srcStat, destStat, src, dest, opts) {
-  if (!destStat) return copyFile(srcStat, src, dest, opts)
-  return mayCopyFile(srcStat, src, dest, opts)
-}
-
-function mayCopyFile (srcStat, src, dest, opts) {
-  if (opts.overwrite) {
-    fs.unlinkSync(dest)
-    return copyFile(srcStat, src, dest, opts)
-  } else if (opts.errorOnExist) {
-    throw new Error(`'${dest}' already exists`)
-  }
-}
-
-function copyFile (srcStat, src, dest, opts) {
-  fs.copyFileSync(src, dest)
-  if (opts.preserveTimestamps) handleTimestamps(srcStat.mode, src, dest)
-  return setDestMode(dest, srcStat.mode)
-}
-
-function handleTimestamps (srcMode, src, dest) {
-  // Make sure the file is writable before setting the timestamp
-  // otherwise open fails with EPERM when invoked with 'r+'
-  // (through utimes call)
-  if (fileIsNotWritable(srcMode)) makeFileWritable(dest, srcMode)
-  return setDestTimestamps(src, dest)
-}
-
-function fileIsNotWritable (srcMode) {
-  return (srcMode & 0o200) === 0
-}
-
-function makeFileWritable (dest, srcMode) {
-  return setDestMode(dest, srcMode | 0o200)
-}
-
-function setDestMode (dest, srcMode) {
-  return fs.chmodSync(dest, srcMode)
-}
-
-function setDestTimestamps (src, dest) {
-  // The initial srcStat.atime cannot be trusted
-  // because it is modified by the read(2) system call
-  // (See https://nodejs.org/api/fs.html#fs_stat_time_values)
-  const updatedSrcStat = fs.statSync(src)
-  return utimesMillisSync(dest, updatedSrcStat.atime, updatedSrcStat.mtime)
-}
-
-function onDir (srcStat, destStat, src, dest, opts) {
-  if (!destStat) return mkDirAndCopy(srcStat.mode, src, dest, opts)
-  return copyDir(src, dest, opts)
-}
-
-function mkDirAndCopy (srcMode, src, dest, opts) {
-  fs.mkdirSync(dest)
-  copyDir(src, dest, opts)
-  return setDestMode(dest, srcMode)
-}
-
-function copyDir (src, dest, opts) {
-  fs.readdirSync(src).forEach(item => copyDirItem(item, src, dest, opts))
-}
-
-function copyDirItem (item, src, dest, opts) {
-  const srcItem = path.join(src, item)
-  const destItem = path.join(dest, item)
-  const { destStat } = stat.checkPathsSync(srcItem, destItem, 'copy', opts)
-  return startCopy(destStat, srcItem, destItem, opts)
-}
-
-function onLink (destStat, src, dest, opts) {
-  let resolvedSrc = fs.readlinkSync(src)
-  if (opts.dereference) {
-    resolvedSrc = path.resolve(process.cwd(), resolvedSrc)
-  }
-
-  if (!destStat) {
-    return fs.symlinkSync(resolvedSrc, dest)
-  } else {
-    let resolvedDest
-    try {
-      resolvedDest = fs.readlinkSync(dest)
-    } catch (err) {
-      // dest exists and is a regular file or directory,
-      // Windows may throw UNKNOWN error. If dest already exists,
-      // fs throws error anyway, so no need to guard against it here.
-      if (err.code === 'EINVAL' || err.code === 'UNKNOWN') return fs.symlinkSync(resolvedSrc, dest)
-      throw err
-    }
-    if (opts.dereference) {
-      resolvedDest = path.resolve(process.cwd(), resolvedDest)
-    }
-    if (stat.isSrcSubdir(resolvedSrc, resolvedDest)) {
-      throw new Error(`Cannot copy '${resolvedSrc}' to a subdirectory of itself, '${resolvedDest}'.`)
-    }
-
-    // prevent copy if src is a subdir of dest since unlinking
-    // dest in this case would result in removing src contents
-    // and therefore a broken symlink would be created.
-    if (fs.statSync(dest).isDirectory() && stat.isSrcSubdir(resolvedDest, resolvedSrc)) {
-      throw new Error(`Cannot overwrite '${resolvedDest}' with '${resolvedSrc}'.`)
-    }
-    return copyLink(resolvedSrc, dest)
-  }
-}
-
-function copyLink (resolvedSrc, dest) {
-  fs.unlinkSync(dest)
-  return fs.symlinkSync(resolvedSrc, dest)
-}
-
-module.exports = copySync
-
-
-/***/ }),
-
-/***/ 2792:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const fs = __nccwpck_require__(2353)
-const path = __nccwpck_require__(1017)
-const mkdirs = (__nccwpck_require__(5367).mkdirs)
-const pathExists = (__nccwpck_require__(8220).pathExists)
-const utimesMillis = (__nccwpck_require__(3024).utimesMillis)
-const stat = __nccwpck_require__(4397)
-
-function copy (src, dest, opts, cb) {
-  if (typeof opts === 'function' && !cb) {
-    cb = opts
-    opts = {}
-  } else if (typeof opts === 'function') {
-    opts = { filter: opts }
-  }
-
-  cb = cb || function () {}
-  opts = opts || {}
-
-  opts.clobber = 'clobber' in opts ? !!opts.clobber : true // default to true for now
-  opts.overwrite = 'overwrite' in opts ? !!opts.overwrite : opts.clobber // overwrite falls back to clobber
-
-  // Warn about using preserveTimestamps on 32-bit node
-  if (opts.preserveTimestamps && process.arch === 'ia32') {
-    process.emitWarning(
-      'Using the preserveTimestamps option in 32-bit node is not recommended;\n\n' +
-      '\tsee https://github.com/jprichardson/node-fs-extra/issues/269',
-      'Warning', 'fs-extra-WARN0001'
-    )
-  }
-
-  stat.checkPaths(src, dest, 'copy', opts, (err, stats) => {
-    if (err) return cb(err)
-    const { srcStat, destStat } = stats
-    stat.checkParentPaths(src, srcStat, dest, 'copy', err => {
-      if (err) return cb(err)
-      if (opts.filter) return handleFilter(checkParentDir, destStat, src, dest, opts, cb)
-      return checkParentDir(destStat, src, dest, opts, cb)
-    })
-  })
-}
-
-function checkParentDir (destStat, src, dest, opts, cb) {
-  const destParent = path.dirname(dest)
-  pathExists(destParent, (err, dirExists) => {
-    if (err) return cb(err)
-    if (dirExists) return getStats(destStat, src, dest, opts, cb)
-    mkdirs(destParent, err => {
-      if (err) return cb(err)
-      return getStats(destStat, src, dest, opts, cb)
-    })
-  })
-}
-
-function handleFilter (onInclude, destStat, src, dest, opts, cb) {
-  Promise.resolve(opts.filter(src, dest)).then(include => {
-    if (include) return onInclude(destStat, src, dest, opts, cb)
-    return cb()
-  }, error => cb(error))
-}
-
-function startCopy (destStat, src, dest, opts, cb) {
-  if (opts.filter) return handleFilter(getStats, destStat, src, dest, opts, cb)
-  return getStats(destStat, src, dest, opts, cb)
-}
-
-function getStats (destStat, src, dest, opts, cb) {
-  const stat = opts.dereference ? fs.stat : fs.lstat
-  stat(src, (err, srcStat) => {
-    if (err) return cb(err)
-
-    if (srcStat.isDirectory()) return onDir(srcStat, destStat, src, dest, opts, cb)
-    else if (srcStat.isFile() ||
-             srcStat.isCharacterDevice() ||
-             srcStat.isBlockDevice()) return onFile(srcStat, destStat, src, dest, opts, cb)
-    else if (srcStat.isSymbolicLink()) return onLink(destStat, src, dest, opts, cb)
-    else if (srcStat.isSocket()) return cb(new Error(`Cannot copy a socket file: ${src}`))
-    else if (srcStat.isFIFO()) return cb(new Error(`Cannot copy a FIFO pipe: ${src}`))
-    return cb(new Error(`Unknown file: ${src}`))
-  })
-}
-
-function onFile (srcStat, destStat, src, dest, opts, cb) {
-  if (!destStat) return copyFile(srcStat, src, dest, opts, cb)
-  return mayCopyFile(srcStat, src, dest, opts, cb)
-}
-
-function mayCopyFile (srcStat, src, dest, opts, cb) {
-  if (opts.overwrite) {
-    fs.unlink(dest, err => {
-      if (err) return cb(err)
-      return copyFile(srcStat, src, dest, opts, cb)
-    })
-  } else if (opts.errorOnExist) {
-    return cb(new Error(`'${dest}' already exists`))
-  } else return cb()
-}
-
-function copyFile (srcStat, src, dest, opts, cb) {
-  fs.copyFile(src, dest, err => {
-    if (err) return cb(err)
-    if (opts.preserveTimestamps) return handleTimestampsAndMode(srcStat.mode, src, dest, cb)
-    return setDestMode(dest, srcStat.mode, cb)
-  })
-}
-
-function handleTimestampsAndMode (srcMode, src, dest, cb) {
-  // Make sure the file is writable before setting the timestamp
-  // otherwise open fails with EPERM when invoked with 'r+'
-  // (through utimes call)
-  if (fileIsNotWritable(srcMode)) {
-    return makeFileWritable(dest, srcMode, err => {
-      if (err) return cb(err)
-      return setDestTimestampsAndMode(srcMode, src, dest, cb)
-    })
-  }
-  return setDestTimestampsAndMode(srcMode, src, dest, cb)
-}
-
-function fileIsNotWritable (srcMode) {
-  return (srcMode & 0o200) === 0
-}
-
-function makeFileWritable (dest, srcMode, cb) {
-  return setDestMode(dest, srcMode | 0o200, cb)
-}
-
-function setDestTimestampsAndMode (srcMode, src, dest, cb) {
-  setDestTimestamps(src, dest, err => {
-    if (err) return cb(err)
-    return setDestMode(dest, srcMode, cb)
-  })
-}
-
-function setDestMode (dest, srcMode, cb) {
-  return fs.chmod(dest, srcMode, cb)
-}
-
-function setDestTimestamps (src, dest, cb) {
-  // The initial srcStat.atime cannot be trusted
-  // because it is modified by the read(2) system call
-  // (See https://nodejs.org/api/fs.html#fs_stat_time_values)
-  fs.stat(src, (err, updatedSrcStat) => {
-    if (err) return cb(err)
-    return utimesMillis(dest, updatedSrcStat.atime, updatedSrcStat.mtime, cb)
-  })
-}
-
-function onDir (srcStat, destStat, src, dest, opts, cb) {
-  if (!destStat) return mkDirAndCopy(srcStat.mode, src, dest, opts, cb)
-  return copyDir(src, dest, opts, cb)
-}
-
-function mkDirAndCopy (srcMode, src, dest, opts, cb) {
-  fs.mkdir(dest, err => {
-    if (err) return cb(err)
-    copyDir(src, dest, opts, err => {
-      if (err) return cb(err)
-      return setDestMode(dest, srcMode, cb)
-    })
-  })
-}
-
-function copyDir (src, dest, opts, cb) {
-  fs.readdir(src, (err, items) => {
-    if (err) return cb(err)
-    return copyDirItems(items, src, dest, opts, cb)
-  })
-}
-
-function copyDirItems (items, src, dest, opts, cb) {
-  const item = items.pop()
-  if (!item) return cb()
-  return copyDirItem(items, item, src, dest, opts, cb)
-}
-
-function copyDirItem (items, item, src, dest, opts, cb) {
-  const srcItem = path.join(src, item)
-  const destItem = path.join(dest, item)
-  stat.checkPaths(srcItem, destItem, 'copy', opts, (err, stats) => {
-    if (err) return cb(err)
-    const { destStat } = stats
-    startCopy(destStat, srcItem, destItem, opts, err => {
-      if (err) return cb(err)
-      return copyDirItems(items, src, dest, opts, cb)
-    })
-  })
-}
-
-function onLink (destStat, src, dest, opts, cb) {
-  fs.readlink(src, (err, resolvedSrc) => {
-    if (err) return cb(err)
-    if (opts.dereference) {
-      resolvedSrc = path.resolve(process.cwd(), resolvedSrc)
-    }
-
-    if (!destStat) {
-      return fs.symlink(resolvedSrc, dest, cb)
-    } else {
-      fs.readlink(dest, (err, resolvedDest) => {
-        if (err) {
-          // dest exists and is a regular file or directory,
-          // Windows may throw UNKNOWN error. If dest already exists,
-          // fs throws error anyway, so no need to guard against it here.
-          if (err.code === 'EINVAL' || err.code === 'UNKNOWN') return fs.symlink(resolvedSrc, dest, cb)
-          return cb(err)
-        }
-        if (opts.dereference) {
-          resolvedDest = path.resolve(process.cwd(), resolvedDest)
-        }
-        if (stat.isSrcSubdir(resolvedSrc, resolvedDest)) {
-          return cb(new Error(`Cannot copy '${resolvedSrc}' to a subdirectory of itself, '${resolvedDest}'.`))
-        }
-
-        // do not copy if src is a subdir of dest since unlinking
-        // dest in this case would result in removing src contents
-        // and therefore a broken symlink would be created.
-        if (destStat.isDirectory() && stat.isSrcSubdir(resolvedDest, resolvedSrc)) {
-          return cb(new Error(`Cannot overwrite '${resolvedDest}' with '${resolvedSrc}'.`))
-        }
-        return copyLink(resolvedSrc, dest, cb)
-      })
-    }
-  })
-}
-
-function copyLink (resolvedSrc, dest, cb) {
-  fs.unlink(dest, err => {
-    if (err) return cb(err)
-    return fs.symlink(resolvedSrc, dest, cb)
-  })
-}
-
-module.exports = copy
-
-
-/***/ }),
-
-/***/ 5196:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromCallback)
-module.exports = {
-  copy: u(__nccwpck_require__(2792)),
-  copySync: __nccwpck_require__(2092)
-}
-
-
-/***/ }),
-
-/***/ 4811:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromPromise)
-const fs = __nccwpck_require__(7384)
-const path = __nccwpck_require__(1017)
-const mkdir = __nccwpck_require__(5367)
-const remove = __nccwpck_require__(6752)
-
-const emptyDir = u(async function emptyDir (dir) {
-  let items
-  try {
-    items = await fs.readdir(dir)
-  } catch {
-    return mkdir.mkdirs(dir)
-  }
-
-  return Promise.all(items.map(item => remove.remove(path.join(dir, item))))
-})
-
-function emptyDirSync (dir) {
-  let items
-  try {
-    items = fs.readdirSync(dir)
-  } catch {
-    return mkdir.mkdirsSync(dir)
-  }
-
-  items.forEach(item => {
-    item = path.join(dir, item)
-    remove.removeSync(item)
-  })
-}
-
-module.exports = {
-  emptyDirSync,
-  emptydirSync: emptyDirSync,
-  emptyDir,
-  emptydir: emptyDir
-}
-
-
-/***/ }),
-
-/***/ 1289:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromCallback)
-const path = __nccwpck_require__(1017)
-const fs = __nccwpck_require__(2353)
-const mkdir = __nccwpck_require__(5367)
-
-function createFile (file, callback) {
-  function makeFile () {
-    fs.writeFile(file, '', err => {
-      if (err) return callback(err)
-      callback()
-    })
-  }
-
-  fs.stat(file, (err, stats) => { // eslint-disable-line handle-callback-err
-    if (!err && stats.isFile()) return callback()
-    const dir = path.dirname(file)
-    fs.stat(dir, (err, stats) => {
-      if (err) {
-        // if the directory doesn't exist, make it
-        if (err.code === 'ENOENT') {
-          return mkdir.mkdirs(dir, err => {
-            if (err) return callback(err)
-            makeFile()
-          })
-        }
-        return callback(err)
-      }
-
-      if (stats.isDirectory()) makeFile()
-      else {
-        // parent is not a directory
-        // This is just to cause an internal ENOTDIR error to be thrown
-        fs.readdir(dir, err => {
-          if (err) return callback(err)
-        })
-      }
-    })
-  })
-}
-
-function createFileSync (file) {
-  let stats
-  try {
-    stats = fs.statSync(file)
-  } catch {}
-  if (stats && stats.isFile()) return
-
-  const dir = path.dirname(file)
-  try {
-    if (!fs.statSync(dir).isDirectory()) {
-      // parent is not a directory
-      // This is just to cause an internal ENOTDIR error to be thrown
-      fs.readdirSync(dir)
-    }
-  } catch (err) {
-    // If the stat call above failed because the directory doesn't exist, create it
-    if (err && err.code === 'ENOENT') mkdir.mkdirsSync(dir)
-    else throw err
-  }
-
-  fs.writeFileSync(file, '')
-}
-
-module.exports = {
-  createFile: u(createFile),
-  createFileSync
-}
-
-
-/***/ }),
-
-/***/ 9007:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const { createFile, createFileSync } = __nccwpck_require__(1289)
-const { createLink, createLinkSync } = __nccwpck_require__(9036)
-const { createSymlink, createSymlinkSync } = __nccwpck_require__(8883)
+const { createFile, createFileSync } = __webpack_require__(149)
+const { createLink, createLinkSync } = __webpack_require__(900)
+const { createSymlink, createSymlinkSync } = __webpack_require__(849)
 
 module.exports = {
   // file
@@ -2337,910 +2976,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9036:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 474:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-const u = (__nccwpck_require__(4899).fromCallback)
-const path = __nccwpck_require__(1017)
-const fs = __nccwpck_require__(2353)
-const mkdir = __nccwpck_require__(5367)
-const pathExists = (__nccwpck_require__(8220).pathExists)
-const { areIdentical } = __nccwpck_require__(4397)
-
-function createLink (srcpath, dstpath, callback) {
-  function makeLink (srcpath, dstpath) {
-    fs.link(srcpath, dstpath, err => {
-      if (err) return callback(err)
-      callback(null)
-    })
-  }
-
-  fs.lstat(dstpath, (_, dstStat) => {
-    fs.lstat(srcpath, (err, srcStat) => {
-      if (err) {
-        err.message = err.message.replace('lstat', 'ensureLink')
-        return callback(err)
-      }
-      if (dstStat && areIdentical(srcStat, dstStat)) return callback(null)
-
-      const dir = path.dirname(dstpath)
-      pathExists(dir, (err, dirExists) => {
-        if (err) return callback(err)
-        if (dirExists) return makeLink(srcpath, dstpath)
-        mkdir.mkdirs(dir, err => {
-          if (err) return callback(err)
-          makeLink(srcpath, dstpath)
-        })
-      })
-    })
-  })
-}
-
-function createLinkSync (srcpath, dstpath) {
-  let dstStat
-  try {
-    dstStat = fs.lstatSync(dstpath)
-  } catch {}
-
-  try {
-    const srcStat = fs.lstatSync(srcpath)
-    if (dstStat && areIdentical(srcStat, dstStat)) return
-  } catch (err) {
-    err.message = err.message.replace('lstat', 'ensureLink')
-    throw err
-  }
-
-  const dir = path.dirname(dstpath)
-  const dirExists = fs.existsSync(dir)
-  if (dirExists) return fs.linkSync(srcpath, dstpath)
-  mkdir.mkdirsSync(dir)
-
-  return fs.linkSync(srcpath, dstpath)
-}
-
-module.exports = {
-  createLink: u(createLink),
-  createLinkSync
-}
-
-
-/***/ }),
-
-/***/ 1166:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const path = __nccwpck_require__(1017)
-const fs = __nccwpck_require__(2353)
-const pathExists = (__nccwpck_require__(8220).pathExists)
-
-/**
- * Function that returns two types of paths, one relative to symlink, and one
- * relative to the current working directory. Checks if path is absolute or
- * relative. If the path is relative, this function checks if the path is
- * relative to symlink or relative to current working directory. This is an
- * initiative to find a smarter `srcpath` to supply when building symlinks.
- * This allows you to determine which path to use out of one of three possible
- * types of source paths. The first is an absolute path. This is detected by
- * `path.isAbsolute()`. When an absolute path is provided, it is checked to
- * see if it exists. If it does it's used, if not an error is returned
- * (callback)/ thrown (sync). The other two options for `srcpath` are a
- * relative url. By default Node's `fs.symlink` works by creating a symlink
- * using `dstpath` and expects the `srcpath` to be relative to the newly
- * created symlink. If you provide a `srcpath` that does not exist on the file
- * system it results in a broken symlink. To minimize this, the function
- * checks to see if the 'relative to symlink' source file exists, and if it
- * does it will use it. If it does not, it checks if there's a file that
- * exists that is relative to the current working directory, if does its used.
- * This preserves the expectations of the original fs.symlink spec and adds
- * the ability to pass in `relative to current working direcotry` paths.
- */
-
-function symlinkPaths (srcpath, dstpath, callback) {
-  if (path.isAbsolute(srcpath)) {
-    return fs.lstat(srcpath, (err) => {
-      if (err) {
-        err.message = err.message.replace('lstat', 'ensureSymlink')
-        return callback(err)
-      }
-      return callback(null, {
-        toCwd: srcpath,
-        toDst: srcpath
-      })
-    })
-  } else {
-    const dstdir = path.dirname(dstpath)
-    const relativeToDst = path.join(dstdir, srcpath)
-    return pathExists(relativeToDst, (err, exists) => {
-      if (err) return callback(err)
-      if (exists) {
-        return callback(null, {
-          toCwd: relativeToDst,
-          toDst: srcpath
-        })
-      } else {
-        return fs.lstat(srcpath, (err) => {
-          if (err) {
-            err.message = err.message.replace('lstat', 'ensureSymlink')
-            return callback(err)
-          }
-          return callback(null, {
-            toCwd: srcpath,
-            toDst: path.relative(dstdir, srcpath)
-          })
-        })
-      }
-    })
-  }
-}
-
-function symlinkPathsSync (srcpath, dstpath) {
-  let exists
-  if (path.isAbsolute(srcpath)) {
-    exists = fs.existsSync(srcpath)
-    if (!exists) throw new Error('absolute srcpath does not exist')
-    return {
-      toCwd: srcpath,
-      toDst: srcpath
-    }
-  } else {
-    const dstdir = path.dirname(dstpath)
-    const relativeToDst = path.join(dstdir, srcpath)
-    exists = fs.existsSync(relativeToDst)
-    if (exists) {
-      return {
-        toCwd: relativeToDst,
-        toDst: srcpath
-      }
-    } else {
-      exists = fs.existsSync(srcpath)
-      if (!exists) throw new Error('relative srcpath does not exist')
-      return {
-        toCwd: srcpath,
-        toDst: path.relative(dstdir, srcpath)
-      }
-    }
-  }
-}
-
-module.exports = {
-  symlinkPaths,
-  symlinkPathsSync
-}
-
-
-/***/ }),
-
-/***/ 6667:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const fs = __nccwpck_require__(2353)
-
-function symlinkType (srcpath, type, callback) {
-  callback = (typeof type === 'function') ? type : callback
-  type = (typeof type === 'function') ? false : type
-  if (type) return callback(null, type)
-  fs.lstat(srcpath, (err, stats) => {
-    if (err) return callback(null, 'file')
-    type = (stats && stats.isDirectory()) ? 'dir' : 'file'
-    callback(null, type)
-  })
-}
-
-function symlinkTypeSync (srcpath, type) {
-  let stats
-
-  if (type) return type
-  try {
-    stats = fs.lstatSync(srcpath)
-  } catch {
-    return 'file'
-  }
-  return (stats && stats.isDirectory()) ? 'dir' : 'file'
-}
-
-module.exports = {
-  symlinkType,
-  symlinkTypeSync
-}
-
-
-/***/ }),
-
-/***/ 8883:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromCallback)
-const path = __nccwpck_require__(1017)
-const fs = __nccwpck_require__(7384)
-const _mkdirs = __nccwpck_require__(5367)
-const mkdirs = _mkdirs.mkdirs
-const mkdirsSync = _mkdirs.mkdirsSync
-
-const _symlinkPaths = __nccwpck_require__(1166)
-const symlinkPaths = _symlinkPaths.symlinkPaths
-const symlinkPathsSync = _symlinkPaths.symlinkPathsSync
-
-const _symlinkType = __nccwpck_require__(6667)
-const symlinkType = _symlinkType.symlinkType
-const symlinkTypeSync = _symlinkType.symlinkTypeSync
-
-const pathExists = (__nccwpck_require__(8220).pathExists)
-
-const { areIdentical } = __nccwpck_require__(4397)
-
-function createSymlink (srcpath, dstpath, type, callback) {
-  callback = (typeof type === 'function') ? type : callback
-  type = (typeof type === 'function') ? false : type
-
-  fs.lstat(dstpath, (err, stats) => {
-    if (!err && stats.isSymbolicLink()) {
-      Promise.all([
-        fs.stat(srcpath),
-        fs.stat(dstpath)
-      ]).then(([srcStat, dstStat]) => {
-        if (areIdentical(srcStat, dstStat)) return callback(null)
-        _createSymlink(srcpath, dstpath, type, callback)
-      })
-    } else _createSymlink(srcpath, dstpath, type, callback)
-  })
-}
-
-function _createSymlink (srcpath, dstpath, type, callback) {
-  symlinkPaths(srcpath, dstpath, (err, relative) => {
-    if (err) return callback(err)
-    srcpath = relative.toDst
-    symlinkType(relative.toCwd, type, (err, type) => {
-      if (err) return callback(err)
-      const dir = path.dirname(dstpath)
-      pathExists(dir, (err, dirExists) => {
-        if (err) return callback(err)
-        if (dirExists) return fs.symlink(srcpath, dstpath, type, callback)
-        mkdirs(dir, err => {
-          if (err) return callback(err)
-          fs.symlink(srcpath, dstpath, type, callback)
-        })
-      })
-    })
-  })
-}
-
-function createSymlinkSync (srcpath, dstpath, type) {
-  let stats
-  try {
-    stats = fs.lstatSync(dstpath)
-  } catch {}
-  if (stats && stats.isSymbolicLink()) {
-    const srcStat = fs.statSync(srcpath)
-    const dstStat = fs.statSync(dstpath)
-    if (areIdentical(srcStat, dstStat)) return
-  }
-
-  const relative = symlinkPathsSync(srcpath, dstpath)
-  srcpath = relative.toDst
-  type = symlinkTypeSync(relative.toCwd, type)
-  const dir = path.dirname(dstpath)
-  const exists = fs.existsSync(dir)
-  if (exists) return fs.symlinkSync(srcpath, dstpath, type)
-  mkdirsSync(dir)
-  return fs.symlinkSync(srcpath, dstpath, type)
-}
-
-module.exports = {
-  createSymlink: u(createSymlink),
-  createSymlinkSync
-}
-
-
-/***/ }),
-
-/***/ 7384:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-// This is adapted from https://github.com/normalize/mz
-// Copyright (c) 2014-2016 Jonathan Ong me@jongleberry.com and Contributors
-const u = (__nccwpck_require__(4899).fromCallback)
-const fs = __nccwpck_require__(2353)
-
-const api = [
-  'access',
-  'appendFile',
-  'chmod',
-  'chown',
-  'close',
-  'copyFile',
-  'fchmod',
-  'fchown',
-  'fdatasync',
-  'fstat',
-  'fsync',
-  'ftruncate',
-  'futimes',
-  'lchmod',
-  'lchown',
-  'link',
-  'lstat',
-  'mkdir',
-  'mkdtemp',
-  'open',
-  'opendir',
-  'readdir',
-  'readFile',
-  'readlink',
-  'realpath',
-  'rename',
-  'rm',
-  'rmdir',
-  'stat',
-  'symlink',
-  'truncate',
-  'unlink',
-  'utimes',
-  'writeFile'
-].filter(key => {
-  // Some commands are not available on some systems. Ex:
-  // fs.opendir was added in Node.js v12.12.0
-  // fs.rm was added in Node.js v14.14.0
-  // fs.lchown is not available on at least some Linux
-  return typeof fs[key] === 'function'
-})
-
-// Export cloned fs:
-Object.assign(exports, fs)
-
-// Universalify async methods:
-api.forEach(method => {
-  exports[method] = u(fs[method])
-})
-
-// We differ from mz/fs in that we still ship the old, broken, fs.exists()
-// since we are a drop-in replacement for the native module
-exports.exists = function (filename, callback) {
-  if (typeof callback === 'function') {
-    return fs.exists(filename, callback)
-  }
-  return new Promise(resolve => {
-    return fs.exists(filename, resolve)
-  })
-}
-
-// fs.read(), fs.write(), & fs.writev() need special treatment due to multiple callback args
-
-exports.read = function (fd, buffer, offset, length, position, callback) {
-  if (typeof callback === 'function') {
-    return fs.read(fd, buffer, offset, length, position, callback)
-  }
-  return new Promise((resolve, reject) => {
-    fs.read(fd, buffer, offset, length, position, (err, bytesRead, buffer) => {
-      if (err) return reject(err)
-      resolve({ bytesRead, buffer })
-    })
-  })
-}
-
-// Function signature can be
-// fs.write(fd, buffer[, offset[, length[, position]]], callback)
-// OR
-// fs.write(fd, string[, position[, encoding]], callback)
-// We need to handle both cases, so we use ...args
-exports.write = function (fd, buffer, ...args) {
-  if (typeof args[args.length - 1] === 'function') {
-    return fs.write(fd, buffer, ...args)
-  }
-
-  return new Promise((resolve, reject) => {
-    fs.write(fd, buffer, ...args, (err, bytesWritten, buffer) => {
-      if (err) return reject(err)
-      resolve({ bytesWritten, buffer })
-    })
-  })
-}
-
-// fs.writev only available in Node v12.9.0+
-if (typeof fs.writev === 'function') {
-  // Function signature is
-  // s.writev(fd, buffers[, position], callback)
-  // We need to handle the optional arg, so we use ...args
-  exports.writev = function (fd, buffers, ...args) {
-    if (typeof args[args.length - 1] === 'function') {
-      return fs.writev(fd, buffers, ...args)
-    }
-
-    return new Promise((resolve, reject) => {
-      fs.writev(fd, buffers, ...args, (err, bytesWritten, buffers) => {
-        if (err) return reject(err)
-        resolve({ bytesWritten, buffers })
-      })
-    })
-  }
-}
-
-// fs.realpath.native sometimes not available if fs is monkey-patched
-if (typeof fs.realpath.native === 'function') {
-  exports.realpath.native = u(fs.realpath.native)
-} else {
-  process.emitWarning(
-    'fs.realpath.native is not a function. Is fs being monkey-patched?',
-    'Warning', 'fs-extra-WARN0003'
-  )
-}
-
-
-/***/ }),
-
-/***/ 4399:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-module.exports = {
-  // Export promiseified graceful-fs:
-  ...__nccwpck_require__(7384),
-  // Export extra methods:
-  ...__nccwpck_require__(5196),
-  ...__nccwpck_require__(4811),
-  ...__nccwpck_require__(9007),
-  ...__nccwpck_require__(8394),
-  ...__nccwpck_require__(5367),
-  ...__nccwpck_require__(7584),
-  ...__nccwpck_require__(8524),
-  ...__nccwpck_require__(8220),
-  ...__nccwpck_require__(6752)
-}
-
-
-/***/ }),
-
-/***/ 8394:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromPromise)
-const jsonFile = __nccwpck_require__(166)
-
-jsonFile.outputJson = u(__nccwpck_require__(7043))
-jsonFile.outputJsonSync = __nccwpck_require__(8871)
-// aliases
-jsonFile.outputJSON = jsonFile.outputJson
-jsonFile.outputJSONSync = jsonFile.outputJsonSync
-jsonFile.writeJSON = jsonFile.writeJson
-jsonFile.writeJSONSync = jsonFile.writeJsonSync
-jsonFile.readJSON = jsonFile.readJson
-jsonFile.readJSONSync = jsonFile.readJsonSync
-
-module.exports = jsonFile
-
-
-/***/ }),
-
-/***/ 166:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const jsonFile = __nccwpck_require__(5430)
-
-module.exports = {
-  // jsonfile exports
-  readJson: jsonFile.readFile,
-  readJsonSync: jsonFile.readFileSync,
-  writeJson: jsonFile.writeFile,
-  writeJsonSync: jsonFile.writeFileSync
-}
-
-
-/***/ }),
-
-/***/ 8871:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const { stringify } = __nccwpck_require__(2754)
-const { outputFileSync } = __nccwpck_require__(8524)
-
-function outputJsonSync (file, data, options) {
-  const str = stringify(data, options)
-
-  outputFileSync(file, str, options)
-}
-
-module.exports = outputJsonSync
-
-
-/***/ }),
-
-/***/ 7043:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const { stringify } = __nccwpck_require__(2754)
-const { outputFile } = __nccwpck_require__(8524)
-
-async function outputJson (file, data, options = {}) {
-  const str = stringify(data, options)
-
-  await outputFile(file, str, options)
-}
-
-module.exports = outputJson
-
-
-/***/ }),
-
-/***/ 5367:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-const u = (__nccwpck_require__(4899).fromPromise)
-const { makeDir: _makeDir, makeDirSync } = __nccwpck_require__(5666)
-const makeDir = u(_makeDir)
-
-module.exports = {
-  mkdirs: makeDir,
-  mkdirsSync: makeDirSync,
-  // alias
-  mkdirp: makeDir,
-  mkdirpSync: makeDirSync,
-  ensureDir: makeDir,
-  ensureDirSync: makeDirSync
-}
-
-
-/***/ }),
-
-/***/ 5666:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-const fs = __nccwpck_require__(7384)
-const { checkPath } = __nccwpck_require__(6435)
-
-const getMode = options => {
-  const defaults = { mode: 0o777 }
-  if (typeof options === 'number') return options
-  return ({ ...defaults, ...options }).mode
-}
-
-module.exports.makeDir = async (dir, options) => {
-  checkPath(dir)
-
-  return fs.mkdir(dir, {
-    mode: getMode(options),
-    recursive: true
-  })
-}
-
-module.exports.makeDirSync = (dir, options) => {
-  checkPath(dir)
-
-  return fs.mkdirSync(dir, {
-    mode: getMode(options),
-    recursive: true
-  })
-}
-
-
-/***/ }),
-
-/***/ 6435:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-// Adapted from https://github.com/sindresorhus/make-dir
-// Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-const path = __nccwpck_require__(1017)
-
-// https://github.com/nodejs/node/issues/8987
-// https://github.com/libuv/libuv/pull/1088
-module.exports.checkPath = function checkPath (pth) {
-  if (process.platform === 'win32') {
-    const pathHasInvalidWinCharacters = /[<>:"|?*]/.test(pth.replace(path.parse(pth).root, ''))
-
-    if (pathHasInvalidWinCharacters) {
-      const error = new Error(`Path contains invalid characters: ${pth}`)
-      error.code = 'EINVAL'
-      throw error
-    }
-  }
-}
-
-
-/***/ }),
-
-/***/ 7584:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromCallback)
-module.exports = {
-  move: u(__nccwpck_require__(5692)),
-  moveSync: __nccwpck_require__(3165)
-}
-
-
-/***/ }),
-
-/***/ 3165:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const fs = __nccwpck_require__(2353)
-const path = __nccwpck_require__(1017)
-const copySync = (__nccwpck_require__(5196).copySync)
-const removeSync = (__nccwpck_require__(6752).removeSync)
-const mkdirpSync = (__nccwpck_require__(5367).mkdirpSync)
-const stat = __nccwpck_require__(4397)
-
-function moveSync (src, dest, opts) {
-  opts = opts || {}
-  const overwrite = opts.overwrite || opts.clobber || false
-
-  const { srcStat, isChangingCase = false } = stat.checkPathsSync(src, dest, 'move', opts)
-  stat.checkParentPathsSync(src, srcStat, dest, 'move')
-  if (!isParentRoot(dest)) mkdirpSync(path.dirname(dest))
-  return doRename(src, dest, overwrite, isChangingCase)
-}
-
-function isParentRoot (dest) {
-  const parent = path.dirname(dest)
-  const parsedPath = path.parse(parent)
-  return parsedPath.root === parent
-}
-
-function doRename (src, dest, overwrite, isChangingCase) {
-  if (isChangingCase) return rename(src, dest, overwrite)
-  if (overwrite) {
-    removeSync(dest)
-    return rename(src, dest, overwrite)
-  }
-  if (fs.existsSync(dest)) throw new Error('dest already exists.')
-  return rename(src, dest, overwrite)
-}
-
-function rename (src, dest, overwrite) {
-  try {
-    fs.renameSync(src, dest)
-  } catch (err) {
-    if (err.code !== 'EXDEV') throw err
-    return moveAcrossDevice(src, dest, overwrite)
-  }
-}
-
-function moveAcrossDevice (src, dest, overwrite) {
-  const opts = {
-    overwrite,
-    errorOnExist: true
-  }
-  copySync(src, dest, opts)
-  return removeSync(src)
-}
-
-module.exports = moveSync
-
-
-/***/ }),
-
-/***/ 5692:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const fs = __nccwpck_require__(2353)
-const path = __nccwpck_require__(1017)
-const copy = (__nccwpck_require__(5196).copy)
-const remove = (__nccwpck_require__(6752).remove)
-const mkdirp = (__nccwpck_require__(5367).mkdirp)
-const pathExists = (__nccwpck_require__(8220).pathExists)
-const stat = __nccwpck_require__(4397)
-
-function move (src, dest, opts, cb) {
-  if (typeof opts === 'function') {
-    cb = opts
-    opts = {}
-  }
-
-  opts = opts || {}
-
-  const overwrite = opts.overwrite || opts.clobber || false
-
-  stat.checkPaths(src, dest, 'move', opts, (err, stats) => {
-    if (err) return cb(err)
-    const { srcStat, isChangingCase = false } = stats
-    stat.checkParentPaths(src, srcStat, dest, 'move', err => {
-      if (err) return cb(err)
-      if (isParentRoot(dest)) return doRename(src, dest, overwrite, isChangingCase, cb)
-      mkdirp(path.dirname(dest), err => {
-        if (err) return cb(err)
-        return doRename(src, dest, overwrite, isChangingCase, cb)
-      })
-    })
-  })
-}
-
-function isParentRoot (dest) {
-  const parent = path.dirname(dest)
-  const parsedPath = path.parse(parent)
-  return parsedPath.root === parent
-}
-
-function doRename (src, dest, overwrite, isChangingCase, cb) {
-  if (isChangingCase) return rename(src, dest, overwrite, cb)
-  if (overwrite) {
-    return remove(dest, err => {
-      if (err) return cb(err)
-      return rename(src, dest, overwrite, cb)
-    })
-  }
-  pathExists(dest, (err, destExists) => {
-    if (err) return cb(err)
-    if (destExists) return cb(new Error('dest already exists.'))
-    return rename(src, dest, overwrite, cb)
-  })
-}
-
-function rename (src, dest, overwrite, cb) {
-  fs.rename(src, dest, err => {
-    if (!err) return cb()
-    if (err.code !== 'EXDEV') return cb(err)
-    return moveAcrossDevice(src, dest, overwrite, cb)
-  })
-}
-
-function moveAcrossDevice (src, dest, overwrite, cb) {
-  const opts = {
-    overwrite,
-    errorOnExist: true
-  }
-  copy(src, dest, opts, err => {
-    if (err) return cb(err)
-    return remove(src, cb)
-  })
-}
-
-module.exports = move
-
-
-/***/ }),
-
-/***/ 8524:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const u = (__nccwpck_require__(4899).fromCallback)
-const fs = __nccwpck_require__(2353)
-const path = __nccwpck_require__(1017)
-const mkdir = __nccwpck_require__(5367)
-const pathExists = (__nccwpck_require__(8220).pathExists)
-
-function outputFile (file, data, encoding, callback) {
-  if (typeof encoding === 'function') {
-    callback = encoding
-    encoding = 'utf8'
-  }
-
-  const dir = path.dirname(file)
-  pathExists(dir, (err, itDoes) => {
-    if (err) return callback(err)
-    if (itDoes) return fs.writeFile(file, data, encoding, callback)
-
-    mkdir.mkdirs(dir, err => {
-      if (err) return callback(err)
-
-      fs.writeFile(file, data, encoding, callback)
-    })
-  })
-}
-
-function outputFileSync (file, ...args) {
-  const dir = path.dirname(file)
-  if (fs.existsSync(dir)) {
-    return fs.writeFileSync(file, ...args)
-  }
-  mkdir.mkdirsSync(dir)
-  fs.writeFileSync(file, ...args)
-}
-
-module.exports = {
-  outputFile: u(outputFile),
-  outputFileSync
-}
-
-
-/***/ }),
-
-/***/ 8220:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-const u = (__nccwpck_require__(4899).fromPromise)
-const fs = __nccwpck_require__(7384)
-
-function pathExists (path) {
-  return fs.access(path).then(() => true).catch(() => false)
-}
-
-module.exports = {
-  pathExists: u(pathExists),
-  pathExistsSync: fs.existsSync
-}
-
-
-/***/ }),
-
-/***/ 6752:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const fs = __nccwpck_require__(2353)
-const u = (__nccwpck_require__(4899).fromCallback)
-const rimraf = __nccwpck_require__(2717)
-
-function remove (path, callback) {
-  // Node 14.14.0+
-  if (fs.rm) return fs.rm(path, { recursive: true, force: true }, callback)
-  rimraf(path, callback)
-}
-
-function removeSync (path) {
-  // Node 14.14.0+
-  if (fs.rmSync) return fs.rmSync(path, { recursive: true, force: true })
-  rimraf.sync(path)
-}
-
-module.exports = {
-  remove: u(remove),
-  removeSync
-}
-
-
-/***/ }),
-
-/***/ 2717:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-const fs = __nccwpck_require__(2353)
-const path = __nccwpck_require__(1017)
-const assert = __nccwpck_require__(9491)
+const fs = __webpack_require__(598)
+const path = __webpack_require__(622)
+const assert = __webpack_require__(357)
 
 const isWindows = (process.platform === 'win32')
 
@@ -3542,242 +3286,730 @@ rimraf.sync = rimrafSync
 
 /***/ }),
 
-/***/ 4397:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 498:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
 
-const fs = __nccwpck_require__(7384)
-const path = __nccwpck_require__(1017)
-const util = __nccwpck_require__(3837)
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-function getStats (src, dest, opts) {
-  const statFunc = opts.dereference
-    ? (file) => fs.stat(file, { bigint: true })
-    : (file) => fs.lstat(file, { bigint: true })
-  return Promise.all([
-    statFunc(src),
-    statFunc(dest).catch(err => {
-      if (err.code === 'ENOENT') return null
-      throw err
-    })
-  ]).then(([srcStat, destStat]) => ({ srcStat, destStat }))
-}
+var _crypto = _interopRequireDefault(__webpack_require__(417));
 
-function getStatsSync (src, dest, opts) {
-  let destStat
-  const statFunc = opts.dereference
-    ? (file) => fs.statSync(file, { bigint: true })
-    : (file) => fs.lstatSync(file, { bigint: true })
-  const srcStat = statFunc(src)
-  try {
-    destStat = statFunc(dest)
-  } catch (err) {
-    if (err.code === 'ENOENT') return { srcStat, destStat: null }
-    throw err
-  }
-  return { srcStat, destStat }
-}
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function checkPaths (src, dest, funcName, opts, cb) {
-  util.callbackify(getStats)(src, dest, opts, (err, stats) => {
-    if (err) return cb(err)
-    const { srcStat, destStat } = stats
-
-    if (destStat) {
-      if (areIdentical(srcStat, destStat)) {
-        const srcBaseName = path.basename(src)
-        const destBaseName = path.basename(dest)
-        if (funcName === 'move' &&
-          srcBaseName !== destBaseName &&
-          srcBaseName.toLowerCase() === destBaseName.toLowerCase()) {
-          return cb(null, { srcStat, destStat, isChangingCase: true })
-        }
-        return cb(new Error('Source and destination must not be the same.'))
-      }
-      if (srcStat.isDirectory() && !destStat.isDirectory()) {
-        return cb(new Error(`Cannot overwrite non-directory '${dest}' with directory '${src}'.`))
-      }
-      if (!srcStat.isDirectory() && destStat.isDirectory()) {
-        return cb(new Error(`Cannot overwrite directory '${dest}' with non-directory '${src}'.`))
-      }
-    }
-
-    if (srcStat.isDirectory() && isSrcSubdir(src, dest)) {
-      return cb(new Error(errMsg(src, dest, funcName)))
-    }
-    return cb(null, { srcStat, destStat })
-  })
-}
-
-function checkPathsSync (src, dest, funcName, opts) {
-  const { srcStat, destStat } = getStatsSync(src, dest, opts)
-
-  if (destStat) {
-    if (areIdentical(srcStat, destStat)) {
-      const srcBaseName = path.basename(src)
-      const destBaseName = path.basename(dest)
-      if (funcName === 'move' &&
-        srcBaseName !== destBaseName &&
-        srcBaseName.toLowerCase() === destBaseName.toLowerCase()) {
-        return { srcStat, destStat, isChangingCase: true }
-      }
-      throw new Error('Source and destination must not be the same.')
-    }
-    if (srcStat.isDirectory() && !destStat.isDirectory()) {
-      throw new Error(`Cannot overwrite non-directory '${dest}' with directory '${src}'.`)
-    }
-    if (!srcStat.isDirectory() && destStat.isDirectory()) {
-      throw new Error(`Cannot overwrite directory '${dest}' with non-directory '${src}'.`)
-    }
+function sha1(bytes) {
+  if (Array.isArray(bytes)) {
+    bytes = Buffer.from(bytes);
+  } else if (typeof bytes === 'string') {
+    bytes = Buffer.from(bytes, 'utf8');
   }
 
-  if (srcStat.isDirectory() && isSrcSubdir(src, dest)) {
-    throw new Error(errMsg(src, dest, funcName))
-  }
-  return { srcStat, destStat }
+  return _crypto.default.createHash('sha1').update(bytes).digest();
 }
 
-// recursively check if dest parent is a subdirectory of src.
-// It works for all file types including symlinks since it
-// checks the src and dest inodes. It starts from the deepest
-// parent and stops once it reaches the src parent or the root path.
-function checkParentPaths (src, srcStat, dest, funcName, cb) {
-  const srcParent = path.resolve(path.dirname(src))
-  const destParent = path.resolve(path.dirname(dest))
-  if (destParent === srcParent || destParent === path.parse(destParent).root) return cb()
-  fs.stat(destParent, { bigint: true }, (err, destStat) => {
-    if (err) {
-      if (err.code === 'ENOENT') return cb()
-      return cb(err)
-    }
-    if (areIdentical(srcStat, destStat)) {
-      return cb(new Error(errMsg(src, dest, funcName)))
-    }
-    return checkParentPaths(src, srcStat, destParent, funcName, cb)
-  })
-}
-
-function checkParentPathsSync (src, srcStat, dest, funcName) {
-  const srcParent = path.resolve(path.dirname(src))
-  const destParent = path.resolve(path.dirname(dest))
-  if (destParent === srcParent || destParent === path.parse(destParent).root) return
-  let destStat
-  try {
-    destStat = fs.statSync(destParent, { bigint: true })
-  } catch (err) {
-    if (err.code === 'ENOENT') return
-    throw err
-  }
-  if (areIdentical(srcStat, destStat)) {
-    throw new Error(errMsg(src, dest, funcName))
-  }
-  return checkParentPathsSync(src, srcStat, destParent, funcName)
-}
-
-function areIdentical (srcStat, destStat) {
-  return destStat.ino && destStat.dev && destStat.ino === srcStat.ino && destStat.dev === srcStat.dev
-}
-
-// return true if dest is a subdir of src, otherwise false.
-// It only checks the path strings.
-function isSrcSubdir (src, dest) {
-  const srcArr = path.resolve(src).split(path.sep).filter(i => i)
-  const destArr = path.resolve(dest).split(path.sep).filter(i => i)
-  return srcArr.reduce((acc, cur, i) => acc && destArr[i] === cur, true)
-}
-
-function errMsg (src, dest, funcName) {
-  return `Cannot ${funcName} '${src}' to a subdirectory of itself, '${dest}'.`
-}
-
-module.exports = {
-  checkPaths,
-  checkPathsSync,
-  checkParentPaths,
-  checkParentPathsSync,
-  isSrcSubdir,
-  areIdentical
-}
-
+var _default = sha1;
+exports.default = _default;
 
 /***/ }),
 
-/***/ 3024:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 500:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-const fs = __nccwpck_require__(2353)
+const fs = __webpack_require__(598)
+const path = __webpack_require__(622)
+const copy = __webpack_require__(774).copy
+const remove = __webpack_require__(723).remove
+const mkdirp = __webpack_require__(727).mkdirp
+const pathExists = __webpack_require__(322).pathExists
+const stat = __webpack_require__(127)
 
-function utimesMillis (path, atime, mtime, callback) {
-  // if (!HAS_MILLIS_RES) return fs.utimes(path, atime, mtime, callback)
-  fs.open(path, 'r+', (err, fd) => {
-    if (err) return callback(err)
-    fs.futimes(fd, atime, mtime, futimesErr => {
-      fs.close(fd, closeErr => {
-        if (callback) callback(futimesErr || closeErr)
+function move (src, dest, opts, cb) {
+  if (typeof opts === 'function') {
+    cb = opts
+    opts = {}
+  }
+
+  opts = opts || {}
+
+  const overwrite = opts.overwrite || opts.clobber || false
+
+  stat.checkPaths(src, dest, 'move', opts, (err, stats) => {
+    if (err) return cb(err)
+    const { srcStat, isChangingCase = false } = stats
+    stat.checkParentPaths(src, srcStat, dest, 'move', err => {
+      if (err) return cb(err)
+      if (isParentRoot(dest)) return doRename(src, dest, overwrite, isChangingCase, cb)
+      mkdirp(path.dirname(dest), err => {
+        if (err) return cb(err)
+        return doRename(src, dest, overwrite, isChangingCase, cb)
       })
     })
   })
 }
 
-function utimesMillisSync (path, atime, mtime) {
-  const fd = fs.openSync(path, 'r+')
-  fs.futimesSync(fd, atime, mtime)
-  return fs.closeSync(fd)
+function isParentRoot (dest) {
+  const parent = path.dirname(dest)
+  const parsedPath = path.parse(parent)
+  return parsedPath.root === parent
 }
 
-module.exports = {
-  utimesMillis,
-  utimesMillisSync
+function doRename (src, dest, overwrite, isChangingCase, cb) {
+  if (isChangingCase) return rename(src, dest, overwrite, cb)
+  if (overwrite) {
+    return remove(dest, err => {
+      if (err) return cb(err)
+      return rename(src, dest, overwrite, cb)
+    })
+  }
+  pathExists(dest, (err, destExists) => {
+    if (err) return cb(err)
+    if (destExists) return cb(new Error('dest already exists.'))
+    return rename(src, dest, overwrite, cb)
+  })
+}
+
+function rename (src, dest, overwrite, cb) {
+  fs.rename(src, dest, err => {
+    if (!err) return cb()
+    if (err.code !== 'EXDEV') return cb(err)
+    return moveAcrossDevice(src, dest, overwrite, cb)
+  })
+}
+
+function moveAcrossDevice (src, dest, overwrite, cb) {
+  const opts = {
+    overwrite,
+    errorOnExist: true
+  }
+  copy(src, dest, opts, err => {
+    if (err) return cb(err)
+    return remove(src, cb)
+  })
+}
+
+module.exports = move
+
+
+/***/ }),
+
+/***/ 534:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+// Adapted from https://github.com/sindresorhus/make-dir
+// Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+const path = __webpack_require__(622)
+
+// https://github.com/nodejs/node/issues/8987
+// https://github.com/libuv/libuv/pull/1088
+module.exports.checkPath = function checkPath (pth) {
+  if (process.platform === 'win32') {
+    const pathHasInvalidWinCharacters = /[<>:"|?*]/.test(pth.replace(path.parse(pth).root, ''))
+
+    if (pathHasInvalidWinCharacters) {
+      const error = new Error(`Path contains invalid characters: ${pth}`)
+      error.code = 'EINVAL'
+      throw error
+    }
+  }
 }
 
 
 /***/ }),
 
-/***/ 7430:
-/***/ ((module) => {
+/***/ 554:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PersonalAccessTokenCredentialHandler = exports.BearerCredentialHandler = exports.BasicCredentialHandler = void 0;
+class BasicCredentialHandler {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+exports.BasicCredentialHandler = BasicCredentialHandler;
+class BearerCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Bearer ${this.token}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+exports.BearerCredentialHandler = BearerCredentialHandler;
+class PersonalAccessTokenCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString('base64')}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;
+//# sourceMappingURL=auth.js.map
+
+/***/ }),
+
+/***/ 573:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
+const path = __importStar(__webpack_require__(622));
+/**
+ * toPosixPath converts the given path to the posix form. On Windows, \\ will be
+ * replaced with /.
+ *
+ * @param pth. Path to transform.
+ * @return string Posix path.
+ */
+function toPosixPath(pth) {
+    return pth.replace(/[\\]/g, '/');
+}
+exports.toPosixPath = toPosixPath;
+/**
+ * toWin32Path converts the given path to the win32 form. On Linux, / will be
+ * replaced with \\.
+ *
+ * @param pth. Path to transform.
+ * @return string Win32 path.
+ */
+function toWin32Path(pth) {
+    return pth.replace(/[/]/g, '\\');
+}
+exports.toWin32Path = toWin32Path;
+/**
+ * toPlatformPath converts the given path to a platform-specific path. It does
+ * this by replacing instances of / and \ with the platform-specific path
+ * separator.
+ *
+ * @param pth The path to platformize.
+ * @return string The platform-specific path.
+ */
+function toPlatformPath(pth) {
+    return pth.replace(/[/\\]/g, path.sep);
+}
+exports.toPlatformPath = toPlatformPath;
+//# sourceMappingURL=path-utils.js.map
+
+/***/ }),
+
+/***/ 577:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = clone
+const fs = __webpack_require__(598)
+const path = __webpack_require__(622)
+const mkdirsSync = __webpack_require__(727).mkdirsSync
+const utimesMillisSync = __webpack_require__(916).utimesMillisSync
+const stat = __webpack_require__(127)
 
-var getPrototypeOf = Object.getPrototypeOf || function (obj) {
-  return obj.__proto__
+function copySync (src, dest, opts) {
+  if (typeof opts === 'function') {
+    opts = { filter: opts }
+  }
+
+  opts = opts || {}
+  opts.clobber = 'clobber' in opts ? !!opts.clobber : true // default to true for now
+  opts.overwrite = 'overwrite' in opts ? !!opts.overwrite : opts.clobber // overwrite falls back to clobber
+
+  // Warn about using preserveTimestamps on 32-bit node
+  if (opts.preserveTimestamps && process.arch === 'ia32') {
+    process.emitWarning(
+      'Using the preserveTimestamps option in 32-bit node is not recommended;\n\n' +
+      '\tsee https://github.com/jprichardson/node-fs-extra/issues/269',
+      'Warning', 'fs-extra-WARN0002'
+    )
+  }
+
+  const { srcStat, destStat } = stat.checkPathsSync(src, dest, 'copy', opts)
+  stat.checkParentPathsSync(src, srcStat, dest, 'copy')
+  return handleFilterAndCopy(destStat, src, dest, opts)
 }
 
-function clone (obj) {
-  if (obj === null || typeof obj !== 'object')
-    return obj
-
-  if (obj instanceof Object)
-    var copy = { __proto__: getPrototypeOf(obj) }
-  else
-    var copy = Object.create(null)
-
-  Object.getOwnPropertyNames(obj).forEach(function (key) {
-    Object.defineProperty(copy, key, Object.getOwnPropertyDescriptor(obj, key))
-  })
-
-  return copy
+function handleFilterAndCopy (destStat, src, dest, opts) {
+  if (opts.filter && !opts.filter(src, dest)) return
+  const destParent = path.dirname(dest)
+  if (!fs.existsSync(destParent)) mkdirsSync(destParent)
+  return getStats(destStat, src, dest, opts)
 }
+
+function startCopy (destStat, src, dest, opts) {
+  if (opts.filter && !opts.filter(src, dest)) return
+  return getStats(destStat, src, dest, opts)
+}
+
+function getStats (destStat, src, dest, opts) {
+  const statSync = opts.dereference ? fs.statSync : fs.lstatSync
+  const srcStat = statSync(src)
+
+  if (srcStat.isDirectory()) return onDir(srcStat, destStat, src, dest, opts)
+  else if (srcStat.isFile() ||
+           srcStat.isCharacterDevice() ||
+           srcStat.isBlockDevice()) return onFile(srcStat, destStat, src, dest, opts)
+  else if (srcStat.isSymbolicLink()) return onLink(destStat, src, dest, opts)
+  else if (srcStat.isSocket()) throw new Error(`Cannot copy a socket file: ${src}`)
+  else if (srcStat.isFIFO()) throw new Error(`Cannot copy a FIFO pipe: ${src}`)
+  throw new Error(`Unknown file: ${src}`)
+}
+
+function onFile (srcStat, destStat, src, dest, opts) {
+  if (!destStat) return copyFile(srcStat, src, dest, opts)
+  return mayCopyFile(srcStat, src, dest, opts)
+}
+
+function mayCopyFile (srcStat, src, dest, opts) {
+  if (opts.overwrite) {
+    fs.unlinkSync(dest)
+    return copyFile(srcStat, src, dest, opts)
+  } else if (opts.errorOnExist) {
+    throw new Error(`'${dest}' already exists`)
+  }
+}
+
+function copyFile (srcStat, src, dest, opts) {
+  fs.copyFileSync(src, dest)
+  if (opts.preserveTimestamps) handleTimestamps(srcStat.mode, src, dest)
+  return setDestMode(dest, srcStat.mode)
+}
+
+function handleTimestamps (srcMode, src, dest) {
+  // Make sure the file is writable before setting the timestamp
+  // otherwise open fails with EPERM when invoked with 'r+'
+  // (through utimes call)
+  if (fileIsNotWritable(srcMode)) makeFileWritable(dest, srcMode)
+  return setDestTimestamps(src, dest)
+}
+
+function fileIsNotWritable (srcMode) {
+  return (srcMode & 0o200) === 0
+}
+
+function makeFileWritable (dest, srcMode) {
+  return setDestMode(dest, srcMode | 0o200)
+}
+
+function setDestMode (dest, srcMode) {
+  return fs.chmodSync(dest, srcMode)
+}
+
+function setDestTimestamps (src, dest) {
+  // The initial srcStat.atime cannot be trusted
+  // because it is modified by the read(2) system call
+  // (See https://nodejs.org/api/fs.html#fs_stat_time_values)
+  const updatedSrcStat = fs.statSync(src)
+  return utimesMillisSync(dest, updatedSrcStat.atime, updatedSrcStat.mtime)
+}
+
+function onDir (srcStat, destStat, src, dest, opts) {
+  if (!destStat) return mkDirAndCopy(srcStat.mode, src, dest, opts)
+  return copyDir(src, dest, opts)
+}
+
+function mkDirAndCopy (srcMode, src, dest, opts) {
+  fs.mkdirSync(dest)
+  copyDir(src, dest, opts)
+  return setDestMode(dest, srcMode)
+}
+
+function copyDir (src, dest, opts) {
+  fs.readdirSync(src).forEach(item => copyDirItem(item, src, dest, opts))
+}
+
+function copyDirItem (item, src, dest, opts) {
+  const srcItem = path.join(src, item)
+  const destItem = path.join(dest, item)
+  const { destStat } = stat.checkPathsSync(srcItem, destItem, 'copy', opts)
+  return startCopy(destStat, srcItem, destItem, opts)
+}
+
+function onLink (destStat, src, dest, opts) {
+  let resolvedSrc = fs.readlinkSync(src)
+  if (opts.dereference) {
+    resolvedSrc = path.resolve(process.cwd(), resolvedSrc)
+  }
+
+  if (!destStat) {
+    return fs.symlinkSync(resolvedSrc, dest)
+  } else {
+    let resolvedDest
+    try {
+      resolvedDest = fs.readlinkSync(dest)
+    } catch (err) {
+      // dest exists and is a regular file or directory,
+      // Windows may throw UNKNOWN error. If dest already exists,
+      // fs throws error anyway, so no need to guard against it here.
+      if (err.code === 'EINVAL' || err.code === 'UNKNOWN') return fs.symlinkSync(resolvedSrc, dest)
+      throw err
+    }
+    if (opts.dereference) {
+      resolvedDest = path.resolve(process.cwd(), resolvedDest)
+    }
+    if (stat.isSrcSubdir(resolvedSrc, resolvedDest)) {
+      throw new Error(`Cannot copy '${resolvedSrc}' to a subdirectory of itself, '${resolvedDest}'.`)
+    }
+
+    // prevent copy if src is a subdir of dest since unlinking
+    // dest in this case would result in removing src contents
+    // and therefore a broken symlink would be created.
+    if (fs.statSync(dest).isDirectory() && stat.isSrcSubdir(resolvedDest, resolvedSrc)) {
+      throw new Error(`Cannot overwrite '${resolvedDest}' with '${resolvedSrc}'.`)
+    }
+    return copyLink(resolvedSrc, dest)
+  }
+}
+
+function copyLink (resolvedSrc, dest) {
+  fs.unlinkSync(dest)
+  return fs.symlinkSync(resolvedSrc, dest)
+}
+
+module.exports = copySync
 
 
 /***/ }),
 
-/***/ 2353:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 595:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
-var fs = __nccwpck_require__(7147)
-var polyfills = __nccwpck_require__(6852)
-var legacy = __nccwpck_require__(1773)
-var clone = __nccwpck_require__(7430)
+"use strict";
 
-var util = __nccwpck_require__(3837)
+
+const fs = __webpack_require__(598)
+const path = __webpack_require__(622)
+const mkdirs = __webpack_require__(727).mkdirs
+const pathExists = __webpack_require__(322).pathExists
+const utimesMillis = __webpack_require__(916).utimesMillis
+const stat = __webpack_require__(127)
+
+function copy (src, dest, opts, cb) {
+  if (typeof opts === 'function' && !cb) {
+    cb = opts
+    opts = {}
+  } else if (typeof opts === 'function') {
+    opts = { filter: opts }
+  }
+
+  cb = cb || function () {}
+  opts = opts || {}
+
+  opts.clobber = 'clobber' in opts ? !!opts.clobber : true // default to true for now
+  opts.overwrite = 'overwrite' in opts ? !!opts.overwrite : opts.clobber // overwrite falls back to clobber
+
+  // Warn about using preserveTimestamps on 32-bit node
+  if (opts.preserveTimestamps && process.arch === 'ia32') {
+    process.emitWarning(
+      'Using the preserveTimestamps option in 32-bit node is not recommended;\n\n' +
+      '\tsee https://github.com/jprichardson/node-fs-extra/issues/269',
+      'Warning', 'fs-extra-WARN0001'
+    )
+  }
+
+  stat.checkPaths(src, dest, 'copy', opts, (err, stats) => {
+    if (err) return cb(err)
+    const { srcStat, destStat } = stats
+    stat.checkParentPaths(src, srcStat, dest, 'copy', err => {
+      if (err) return cb(err)
+      if (opts.filter) return handleFilter(checkParentDir, destStat, src, dest, opts, cb)
+      return checkParentDir(destStat, src, dest, opts, cb)
+    })
+  })
+}
+
+function checkParentDir (destStat, src, dest, opts, cb) {
+  const destParent = path.dirname(dest)
+  pathExists(destParent, (err, dirExists) => {
+    if (err) return cb(err)
+    if (dirExists) return getStats(destStat, src, dest, opts, cb)
+    mkdirs(destParent, err => {
+      if (err) return cb(err)
+      return getStats(destStat, src, dest, opts, cb)
+    })
+  })
+}
+
+function handleFilter (onInclude, destStat, src, dest, opts, cb) {
+  Promise.resolve(opts.filter(src, dest)).then(include => {
+    if (include) return onInclude(destStat, src, dest, opts, cb)
+    return cb()
+  }, error => cb(error))
+}
+
+function startCopy (destStat, src, dest, opts, cb) {
+  if (opts.filter) return handleFilter(getStats, destStat, src, dest, opts, cb)
+  return getStats(destStat, src, dest, opts, cb)
+}
+
+function getStats (destStat, src, dest, opts, cb) {
+  const stat = opts.dereference ? fs.stat : fs.lstat
+  stat(src, (err, srcStat) => {
+    if (err) return cb(err)
+
+    if (srcStat.isDirectory()) return onDir(srcStat, destStat, src, dest, opts, cb)
+    else if (srcStat.isFile() ||
+             srcStat.isCharacterDevice() ||
+             srcStat.isBlockDevice()) return onFile(srcStat, destStat, src, dest, opts, cb)
+    else if (srcStat.isSymbolicLink()) return onLink(destStat, src, dest, opts, cb)
+    else if (srcStat.isSocket()) return cb(new Error(`Cannot copy a socket file: ${src}`))
+    else if (srcStat.isFIFO()) return cb(new Error(`Cannot copy a FIFO pipe: ${src}`))
+    return cb(new Error(`Unknown file: ${src}`))
+  })
+}
+
+function onFile (srcStat, destStat, src, dest, opts, cb) {
+  if (!destStat) return copyFile(srcStat, src, dest, opts, cb)
+  return mayCopyFile(srcStat, src, dest, opts, cb)
+}
+
+function mayCopyFile (srcStat, src, dest, opts, cb) {
+  if (opts.overwrite) {
+    fs.unlink(dest, err => {
+      if (err) return cb(err)
+      return copyFile(srcStat, src, dest, opts, cb)
+    })
+  } else if (opts.errorOnExist) {
+    return cb(new Error(`'${dest}' already exists`))
+  } else return cb()
+}
+
+function copyFile (srcStat, src, dest, opts, cb) {
+  fs.copyFile(src, dest, err => {
+    if (err) return cb(err)
+    if (opts.preserveTimestamps) return handleTimestampsAndMode(srcStat.mode, src, dest, cb)
+    return setDestMode(dest, srcStat.mode, cb)
+  })
+}
+
+function handleTimestampsAndMode (srcMode, src, dest, cb) {
+  // Make sure the file is writable before setting the timestamp
+  // otherwise open fails with EPERM when invoked with 'r+'
+  // (through utimes call)
+  if (fileIsNotWritable(srcMode)) {
+    return makeFileWritable(dest, srcMode, err => {
+      if (err) return cb(err)
+      return setDestTimestampsAndMode(srcMode, src, dest, cb)
+    })
+  }
+  return setDestTimestampsAndMode(srcMode, src, dest, cb)
+}
+
+function fileIsNotWritable (srcMode) {
+  return (srcMode & 0o200) === 0
+}
+
+function makeFileWritable (dest, srcMode, cb) {
+  return setDestMode(dest, srcMode | 0o200, cb)
+}
+
+function setDestTimestampsAndMode (srcMode, src, dest, cb) {
+  setDestTimestamps(src, dest, err => {
+    if (err) return cb(err)
+    return setDestMode(dest, srcMode, cb)
+  })
+}
+
+function setDestMode (dest, srcMode, cb) {
+  return fs.chmod(dest, srcMode, cb)
+}
+
+function setDestTimestamps (src, dest, cb) {
+  // The initial srcStat.atime cannot be trusted
+  // because it is modified by the read(2) system call
+  // (See https://nodejs.org/api/fs.html#fs_stat_time_values)
+  fs.stat(src, (err, updatedSrcStat) => {
+    if (err) return cb(err)
+    return utimesMillis(dest, updatedSrcStat.atime, updatedSrcStat.mtime, cb)
+  })
+}
+
+function onDir (srcStat, destStat, src, dest, opts, cb) {
+  if (!destStat) return mkDirAndCopy(srcStat.mode, src, dest, opts, cb)
+  return copyDir(src, dest, opts, cb)
+}
+
+function mkDirAndCopy (srcMode, src, dest, opts, cb) {
+  fs.mkdir(dest, err => {
+    if (err) return cb(err)
+    copyDir(src, dest, opts, err => {
+      if (err) return cb(err)
+      return setDestMode(dest, srcMode, cb)
+    })
+  })
+}
+
+function copyDir (src, dest, opts, cb) {
+  fs.readdir(src, (err, items) => {
+    if (err) return cb(err)
+    return copyDirItems(items, src, dest, opts, cb)
+  })
+}
+
+function copyDirItems (items, src, dest, opts, cb) {
+  const item = items.pop()
+  if (!item) return cb()
+  return copyDirItem(items, item, src, dest, opts, cb)
+}
+
+function copyDirItem (items, item, src, dest, opts, cb) {
+  const srcItem = path.join(src, item)
+  const destItem = path.join(dest, item)
+  stat.checkPaths(srcItem, destItem, 'copy', opts, (err, stats) => {
+    if (err) return cb(err)
+    const { destStat } = stats
+    startCopy(destStat, srcItem, destItem, opts, err => {
+      if (err) return cb(err)
+      return copyDirItems(items, src, dest, opts, cb)
+    })
+  })
+}
+
+function onLink (destStat, src, dest, opts, cb) {
+  fs.readlink(src, (err, resolvedSrc) => {
+    if (err) return cb(err)
+    if (opts.dereference) {
+      resolvedSrc = path.resolve(process.cwd(), resolvedSrc)
+    }
+
+    if (!destStat) {
+      return fs.symlink(resolvedSrc, dest, cb)
+    } else {
+      fs.readlink(dest, (err, resolvedDest) => {
+        if (err) {
+          // dest exists and is a regular file or directory,
+          // Windows may throw UNKNOWN error. If dest already exists,
+          // fs throws error anyway, so no need to guard against it here.
+          if (err.code === 'EINVAL' || err.code === 'UNKNOWN') return fs.symlink(resolvedSrc, dest, cb)
+          return cb(err)
+        }
+        if (opts.dereference) {
+          resolvedDest = path.resolve(process.cwd(), resolvedDest)
+        }
+        if (stat.isSrcSubdir(resolvedSrc, resolvedDest)) {
+          return cb(new Error(`Cannot copy '${resolvedSrc}' to a subdirectory of itself, '${resolvedDest}'.`))
+        }
+
+        // do not copy if src is a subdir of dest since unlinking
+        // dest in this case would result in removing src contents
+        // and therefore a broken symlink would be created.
+        if (destStat.isDirectory() && stat.isSrcSubdir(resolvedDest, resolvedSrc)) {
+          return cb(new Error(`Cannot overwrite '${resolvedDest}' with '${resolvedSrc}'.`))
+        }
+        return copyLink(resolvedSrc, dest, cb)
+      })
+    }
+  })
+}
+
+function copyLink (resolvedSrc, dest, cb) {
+  fs.unlink(dest, err => {
+    if (err) return cb(err)
+    return fs.symlink(resolvedSrc, dest, cb)
+  })
+}
+
+module.exports = copy
+
+
+/***/ }),
+
+/***/ 598:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+var fs = __webpack_require__(747)
+var polyfills = __webpack_require__(250)
+var legacy = __webpack_require__(93)
+var clone = __webpack_require__(608)
+
+var util = __webpack_require__(669)
 
 /* istanbul ignore next - node 0.x polyfill */
 var gracefulQueue
@@ -3858,7 +4090,7 @@ if (!fs[gracefulQueue]) {
   if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || '')) {
     process.on('exit', function() {
       debug(fs[gracefulQueue])
-      __nccwpck_require__(9491).equal(fs[gracefulQueue].length, 0)
+      __webpack_require__(357).equal(fs[gracefulQueue].length, 0)
     })
   }
 }
@@ -4224,504 +4456,502 @@ function retry () {
 
 /***/ }),
 
-/***/ 1773:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 605:
+/***/ (function(module) {
 
-var Stream = (__nccwpck_require__(2781).Stream)
+module.exports = require("http");
 
-module.exports = legacy
+/***/ }),
 
-function legacy (fs) {
-  return {
-    ReadStream: ReadStream,
-    WriteStream: WriteStream
-  }
+/***/ 608:
+/***/ (function(module) {
 
-  function ReadStream (path, options) {
-    if (!(this instanceof ReadStream)) return new ReadStream(path, options);
+"use strict";
 
-    Stream.call(this);
 
-    var self = this;
+module.exports = clone
 
-    this.path = path;
-    this.fd = null;
-    this.readable = true;
-    this.paused = false;
+var getPrototypeOf = Object.getPrototypeOf || function (obj) {
+  return obj.__proto__
+}
 
-    this.flags = 'r';
-    this.mode = 438; /*=0666*/
-    this.bufferSize = 64 * 1024;
+function clone (obj) {
+  if (obj === null || typeof obj !== 'object')
+    return obj
 
-    options = options || {};
+  if (obj instanceof Object)
+    var copy = { __proto__: getPrototypeOf(obj) }
+  else
+    var copy = Object.create(null)
 
-    // Mixin options into this
-    var keys = Object.keys(options);
-    for (var index = 0, length = keys.length; index < length; index++) {
-      var key = keys[index];
-      this[key] = options[key];
-    }
+  Object.getOwnPropertyNames(obj).forEach(function (key) {
+    Object.defineProperty(copy, key, Object.getOwnPropertyDescriptor(obj, key))
+  })
 
-    if (this.encoding) this.setEncoding(this.encoding);
-
-    if (this.start !== undefined) {
-      if ('number' !== typeof this.start) {
-        throw TypeError('start must be a Number');
-      }
-      if (this.end === undefined) {
-        this.end = Infinity;
-      } else if ('number' !== typeof this.end) {
-        throw TypeError('end must be a Number');
-      }
-
-      if (this.start > this.end) {
-        throw new Error('start must be <= end');
-      }
-
-      this.pos = this.start;
-    }
-
-    if (this.fd !== null) {
-      process.nextTick(function() {
-        self._read();
-      });
-      return;
-    }
-
-    fs.open(this.path, this.flags, this.mode, function (err, fd) {
-      if (err) {
-        self.emit('error', err);
-        self.readable = false;
-        return;
-      }
-
-      self.fd = fd;
-      self.emit('open', fd);
-      self._read();
-    })
-  }
-
-  function WriteStream (path, options) {
-    if (!(this instanceof WriteStream)) return new WriteStream(path, options);
-
-    Stream.call(this);
-
-    this.path = path;
-    this.fd = null;
-    this.writable = true;
-
-    this.flags = 'w';
-    this.encoding = 'binary';
-    this.mode = 438; /*=0666*/
-    this.bytesWritten = 0;
-
-    options = options || {};
-
-    // Mixin options into this
-    var keys = Object.keys(options);
-    for (var index = 0, length = keys.length; index < length; index++) {
-      var key = keys[index];
-      this[key] = options[key];
-    }
-
-    if (this.start !== undefined) {
-      if ('number' !== typeof this.start) {
-        throw TypeError('start must be a Number');
-      }
-      if (this.start < 0) {
-        throw new Error('start must be >= zero');
-      }
-
-      this.pos = this.start;
-    }
-
-    this.busy = false;
-    this._queue = [];
-
-    if (this.fd === null) {
-      this._open = fs.open;
-      this._queue.push([this._open, this.path, this.flags, this.mode, undefined]);
-      this.flush();
-    }
-  }
+  return copy
 }
 
 
 /***/ }),
 
-/***/ 6852:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 614:
+/***/ (function(module) {
 
-var constants = __nccwpck_require__(2057)
+module.exports = require("events");
 
-var origCwd = process.cwd
-var cwd = null
+/***/ }),
 
-var platform = process.env.GRACEFUL_FS_PLATFORM || process.platform
+/***/ 615:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
-process.cwd = function() {
-  if (!cwd)
-    cwd = origCwd.call(process)
-  return cwd
+"use strict";
+
+
+const u = __webpack_require__(676).fromPromise
+const fs = __webpack_require__(869)
+const path = __webpack_require__(622)
+const mkdir = __webpack_require__(727)
+const remove = __webpack_require__(723)
+
+const emptyDir = u(async function emptyDir (dir) {
+  let items
+  try {
+    items = await fs.readdir(dir)
+  } catch {
+    return mkdir.mkdirs(dir)
+  }
+
+  return Promise.all(items.map(item => remove.remove(path.join(dir, item))))
+})
+
+function emptyDirSync (dir) {
+  let items
+  try {
+    items = fs.readdirSync(dir)
+  } catch {
+    return mkdir.mkdirsSync(dir)
+  }
+
+  items.forEach(item => {
+    item = path.join(dir, item)
+    remove.removeSync(item)
+  })
 }
-try {
-  process.cwd()
-} catch (er) {}
 
-// This check is needed until node.js 12 is required
-if (typeof process.chdir === 'function') {
-  var chdir = process.chdir
-  process.chdir = function (d) {
-    cwd = null
-    chdir.call(process, d)
-  }
-  if (Object.setPrototypeOf) Object.setPrototypeOf(process.chdir, chdir)
+module.exports = {
+  emptyDirSync,
+  emptydirSync: emptyDirSync,
+  emptyDir,
+  emptydir: emptyDir
 }
 
-module.exports = patch
 
-function patch (fs) {
-  // (re-)implement some things that are known busted or missing.
+/***/ }),
 
-  // lchmod, broken prior to 0.6.2
-  // back-port the fix here.
-  if (constants.hasOwnProperty('O_SYMLINK') &&
-      process.version.match(/^v0\.6\.[0-2]|^v0\.5\./)) {
-    patchLchmod(fs)
+/***/ 619:
+/***/ (function(module) {
+
+module.exports = require("constants");
+
+/***/ }),
+
+/***/ 622:
+/***/ (function(module) {
+
+module.exports = require("path");
+
+/***/ }),
+
+/***/ 628:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const { stringify } = __webpack_require__(356)
+const { outputFileSync } = __webpack_require__(683)
+
+function outputJsonSync (file, data, options) {
+  const str = stringify(data, options)
+
+  outputFileSync(file, str, options)
+}
+
+module.exports = outputJsonSync
+
+
+/***/ }),
+
+/***/ 631:
+/***/ (function(module) {
+
+module.exports = require("net");
+
+/***/ }),
+
+/***/ 653:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const fs = __webpack_require__(598)
+const path = __webpack_require__(622)
+const copySync = __webpack_require__(774).copySync
+const removeSync = __webpack_require__(723).removeSync
+const mkdirpSync = __webpack_require__(727).mkdirpSync
+const stat = __webpack_require__(127)
+
+function moveSync (src, dest, opts) {
+  opts = opts || {}
+  const overwrite = opts.overwrite || opts.clobber || false
+
+  const { srcStat, isChangingCase = false } = stat.checkPathsSync(src, dest, 'move', opts)
+  stat.checkParentPathsSync(src, srcStat, dest, 'move')
+  if (!isParentRoot(dest)) mkdirpSync(path.dirname(dest))
+  return doRename(src, dest, overwrite, isChangingCase)
+}
+
+function isParentRoot (dest) {
+  const parent = path.dirname(dest)
+  const parsedPath = path.parse(parent)
+  return parsedPath.root === parent
+}
+
+function doRename (src, dest, overwrite, isChangingCase) {
+  if (isChangingCase) return rename(src, dest, overwrite)
+  if (overwrite) {
+    removeSync(dest)
+    return rename(src, dest, overwrite)
   }
+  if (fs.existsSync(dest)) throw new Error('dest already exists.')
+  return rename(src, dest, overwrite)
+}
 
-  // lutimes implementation, or no-op
-  if (!fs.lutimes) {
-    patchLutimes(fs)
+function rename (src, dest, overwrite) {
+  try {
+    fs.renameSync(src, dest)
+  } catch (err) {
+    if (err.code !== 'EXDEV') throw err
+    return moveAcrossDevice(src, dest, overwrite)
   }
+}
 
-  // https://github.com/isaacs/node-graceful-fs/issues/4
-  // Chown should not fail on einval or eperm if non-root.
-  // It should not fail on enosys ever, as this just indicates
-  // that a fs doesn't support the intended operation.
-
-  fs.chown = chownFix(fs.chown)
-  fs.fchown = chownFix(fs.fchown)
-  fs.lchown = chownFix(fs.lchown)
-
-  fs.chmod = chmodFix(fs.chmod)
-  fs.fchmod = chmodFix(fs.fchmod)
-  fs.lchmod = chmodFix(fs.lchmod)
-
-  fs.chownSync = chownFixSync(fs.chownSync)
-  fs.fchownSync = chownFixSync(fs.fchownSync)
-  fs.lchownSync = chownFixSync(fs.lchownSync)
-
-  fs.chmodSync = chmodFixSync(fs.chmodSync)
-  fs.fchmodSync = chmodFixSync(fs.fchmodSync)
-  fs.lchmodSync = chmodFixSync(fs.lchmodSync)
-
-  fs.stat = statFix(fs.stat)
-  fs.fstat = statFix(fs.fstat)
-  fs.lstat = statFix(fs.lstat)
-
-  fs.statSync = statFixSync(fs.statSync)
-  fs.fstatSync = statFixSync(fs.fstatSync)
-  fs.lstatSync = statFixSync(fs.lstatSync)
-
-  // if lchmod/lchown do not exist, then make them no-ops
-  if (fs.chmod && !fs.lchmod) {
-    fs.lchmod = function (path, mode, cb) {
-      if (cb) process.nextTick(cb)
-    }
-    fs.lchmodSync = function () {}
+function moveAcrossDevice (src, dest, overwrite) {
+  const opts = {
+    overwrite,
+    errorOnExist: true
   }
-  if (fs.chown && !fs.lchown) {
-    fs.lchown = function (path, uid, gid, cb) {
-      if (cb) process.nextTick(cb)
+  copySync(src, dest, opts)
+  return removeSync(src)
+}
+
+module.exports = moveSync
+
+
+/***/ }),
+
+/***/ 665:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
+const os_1 = __webpack_require__(87);
+const fs_1 = __webpack_require__(747);
+const { access, appendFile, writeFile } = fs_1.promises;
+exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
+exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
+class Summary {
+    constructor() {
+        this._buffer = '';
     }
-    fs.lchownSync = function () {}
-  }
-
-  // on Windows, A/V software can lock the directory, causing this
-  // to fail with an EACCES or EPERM if the directory contains newly
-  // created files.  Try again on failure, for up to 60 seconds.
-
-  // Set the timeout this long because some Windows Anti-Virus, such as Parity
-  // bit9, may lock files for up to a minute, causing npm package install
-  // failures. Also, take care to yield the scheduler. Windows scheduling gives
-  // CPU to a busy looping process, which can cause the program causing the lock
-  // contention to be starved of CPU by node, so the contention doesn't resolve.
-  if (platform === "win32") {
-    fs.rename = typeof fs.rename !== 'function' ? fs.rename
-    : (function (fs$rename) {
-      function rename (from, to, cb) {
-        var start = Date.now()
-        var backoff = 0;
-        fs$rename(from, to, function CB (er) {
-          if (er
-              && (er.code === "EACCES" || er.code === "EPERM")
-              && Date.now() - start < 60000) {
-            setTimeout(function() {
-              fs.stat(to, function (stater, st) {
-                if (stater && stater.code === "ENOENT")
-                  fs$rename(from, to, CB);
-                else
-                  cb(er)
-              })
-            }, backoff)
-            if (backoff < 100)
-              backoff += 10;
-            return;
-          }
-          if (cb) cb(er)
-        })
-      }
-      if (Object.setPrototypeOf) Object.setPrototypeOf(rename, fs$rename)
-      return rename
-    })(fs.rename)
-  }
-
-  // if read() returns EAGAIN, then just try it again.
-  fs.read = typeof fs.read !== 'function' ? fs.read
-  : (function (fs$read) {
-    function read (fd, buffer, offset, length, position, callback_) {
-      var callback
-      if (callback_ && typeof callback_ === 'function') {
-        var eagCounter = 0
-        callback = function (er, _, __) {
-          if (er && er.code === 'EAGAIN' && eagCounter < 10) {
-            eagCounter ++
-            return fs$read.call(fs, fd, buffer, offset, length, position, callback)
-          }
-          callback_.apply(this, arguments)
-        }
-      }
-      return fs$read.call(fs, fd, buffer, offset, length, position, callback)
-    }
-
-    // This ensures `util.promisify` works as it does for native `fs.read`.
-    if (Object.setPrototypeOf) Object.setPrototypeOf(read, fs$read)
-    return read
-  })(fs.read)
-
-  fs.readSync = typeof fs.readSync !== 'function' ? fs.readSync
-  : (function (fs$readSync) { return function (fd, buffer, offset, length, position) {
-    var eagCounter = 0
-    while (true) {
-      try {
-        return fs$readSync.call(fs, fd, buffer, offset, length, position)
-      } catch (er) {
-        if (er.code === 'EAGAIN' && eagCounter < 10) {
-          eagCounter ++
-          continue
-        }
-        throw er
-      }
-    }
-  }})(fs.readSync)
-
-  function patchLchmod (fs) {
-    fs.lchmod = function (path, mode, callback) {
-      fs.open( path
-             , constants.O_WRONLY | constants.O_SYMLINK
-             , mode
-             , function (err, fd) {
-        if (err) {
-          if (callback) callback(err)
-          return
-        }
-        // prefer to return the chmod error, if one occurs,
-        // but still try to close, and report closing errors if they occur.
-        fs.fchmod(fd, mode, function (err) {
-          fs.close(fd, function(err2) {
-            if (callback) callback(err || err2)
-          })
-        })
-      })
-    }
-
-    fs.lchmodSync = function (path, mode) {
-      var fd = fs.openSync(path, constants.O_WRONLY | constants.O_SYMLINK, mode)
-
-      // prefer to return the chmod error, if one occurs,
-      // but still try to close, and report closing errors if they occur.
-      var threw = true
-      var ret
-      try {
-        ret = fs.fchmodSync(fd, mode)
-        threw = false
-      } finally {
-        if (threw) {
-          try {
-            fs.closeSync(fd)
-          } catch (er) {}
-        } else {
-          fs.closeSync(fd)
-        }
-      }
-      return ret
-    }
-  }
-
-  function patchLutimes (fs) {
-    if (constants.hasOwnProperty("O_SYMLINK") && fs.futimes) {
-      fs.lutimes = function (path, at, mt, cb) {
-        fs.open(path, constants.O_SYMLINK, function (er, fd) {
-          if (er) {
-            if (cb) cb(er)
-            return
-          }
-          fs.futimes(fd, at, mt, function (er) {
-            fs.close(fd, function (er2) {
-              if (cb) cb(er || er2)
-            })
-          })
-        })
-      }
-
-      fs.lutimesSync = function (path, at, mt) {
-        var fd = fs.openSync(path, constants.O_SYMLINK)
-        var ret
-        var threw = true
-        try {
-          ret = fs.futimesSync(fd, at, mt)
-          threw = false
-        } finally {
-          if (threw) {
+    /**
+     * Finds the summary file path from the environment, rejects if env var is not found or file does not exist
+     * Also checks r/w permissions.
+     *
+     * @returns step summary file path
+     */
+    filePath() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this._filePath) {
+                return this._filePath;
+            }
+            const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
+            if (!pathFromEnv) {
+                throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
+            }
             try {
-              fs.closeSync(fd)
-            } catch (er) {}
-          } else {
-            fs.closeSync(fd)
-          }
+                yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
+            }
+            catch (_a) {
+                throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
+            }
+            this._filePath = pathFromEnv;
+            return this._filePath;
+        });
+    }
+    /**
+     * Wraps content in an HTML tag, adding any HTML attributes
+     *
+     * @param {string} tag HTML tag to wrap
+     * @param {string | null} content content within the tag
+     * @param {[attribute: string]: string} attrs key-value list of HTML attributes to add
+     *
+     * @returns {string} content wrapped in HTML element
+     */
+    wrap(tag, content, attrs = {}) {
+        const htmlAttrs = Object.entries(attrs)
+            .map(([key, value]) => ` ${key}="${value}"`)
+            .join('');
+        if (!content) {
+            return `<${tag}${htmlAttrs}>`;
         }
-        return ret
-      }
-
-    } else if (fs.futimes) {
-      fs.lutimes = function (_a, _b, _c, cb) { if (cb) process.nextTick(cb) }
-      fs.lutimesSync = function () {}
+        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
     }
-  }
-
-  function chmodFix (orig) {
-    if (!orig) return orig
-    return function (target, mode, cb) {
-      return orig.call(fs, target, mode, function (er) {
-        if (chownErOk(er)) er = null
-        if (cb) cb.apply(this, arguments)
-      })
+    /**
+     * Writes text in the buffer to the summary buffer file and empties buffer. Will append by default.
+     *
+     * @param {SummaryWriteOptions} [options] (optional) options for write operation
+     *
+     * @returns {Promise<Summary>} summary instance
+     */
+    write(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
+            const filePath = yield this.filePath();
+            const writeFunc = overwrite ? writeFile : appendFile;
+            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
+            return this.emptyBuffer();
+        });
     }
-  }
-
-  function chmodFixSync (orig) {
-    if (!orig) return orig
-    return function (target, mode) {
-      try {
-        return orig.call(fs, target, mode)
-      } catch (er) {
-        if (!chownErOk(er)) throw er
-      }
+    /**
+     * Clears the summary buffer and wipes the summary file
+     *
+     * @returns {Summary} summary instance
+     */
+    clear() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.emptyBuffer().write({ overwrite: true });
+        });
     }
-  }
-
-
-  function chownFix (orig) {
-    if (!orig) return orig
-    return function (target, uid, gid, cb) {
-      return orig.call(fs, target, uid, gid, function (er) {
-        if (chownErOk(er)) er = null
-        if (cb) cb.apply(this, arguments)
-      })
+    /**
+     * Returns the current summary buffer as a string
+     *
+     * @returns {string} string of summary buffer
+     */
+    stringify() {
+        return this._buffer;
     }
-  }
-
-  function chownFixSync (orig) {
-    if (!orig) return orig
-    return function (target, uid, gid) {
-      try {
-        return orig.call(fs, target, uid, gid)
-      } catch (er) {
-        if (!chownErOk(er)) throw er
-      }
+    /**
+     * If the summary buffer is empty
+     *
+     * @returns {boolen} true if the buffer is empty
+     */
+    isEmptyBuffer() {
+        return this._buffer.length === 0;
     }
-  }
-
-  function statFix (orig) {
-    if (!orig) return orig
-    // Older versions of Node erroneously returned signed integers for
-    // uid + gid.
-    return function (target, options, cb) {
-      if (typeof options === 'function') {
-        cb = options
-        options = null
-      }
-      function callback (er, stats) {
-        if (stats) {
-          if (stats.uid < 0) stats.uid += 0x100000000
-          if (stats.gid < 0) stats.gid += 0x100000000
-        }
-        if (cb) cb.apply(this, arguments)
-      }
-      return options ? orig.call(fs, target, options, callback)
-        : orig.call(fs, target, callback)
+    /**
+     * Resets the summary buffer without writing to summary file
+     *
+     * @returns {Summary} summary instance
+     */
+    emptyBuffer() {
+        this._buffer = '';
+        return this;
     }
-  }
-
-  function statFixSync (orig) {
-    if (!orig) return orig
-    // Older versions of Node erroneously returned signed integers for
-    // uid + gid.
-    return function (target, options) {
-      var stats = options ? orig.call(fs, target, options)
-        : orig.call(fs, target)
-      if (stats) {
-        if (stats.uid < 0) stats.uid += 0x100000000
-        if (stats.gid < 0) stats.gid += 0x100000000
-      }
-      return stats;
+    /**
+     * Adds raw text to the summary buffer
+     *
+     * @param {string} text content to add
+     * @param {boolean} [addEOL=false] (optional) append an EOL to the raw text (default: false)
+     *
+     * @returns {Summary} summary instance
+     */
+    addRaw(text, addEOL = false) {
+        this._buffer += text;
+        return addEOL ? this.addEOL() : this;
     }
-  }
-
-  // ENOSYS means that the fs doesn't support the op. Just ignore
-  // that, because it doesn't matter.
-  //
-  // if there's no getuid, or if getuid() is something other
-  // than 0, and the error is EINVAL or EPERM, then just ignore
-  // it.
-  //
-  // This specific case is a silent failure in cp, install, tar,
-  // and most other unix tools that manage permissions.
-  //
-  // When running as root, or if other types of errors are
-  // encountered, then it's strict.
-  function chownErOk (er) {
-    if (!er)
-      return true
-
-    if (er.code === "ENOSYS")
-      return true
-
-    var nonroot = !process.getuid || process.getuid() !== 0
-    if (nonroot) {
-      if (er.code === "EINVAL" || er.code === "EPERM")
-        return true
+    /**
+     * Adds the operating system-specific end-of-line marker to the buffer
+     *
+     * @returns {Summary} summary instance
+     */
+    addEOL() {
+        return this.addRaw(os_1.EOL);
     }
-
-    return false
-  }
+    /**
+     * Adds an HTML codeblock to the summary buffer
+     *
+     * @param {string} code content to render within fenced code block
+     * @param {string} lang (optional) language to syntax highlight code
+     *
+     * @returns {Summary} summary instance
+     */
+    addCodeBlock(code, lang) {
+        const attrs = Object.assign({}, (lang && { lang }));
+        const element = this.wrap('pre', this.wrap('code', code), attrs);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML list to the summary buffer
+     *
+     * @param {string[]} items list of items to render
+     * @param {boolean} [ordered=false] (optional) if the rendered list should be ordered or not (default: false)
+     *
+     * @returns {Summary} summary instance
+     */
+    addList(items, ordered = false) {
+        const tag = ordered ? 'ol' : 'ul';
+        const listItems = items.map(item => this.wrap('li', item)).join('');
+        const element = this.wrap(tag, listItems);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML table to the summary buffer
+     *
+     * @param {SummaryTableCell[]} rows table rows
+     *
+     * @returns {Summary} summary instance
+     */
+    addTable(rows) {
+        const tableBody = rows
+            .map(row => {
+            const cells = row
+                .map(cell => {
+                if (typeof cell === 'string') {
+                    return this.wrap('td', cell);
+                }
+                const { header, data, colspan, rowspan } = cell;
+                const tag = header ? 'th' : 'td';
+                const attrs = Object.assign(Object.assign({}, (colspan && { colspan })), (rowspan && { rowspan }));
+                return this.wrap(tag, data, attrs);
+            })
+                .join('');
+            return this.wrap('tr', cells);
+        })
+            .join('');
+        const element = this.wrap('table', tableBody);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds a collapsable HTML details element to the summary buffer
+     *
+     * @param {string} label text for the closed state
+     * @param {string} content collapsable content
+     *
+     * @returns {Summary} summary instance
+     */
+    addDetails(label, content) {
+        const element = this.wrap('details', this.wrap('summary', label) + content);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML image tag to the summary buffer
+     *
+     * @param {string} src path to the image you to embed
+     * @param {string} alt text description of the image
+     * @param {SummaryImageOptions} options (optional) addition image attributes
+     *
+     * @returns {Summary} summary instance
+     */
+    addImage(src, alt, options) {
+        const { width, height } = options || {};
+        const attrs = Object.assign(Object.assign({}, (width && { width })), (height && { height }));
+        const element = this.wrap('img', null, Object.assign({ src, alt }, attrs));
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML section heading element
+     *
+     * @param {string} text heading text
+     * @param {number | string} [level=1] (optional) the heading level, default: 1
+     *
+     * @returns {Summary} summary instance
+     */
+    addHeading(text, level) {
+        const tag = `h${level}`;
+        const allowedTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)
+            ? tag
+            : 'h1';
+        const element = this.wrap(allowedTag, text);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML thematic break (<hr>) to the summary buffer
+     *
+     * @returns {Summary} summary instance
+     */
+    addSeparator() {
+        const element = this.wrap('hr', null);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML line break (<br>) to the summary buffer
+     *
+     * @returns {Summary} summary instance
+     */
+    addBreak() {
+        const element = this.wrap('br', null);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML blockquote to the summary buffer
+     *
+     * @param {string} text quote text
+     * @param {string} cite (optional) citation url
+     *
+     * @returns {Summary} summary instance
+     */
+    addQuote(text, cite) {
+        const attrs = Object.assign({}, (cite && { cite }));
+        const element = this.wrap('blockquote', text, attrs);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML anchor tag to the summary buffer
+     *
+     * @param {string} text link text/content
+     * @param {string} href hyperlink
+     *
+     * @returns {Summary} summary instance
+     */
+    addLink(text, href) {
+        const element = this.wrap('a', text, { href });
+        return this.addRaw(element).addEOL();
+    }
 }
-
+const _summary = new Summary();
+/**
+ * @deprecated use `core.summary`
+ */
+exports.markdownSummary = _summary;
+exports.summary = _summary;
+//# sourceMappingURL=summary.js.map
 
 /***/ }),
 
-/***/ 5430:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ 666:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 let _fs
 try {
-  _fs = __nccwpck_require__(2353)
+  _fs = __webpack_require__(598)
 } catch (_) {
-  _fs = __nccwpck_require__(7147)
+  _fs = __webpack_require__(747)
 }
-const universalify = __nccwpck_require__(4899)
-const { stringify, stripBom } = __nccwpck_require__(2754)
+const universalify = __webpack_require__(676)
+const { stringify, stripBom } = __webpack_require__(356)
 
 async function _readFile (file, options = {}) {
   if (typeof options === 'string') {
@@ -4806,309 +5036,15 @@ module.exports = jsonfile
 
 /***/ }),
 
-/***/ 2754:
-/***/ ((module) => {
+/***/ 669:
+/***/ (function(module) {
 
-function stringify (obj, { EOL = '\n', finalEOL = true, replacer = null, spaces } = {}) {
-  const EOF = finalEOL ? EOL : ''
-  const str = JSON.stringify(obj, replacer, spaces)
-
-  return str.replace(/\n/g, EOL) + EOF
-}
-
-function stripBom (content) {
-  // we do this because JSON.parse would convert it to a utf8 string if encoding wasn't specified
-  if (Buffer.isBuffer(content)) content = content.toString('utf8')
-  return content.replace(/^\uFEFF/, '')
-}
-
-module.exports = { stringify, stripBom }
-
+module.exports = require("util");
 
 /***/ }),
 
-/***/ 9866:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-module.exports = __nccwpck_require__(3908);
-
-
-/***/ }),
-
-/***/ 3908:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-var net = __nccwpck_require__(1808);
-var tls = __nccwpck_require__(4404);
-var http = __nccwpck_require__(3685);
-var https = __nccwpck_require__(5687);
-var events = __nccwpck_require__(2361);
-var assert = __nccwpck_require__(9491);
-var util = __nccwpck_require__(3837);
-
-
-exports.httpOverHttp = httpOverHttp;
-exports.httpsOverHttp = httpsOverHttp;
-exports.httpOverHttps = httpOverHttps;
-exports.httpsOverHttps = httpsOverHttps;
-
-
-function httpOverHttp(options) {
-  var agent = new TunnelingAgent(options);
-  agent.request = http.request;
-  return agent;
-}
-
-function httpsOverHttp(options) {
-  var agent = new TunnelingAgent(options);
-  agent.request = http.request;
-  agent.createSocket = createSecureSocket;
-  agent.defaultPort = 443;
-  return agent;
-}
-
-function httpOverHttps(options) {
-  var agent = new TunnelingAgent(options);
-  agent.request = https.request;
-  return agent;
-}
-
-function httpsOverHttps(options) {
-  var agent = new TunnelingAgent(options);
-  agent.request = https.request;
-  agent.createSocket = createSecureSocket;
-  agent.defaultPort = 443;
-  return agent;
-}
-
-
-function TunnelingAgent(options) {
-  var self = this;
-  self.options = options || {};
-  self.proxyOptions = self.options.proxy || {};
-  self.maxSockets = self.options.maxSockets || http.Agent.defaultMaxSockets;
-  self.requests = [];
-  self.sockets = [];
-
-  self.on('free', function onFree(socket, host, port, localAddress) {
-    var options = toOptions(host, port, localAddress);
-    for (var i = 0, len = self.requests.length; i < len; ++i) {
-      var pending = self.requests[i];
-      if (pending.host === options.host && pending.port === options.port) {
-        // Detect the request to connect same origin server,
-        // reuse the connection.
-        self.requests.splice(i, 1);
-        pending.request.onSocket(socket);
-        return;
-      }
-    }
-    socket.destroy();
-    self.removeSocket(socket);
-  });
-}
-util.inherits(TunnelingAgent, events.EventEmitter);
-
-TunnelingAgent.prototype.addRequest = function addRequest(req, host, port, localAddress) {
-  var self = this;
-  var options = mergeOptions({request: req}, self.options, toOptions(host, port, localAddress));
-
-  if (self.sockets.length >= this.maxSockets) {
-    // We are over limit so we'll add it to the queue.
-    self.requests.push(options);
-    return;
-  }
-
-  // If we are under maxSockets create a new one.
-  self.createSocket(options, function(socket) {
-    socket.on('free', onFree);
-    socket.on('close', onCloseOrRemove);
-    socket.on('agentRemove', onCloseOrRemove);
-    req.onSocket(socket);
-
-    function onFree() {
-      self.emit('free', socket, options);
-    }
-
-    function onCloseOrRemove(err) {
-      self.removeSocket(socket);
-      socket.removeListener('free', onFree);
-      socket.removeListener('close', onCloseOrRemove);
-      socket.removeListener('agentRemove', onCloseOrRemove);
-    }
-  });
-};
-
-TunnelingAgent.prototype.createSocket = function createSocket(options, cb) {
-  var self = this;
-  var placeholder = {};
-  self.sockets.push(placeholder);
-
-  var connectOptions = mergeOptions({}, self.proxyOptions, {
-    method: 'CONNECT',
-    path: options.host + ':' + options.port,
-    agent: false,
-    headers: {
-      host: options.host + ':' + options.port
-    }
-  });
-  if (options.localAddress) {
-    connectOptions.localAddress = options.localAddress;
-  }
-  if (connectOptions.proxyAuth) {
-    connectOptions.headers = connectOptions.headers || {};
-    connectOptions.headers['Proxy-Authorization'] = 'Basic ' +
-        new Buffer(connectOptions.proxyAuth).toString('base64');
-  }
-
-  debug('making CONNECT request');
-  var connectReq = self.request(connectOptions);
-  connectReq.useChunkedEncodingByDefault = false; // for v0.6
-  connectReq.once('response', onResponse); // for v0.6
-  connectReq.once('upgrade', onUpgrade);   // for v0.6
-  connectReq.once('connect', onConnect);   // for v0.7 or later
-  connectReq.once('error', onError);
-  connectReq.end();
-
-  function onResponse(res) {
-    // Very hacky. This is necessary to avoid http-parser leaks.
-    res.upgrade = true;
-  }
-
-  function onUpgrade(res, socket, head) {
-    // Hacky.
-    process.nextTick(function() {
-      onConnect(res, socket, head);
-    });
-  }
-
-  function onConnect(res, socket, head) {
-    connectReq.removeAllListeners();
-    socket.removeAllListeners();
-
-    if (res.statusCode !== 200) {
-      debug('tunneling socket could not be established, statusCode=%d',
-        res.statusCode);
-      socket.destroy();
-      var error = new Error('tunneling socket could not be established, ' +
-        'statusCode=' + res.statusCode);
-      error.code = 'ECONNRESET';
-      options.request.emit('error', error);
-      self.removeSocket(placeholder);
-      return;
-    }
-    if (head.length > 0) {
-      debug('got illegal response body from proxy');
-      socket.destroy();
-      var error = new Error('got illegal response body from proxy');
-      error.code = 'ECONNRESET';
-      options.request.emit('error', error);
-      self.removeSocket(placeholder);
-      return;
-    }
-    debug('tunneling connection has established');
-    self.sockets[self.sockets.indexOf(placeholder)] = socket;
-    return cb(socket);
-  }
-
-  function onError(cause) {
-    connectReq.removeAllListeners();
-
-    debug('tunneling socket could not be established, cause=%s\n',
-          cause.message, cause.stack);
-    var error = new Error('tunneling socket could not be established, ' +
-                          'cause=' + cause.message);
-    error.code = 'ECONNRESET';
-    options.request.emit('error', error);
-    self.removeSocket(placeholder);
-  }
-};
-
-TunnelingAgent.prototype.removeSocket = function removeSocket(socket) {
-  var pos = this.sockets.indexOf(socket)
-  if (pos === -1) {
-    return;
-  }
-  this.sockets.splice(pos, 1);
-
-  var pending = this.requests.shift();
-  if (pending) {
-    // If we have pending requests and a socket gets closed a new one
-    // needs to be created to take over in the pool for the one that closed.
-    this.createSocket(pending, function(socket) {
-      pending.request.onSocket(socket);
-    });
-  }
-};
-
-function createSecureSocket(options, cb) {
-  var self = this;
-  TunnelingAgent.prototype.createSocket.call(self, options, function(socket) {
-    var hostHeader = options.request.getHeader('host');
-    var tlsOptions = mergeOptions({}, self.options, {
-      socket: socket,
-      servername: hostHeader ? hostHeader.replace(/:.*$/, '') : options.host
-    });
-
-    // 0 is dummy port for v0.6
-    var secureSocket = tls.connect(0, tlsOptions);
-    self.sockets[self.sockets.indexOf(socket)] = secureSocket;
-    cb(secureSocket);
-  });
-}
-
-
-function toOptions(host, port, localAddress) {
-  if (typeof host === 'string') { // since v0.10
-    return {
-      host: host,
-      port: port,
-      localAddress: localAddress
-    };
-  }
-  return host; // for v0.11 or later
-}
-
-function mergeOptions(target) {
-  for (var i = 1, len = arguments.length; i < len; ++i) {
-    var overrides = arguments[i];
-    if (typeof overrides === 'object') {
-      var keys = Object.keys(overrides);
-      for (var j = 0, keyLen = keys.length; j < keyLen; ++j) {
-        var k = keys[j];
-        if (overrides[k] !== undefined) {
-          target[k] = overrides[k];
-        }
-      }
-    }
-  }
-  return target;
-}
-
-
-var debug;
-if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
-  debug = function() {
-    var args = Array.prototype.slice.call(arguments);
-    if (typeof args[0] === 'string') {
-      args[0] = 'TUNNEL: ' + args[0];
-    } else {
-      args.unshift('TUNNEL:');
-    }
-    console.error.apply(console, args);
-  }
-} else {
-  debug = function() {};
-}
-exports.debug = debug; // for test
-
-
-/***/ }),
-
-/***/ 4899:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 676:
+/***/ (function(__unusedmodule, exports) {
 
 "use strict";
 
@@ -5139,104 +5075,303 @@ exports.fromPromise = function (fn) {
 
 /***/ }),
 
-/***/ 5650:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 683:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-Object.defineProperty(exports, "v1", ({
-  enumerable: true,
-  get: function () {
-    return _v.default;
+const u = __webpack_require__(676).fromCallback
+const fs = __webpack_require__(598)
+const path = __webpack_require__(622)
+const mkdir = __webpack_require__(727)
+const pathExists = __webpack_require__(322).pathExists
+
+function outputFile (file, data, encoding, callback) {
+  if (typeof encoding === 'function') {
+    callback = encoding
+    encoding = 'utf8'
   }
-}));
-Object.defineProperty(exports, "v3", ({
-  enumerable: true,
-  get: function () {
-    return _v2.default;
+
+  const dir = path.dirname(file)
+  pathExists(dir, (err, itDoes) => {
+    if (err) return callback(err)
+    if (itDoes) return fs.writeFile(file, data, encoding, callback)
+
+    mkdir.mkdirs(dir, err => {
+      if (err) return callback(err)
+
+      fs.writeFile(file, data, encoding, callback)
+    })
+  })
+}
+
+function outputFileSync (file, ...args) {
+  const dir = path.dirname(file)
+  if (fs.existsSync(dir)) {
+    return fs.writeFileSync(file, ...args)
   }
-}));
-Object.defineProperty(exports, "v4", ({
-  enumerable: true,
-  get: function () {
-    return _v3.default;
-  }
-}));
-Object.defineProperty(exports, "v5", ({
-  enumerable: true,
-  get: function () {
-    return _v4.default;
-  }
-}));
-Object.defineProperty(exports, "NIL", ({
-  enumerable: true,
-  get: function () {
-    return _nil.default;
-  }
-}));
-Object.defineProperty(exports, "version", ({
-  enumerable: true,
-  get: function () {
-    return _version.default;
-  }
-}));
-Object.defineProperty(exports, "validate", ({
-  enumerable: true,
-  get: function () {
-    return _validate.default;
-  }
-}));
-Object.defineProperty(exports, "stringify", ({
-  enumerable: true,
-  get: function () {
-    return _stringify.default;
-  }
-}));
-Object.defineProperty(exports, "parse", ({
-  enumerable: true,
-  get: function () {
-    return _parse.default;
-  }
-}));
+  mkdir.mkdirsSync(dir)
+  fs.writeFileSync(file, ...args)
+}
 
-var _v = _interopRequireDefault(__nccwpck_require__(5879));
+module.exports = {
+  outputFile: u(outputFile),
+  outputFileSync
+}
 
-var _v2 = _interopRequireDefault(__nccwpck_require__(7221));
-
-var _v3 = _interopRequireDefault(__nccwpck_require__(854));
-
-var _v4 = _interopRequireDefault(__nccwpck_require__(4666));
-
-var _nil = _interopRequireDefault(__nccwpck_require__(9438));
-
-var _version = _interopRequireDefault(__nccwpck_require__(3340));
-
-var _validate = _interopRequireDefault(__nccwpck_require__(8575));
-
-var _stringify = _interopRequireDefault(__nccwpck_require__(1659));
-
-var _parse = _interopRequireDefault(__nccwpck_require__(1129));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
 
-/***/ 681:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 695:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
+Object.defineProperty(exports, "__esModule", {
   value: true
-}));
-exports["default"] = void 0;
+});
+exports.default = void 0;
 
-var _crypto = _interopRequireDefault(__nccwpck_require__(6113));
+var _validate = _interopRequireDefault(__webpack_require__(78));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function version(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  return parseInt(uuid.substr(14, 1), 16);
+}
+
+var _default = version;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 723:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const fs = __webpack_require__(598)
+const u = __webpack_require__(676).fromCallback
+const rimraf = __webpack_require__(474)
+
+function remove (path, callback) {
+  // Node 14.14.0+
+  if (fs.rm) return fs.rm(path, { recursive: true, force: true }, callback)
+  rimraf(path, callback)
+}
+
+function removeSync (path) {
+  // Node 14.14.0+
+  if (fs.rmSync) return fs.rmSync(path, { recursive: true, force: true })
+  rimraf.sync(path)
+}
+
+module.exports = {
+  remove: u(remove),
+  removeSync
+}
+
+
+/***/ }),
+
+/***/ 727:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+const u = __webpack_require__(676).fromPromise
+const { makeDir: _makeDir, makeDirSync } = __webpack_require__(54)
+const makeDir = u(_makeDir)
+
+module.exports = {
+  mkdirs: makeDir,
+  mkdirsSync: makeDirSync,
+  // alias
+  mkdirp: makeDir,
+  mkdirpSync: makeDirSync,
+  ensureDir: makeDir,
+  ensureDirSync: makeDirSync
+}
+
+
+/***/ }),
+
+/***/ 733:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _rng = _interopRequireDefault(__webpack_require__(844));
+
+var _stringify = _interopRequireDefault(__webpack_require__(411));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function v4(options, buf, offset) {
+  options = options || {};
+
+  const rnds = options.random || (options.rng || _rng.default)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return (0, _stringify.default)(rnds);
+}
+
+var _default = v4;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 742:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.OidcClient = void 0;
+const http_client_1 = __webpack_require__(425);
+const auth_1 = __webpack_require__(554);
+const core_1 = __webpack_require__(470);
+class OidcClient {
+    static createHttpClient(allowRetry = true, maxRetry = 10) {
+        const requestOptions = {
+            allowRetries: allowRetry,
+            maxRetries: maxRetry
+        };
+        return new http_client_1.HttpClient('actions/oidc-client', [new auth_1.BearerCredentialHandler(OidcClient.getRequestToken())], requestOptions);
+    }
+    static getRequestToken() {
+        const token = process.env['ACTIONS_ID_TOKEN_REQUEST_TOKEN'];
+        if (!token) {
+            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable');
+        }
+        return token;
+    }
+    static getIDTokenUrl() {
+        const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL'];
+        if (!runtimeUrl) {
+            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable');
+        }
+        return runtimeUrl;
+    }
+    static getCall(id_token_url) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            const httpclient = OidcClient.createHttpClient();
+            const res = yield httpclient
+                .getJson(id_token_url)
+                .catch(error => {
+                throw new Error(`Failed to get ID Token. \n 
+        Error Code : ${error.statusCode}\n 
+        Error Message: ${error.result.message}`);
+            });
+            const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
+            if (!id_token) {
+                throw new Error('Response json body do not have ID Token field');
+            }
+            return id_token;
+        });
+    }
+    static getIDToken(audience) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // New ID Token is requested from action service
+                let id_token_url = OidcClient.getIDTokenUrl();
+                if (audience) {
+                    const encodedAudience = encodeURIComponent(audience);
+                    id_token_url = `${id_token_url}&audience=${encodedAudience}`;
+                }
+                core_1.debug(`ID token url is ${id_token_url}`);
+                const id_token = yield OidcClient.getCall(id_token_url);
+                core_1.setSecret(id_token);
+                return id_token;
+            }
+            catch (error) {
+                throw new Error(`Error message: ${error.message}`);
+            }
+        });
+    }
+}
+exports.OidcClient = OidcClient;
+//# sourceMappingURL=oidc-utils.js.map
+
+/***/ }),
+
+/***/ 747:
+/***/ (function(module) {
+
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ 774:
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+"use strict";
+
+
+const u = __webpack_require__(676).fromCallback
+module.exports = {
+  copy: u(__webpack_require__(595)),
+  copySync: __webpack_require__(577)
+}
+
+
+/***/ }),
+
+/***/ 794:
+/***/ (function(module) {
+
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ 803:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _crypto = _interopRequireDefault(__webpack_require__(417));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5251,104 +5386,22 @@ function md5(bytes) {
 }
 
 var _default = md5;
-exports["default"] = _default;
+exports.default = _default;
 
 /***/ }),
 
-/***/ 9438:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ 844:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
+Object.defineProperty(exports, "__esModule", {
   value: true
-}));
-exports["default"] = void 0;
-var _default = '00000000-0000-0000-0000-000000000000';
-exports["default"] = _default;
+});
+exports.default = rng;
 
-/***/ }),
-
-/***/ 1129:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _validate = _interopRequireDefault(__nccwpck_require__(8575));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function parse(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
-  }
-
-  let v;
-  const arr = new Uint8Array(16); // Parse ########-....-....-....-............
-
-  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
-  arr[1] = v >>> 16 & 0xff;
-  arr[2] = v >>> 8 & 0xff;
-  arr[3] = v & 0xff; // Parse ........-####-....-....-............
-
-  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
-  arr[5] = v & 0xff; // Parse ........-....-####-....-............
-
-  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
-  arr[7] = v & 0xff; // Parse ........-....-....-####-............
-
-  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
-  arr[9] = v & 0xff; // Parse ........-....-....-....-############
-  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
-
-  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
-  arr[11] = v / 0x100000000 & 0xff;
-  arr[12] = v >>> 24 & 0xff;
-  arr[13] = v >>> 16 & 0xff;
-  arr[14] = v >>> 8 & 0xff;
-  arr[15] = v & 0xff;
-  return arr;
-}
-
-var _default = parse;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 2801:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 6098:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = rng;
-
-var _crypto = _interopRequireDefault(__nccwpck_require__(6113));
+var _crypto = _interopRequireDefault(__webpack_require__(417));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5368,96 +5421,246 @@ function rng() {
 
 /***/ }),
 
-/***/ 1554:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 849:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
+const u = __webpack_require__(676).fromCallback
+const path = __webpack_require__(622)
+const fs = __webpack_require__(869)
+const _mkdirs = __webpack_require__(727)
+const mkdirs = _mkdirs.mkdirs
+const mkdirsSync = _mkdirs.mkdirsSync
 
-var _crypto = _interopRequireDefault(__nccwpck_require__(6113));
+const _symlinkPaths = __webpack_require__(930)
+const symlinkPaths = _symlinkPaths.symlinkPaths
+const symlinkPathsSync = _symlinkPaths.symlinkPathsSync
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+const _symlinkType = __webpack_require__(975)
+const symlinkType = _symlinkType.symlinkType
+const symlinkTypeSync = _symlinkType.symlinkTypeSync
 
-function sha1(bytes) {
-  if (Array.isArray(bytes)) {
-    bytes = Buffer.from(bytes);
-  } else if (typeof bytes === 'string') {
-    bytes = Buffer.from(bytes, 'utf8');
-  }
+const pathExists = __webpack_require__(322).pathExists
 
-  return _crypto.default.createHash('sha1').update(bytes).digest();
+const { areIdentical } = __webpack_require__(127)
+
+function createSymlink (srcpath, dstpath, type, callback) {
+  callback = (typeof type === 'function') ? type : callback
+  type = (typeof type === 'function') ? false : type
+
+  fs.lstat(dstpath, (err, stats) => {
+    if (!err && stats.isSymbolicLink()) {
+      Promise.all([
+        fs.stat(srcpath),
+        fs.stat(dstpath)
+      ]).then(([srcStat, dstStat]) => {
+        if (areIdentical(srcStat, dstStat)) return callback(null)
+        _createSymlink(srcpath, dstpath, type, callback)
+      })
+    } else _createSymlink(srcpath, dstpath, type, callback)
+  })
 }
 
-var _default = sha1;
-exports["default"] = _default;
+function _createSymlink (srcpath, dstpath, type, callback) {
+  symlinkPaths(srcpath, dstpath, (err, relative) => {
+    if (err) return callback(err)
+    srcpath = relative.toDst
+    symlinkType(relative.toCwd, type, (err, type) => {
+      if (err) return callback(err)
+      const dir = path.dirname(dstpath)
+      pathExists(dir, (err, dirExists) => {
+        if (err) return callback(err)
+        if (dirExists) return fs.symlink(srcpath, dstpath, type, callback)
+        mkdirs(dir, err => {
+          if (err) return callback(err)
+          fs.symlink(srcpath, dstpath, type, callback)
+        })
+      })
+    })
+  })
+}
+
+function createSymlinkSync (srcpath, dstpath, type) {
+  let stats
+  try {
+    stats = fs.lstatSync(dstpath)
+  } catch {}
+  if (stats && stats.isSymbolicLink()) {
+    const srcStat = fs.statSync(srcpath)
+    const dstStat = fs.statSync(dstpath)
+    if (areIdentical(srcStat, dstStat)) return
+  }
+
+  const relative = symlinkPathsSync(srcpath, dstpath)
+  srcpath = relative.toDst
+  type = symlinkTypeSync(relative.toCwd, type)
+  const dir = path.dirname(dstpath)
+  const exists = fs.existsSync(dir)
+  if (exists) return fs.symlinkSync(srcpath, dstpath, type)
+  mkdirsSync(dir)
+  return fs.symlinkSync(srcpath, dstpath, type)
+}
+
+module.exports = {
+  createSymlink: u(createSymlink),
+  createSymlinkSync
+}
+
 
 /***/ }),
 
-/***/ 1659:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 869:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
+// This is adapted from https://github.com/normalize/mz
+// Copyright (c) 2014-2016 Jonathan Ong me@jongleberry.com and Contributors
+const u = __webpack_require__(676).fromCallback
+const fs = __webpack_require__(598)
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
+const api = [
+  'access',
+  'appendFile',
+  'chmod',
+  'chown',
+  'close',
+  'copyFile',
+  'fchmod',
+  'fchown',
+  'fdatasync',
+  'fstat',
+  'fsync',
+  'ftruncate',
+  'futimes',
+  'lchmod',
+  'lchown',
+  'link',
+  'lstat',
+  'mkdir',
+  'mkdtemp',
+  'open',
+  'opendir',
+  'readdir',
+  'readFile',
+  'readlink',
+  'realpath',
+  'rename',
+  'rm',
+  'rmdir',
+  'stat',
+  'symlink',
+  'truncate',
+  'unlink',
+  'utimes',
+  'writeFile'
+].filter(key => {
+  // Some commands are not available on some systems. Ex:
+  // fs.opendir was added in Node.js v12.12.0
+  // fs.rm was added in Node.js v14.14.0
+  // fs.lchown is not available on at least some Linux
+  return typeof fs[key] === 'function'
+})
 
-var _validate = _interopRequireDefault(__nccwpck_require__(8575));
+// Export cloned fs:
+Object.assign(exports, fs)
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// Universalify async methods:
+api.forEach(method => {
+  exports[method] = u(fs[method])
+})
 
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-const byteToHex = [];
-
-for (let i = 0; i < 256; ++i) {
-  byteToHex.push((i + 0x100).toString(16).substr(1));
+// We differ from mz/fs in that we still ship the old, broken, fs.exists()
+// since we are a drop-in replacement for the native module
+exports.exists = function (filename, callback) {
+  if (typeof callback === 'function') {
+    return fs.exists(filename, callback)
+  }
+  return new Promise(resolve => {
+    return fs.exists(filename, resolve)
+  })
 }
 
-function stringify(arr, offset = 0) {
-  // Note: Be careful editing this code!  It's been tuned for performance
-  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
-  const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
-  // of the following:
-  // - One or more input array values don't map to a hex octet (leading to
-  // "undefined" in the uuid)
-  // - Invalid input values for the RFC `version` or `variant` fields
+// fs.read(), fs.write(), & fs.writev() need special treatment due to multiple callback args
 
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Stringified UUID is invalid');
+exports.read = function (fd, buffer, offset, length, position, callback) {
+  if (typeof callback === 'function') {
+    return fs.read(fd, buffer, offset, length, position, callback)
+  }
+  return new Promise((resolve, reject) => {
+    fs.read(fd, buffer, offset, length, position, (err, bytesRead, buffer) => {
+      if (err) return reject(err)
+      resolve({ bytesRead, buffer })
+    })
+  })
+}
+
+// Function signature can be
+// fs.write(fd, buffer[, offset[, length[, position]]], callback)
+// OR
+// fs.write(fd, string[, position[, encoding]], callback)
+// We need to handle both cases, so we use ...args
+exports.write = function (fd, buffer, ...args) {
+  if (typeof args[args.length - 1] === 'function') {
+    return fs.write(fd, buffer, ...args)
   }
 
-  return uuid;
+  return new Promise((resolve, reject) => {
+    fs.write(fd, buffer, ...args, (err, bytesWritten, buffer) => {
+      if (err) return reject(err)
+      resolve({ bytesWritten, buffer })
+    })
+  })
 }
 
-var _default = stringify;
-exports["default"] = _default;
+// fs.writev only available in Node v12.9.0+
+if (typeof fs.writev === 'function') {
+  // Function signature is
+  // s.writev(fd, buffers[, position], callback)
+  // We need to handle the optional arg, so we use ...args
+  exports.writev = function (fd, buffers, ...args) {
+    if (typeof args[args.length - 1] === 'function') {
+      return fs.writev(fd, buffers, ...args)
+    }
+
+    return new Promise((resolve, reject) => {
+      fs.writev(fd, buffers, ...args, (err, bytesWritten, buffers) => {
+        if (err) return reject(err)
+        resolve({ bytesWritten, buffers })
+      })
+    })
+  }
+}
+
+// fs.realpath.native sometimes not available if fs is monkey-patched
+if (typeof fs.realpath.native === 'function') {
+  exports.realpath.native = u(fs.realpath.native)
+} else {
+  process.emitWarning(
+    'fs.realpath.native is not a function. Is fs being monkey-patched?',
+    'Warning', 'fs-extra-WARN0003'
+  )
+}
+
 
 /***/ }),
 
-/***/ 5879:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 893:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
+Object.defineProperty(exports, "__esModule", {
   value: true
-}));
-exports["default"] = void 0;
+});
+exports.default = void 0;
 
-var _rng = _interopRequireDefault(__nccwpck_require__(6098));
+var _rng = _interopRequireDefault(__webpack_require__(844));
 
-var _stringify = _interopRequireDefault(__nccwpck_require__(1659));
+var _stringify = _interopRequireDefault(__webpack_require__(411));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5554,467 +5757,260 @@ function v1(options, buf, offset) {
 }
 
 var _default = v1;
-exports["default"] = _default;
+exports.default = _default;
 
 /***/ }),
 
-/***/ 7221:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 900:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
+const u = __webpack_require__(676).fromCallback
+const path = __webpack_require__(622)
+const fs = __webpack_require__(598)
+const mkdir = __webpack_require__(727)
+const pathExists = __webpack_require__(322).pathExists
+const { areIdentical } = __webpack_require__(127)
 
-var _v = _interopRequireDefault(__nccwpck_require__(3978));
-
-var _md = _interopRequireDefault(__nccwpck_require__(681));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const v3 = (0, _v.default)('v3', 0x30, _md.default);
-var _default = v3;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 3978:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = _default;
-exports.URL = exports.DNS = void 0;
-
-var _stringify = _interopRequireDefault(__nccwpck_require__(1659));
-
-var _parse = _interopRequireDefault(__nccwpck_require__(1129));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function stringToBytes(str) {
-  str = unescape(encodeURIComponent(str)); // UTF8 escape
-
-  const bytes = [];
-
-  for (let i = 0; i < str.length; ++i) {
-    bytes.push(str.charCodeAt(i));
+function createLink (srcpath, dstpath, callback) {
+  function makeLink (srcpath, dstpath) {
+    fs.link(srcpath, dstpath, err => {
+      if (err) return callback(err)
+      callback(null)
+    })
   }
 
-  return bytes;
+  fs.lstat(dstpath, (_, dstStat) => {
+    fs.lstat(srcpath, (err, srcStat) => {
+      if (err) {
+        err.message = err.message.replace('lstat', 'ensureLink')
+        return callback(err)
+      }
+      if (dstStat && areIdentical(srcStat, dstStat)) return callback(null)
+
+      const dir = path.dirname(dstpath)
+      pathExists(dir, (err, dirExists) => {
+        if (err) return callback(err)
+        if (dirExists) return makeLink(srcpath, dstpath)
+        mkdir.mkdirs(dir, err => {
+          if (err) return callback(err)
+          makeLink(srcpath, dstpath)
+        })
+      })
+    })
+  })
 }
 
-const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
-exports.DNS = DNS;
-const URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
-exports.URL = URL;
-
-function _default(name, version, hashfunc) {
-  function generateUUID(value, namespace, buf, offset) {
-    if (typeof value === 'string') {
-      value = stringToBytes(value);
-    }
-
-    if (typeof namespace === 'string') {
-      namespace = (0, _parse.default)(namespace);
-    }
-
-    if (namespace.length !== 16) {
-      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
-    } // Compute hash of namespace and value, Per 4.3
-    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
-    // hashfunc([...namespace, ... value])`
-
-
-    let bytes = new Uint8Array(16 + value.length);
-    bytes.set(namespace);
-    bytes.set(value, namespace.length);
-    bytes = hashfunc(bytes);
-    bytes[6] = bytes[6] & 0x0f | version;
-    bytes[8] = bytes[8] & 0x3f | 0x80;
-
-    if (buf) {
-      offset = offset || 0;
-
-      for (let i = 0; i < 16; ++i) {
-        buf[offset + i] = bytes[i];
-      }
-
-      return buf;
-    }
-
-    return (0, _stringify.default)(bytes);
-  } // Function#name is not settable on some platforms (#270)
-
+function createLinkSync (srcpath, dstpath) {
+  let dstStat
+  try {
+    dstStat = fs.lstatSync(dstpath)
+  } catch {}
 
   try {
-    generateUUID.name = name; // eslint-disable-next-line no-empty
-  } catch (err) {} // For CommonJS default export support
+    const srcStat = fs.lstatSync(srcpath)
+    if (dstStat && areIdentical(srcStat, dstStat)) return
+  } catch (err) {
+    err.message = err.message.replace('lstat', 'ensureLink')
+    throw err
+  }
 
+  const dir = path.dirname(dstpath)
+  const dirExists = fs.existsSync(dir)
+  if (dirExists) return fs.linkSync(srcpath, dstpath)
+  mkdir.mkdirsSync(dir)
 
-  generateUUID.DNS = DNS;
-  generateUUID.URL = URL;
-  return generateUUID;
+  return fs.linkSync(srcpath, dstpath)
 }
+
+module.exports = {
+  createLink: u(createLink),
+  createLinkSync
+}
+
 
 /***/ }),
 
-/***/ 854:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 916:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
+const fs = __webpack_require__(598)
 
-var _rng = _interopRequireDefault(__nccwpck_require__(6098));
+function utimesMillis (path, atime, mtime, callback) {
+  // if (!HAS_MILLIS_RES) return fs.utimes(path, atime, mtime, callback)
+  fs.open(path, 'r+', (err, fd) => {
+    if (err) return callback(err)
+    fs.futimes(fd, atime, mtime, futimesErr => {
+      fs.close(fd, closeErr => {
+        if (callback) callback(futimesErr || closeErr)
+      })
+    })
+  })
+}
 
-var _stringify = _interopRequireDefault(__nccwpck_require__(1659));
+function utimesMillisSync (path, atime, mtime) {
+  const fd = fs.openSync(path, 'r+')
+  fs.futimesSync(fd, atime, mtime)
+  return fs.closeSync(fd)
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function v4(options, buf, offset) {
-  options = options || {};
-
-  const rnds = options.random || (options.rng || _rng.default)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+module.exports = {
+  utimesMillis,
+  utimesMillisSync
+}
 
 
-  rnds[6] = rnds[6] & 0x0f | 0x40;
-  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+/***/ }),
 
-  if (buf) {
-    offset = offset || 0;
+/***/ 930:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
-    for (let i = 0; i < 16; ++i) {
-      buf[offset + i] = rnds[i];
+"use strict";
+
+
+const path = __webpack_require__(622)
+const fs = __webpack_require__(598)
+const pathExists = __webpack_require__(322).pathExists
+
+/**
+ * Function that returns two types of paths, one relative to symlink, and one
+ * relative to the current working directory. Checks if path is absolute or
+ * relative. If the path is relative, this function checks if the path is
+ * relative to symlink or relative to current working directory. This is an
+ * initiative to find a smarter `srcpath` to supply when building symlinks.
+ * This allows you to determine which path to use out of one of three possible
+ * types of source paths. The first is an absolute path. This is detected by
+ * `path.isAbsolute()`. When an absolute path is provided, it is checked to
+ * see if it exists. If it does it's used, if not an error is returned
+ * (callback)/ thrown (sync). The other two options for `srcpath` are a
+ * relative url. By default Node's `fs.symlink` works by creating a symlink
+ * using `dstpath` and expects the `srcpath` to be relative to the newly
+ * created symlink. If you provide a `srcpath` that does not exist on the file
+ * system it results in a broken symlink. To minimize this, the function
+ * checks to see if the 'relative to symlink' source file exists, and if it
+ * does it will use it. If it does not, it checks if there's a file that
+ * exists that is relative to the current working directory, if does its used.
+ * This preserves the expectations of the original fs.symlink spec and adds
+ * the ability to pass in `relative to current working direcotry` paths.
+ */
+
+function symlinkPaths (srcpath, dstpath, callback) {
+  if (path.isAbsolute(srcpath)) {
+    return fs.lstat(srcpath, (err) => {
+      if (err) {
+        err.message = err.message.replace('lstat', 'ensureSymlink')
+        return callback(err)
+      }
+      return callback(null, {
+        toCwd: srcpath,
+        toDst: srcpath
+      })
+    })
+  } else {
+    const dstdir = path.dirname(dstpath)
+    const relativeToDst = path.join(dstdir, srcpath)
+    return pathExists(relativeToDst, (err, exists) => {
+      if (err) return callback(err)
+      if (exists) {
+        return callback(null, {
+          toCwd: relativeToDst,
+          toDst: srcpath
+        })
+      } else {
+        return fs.lstat(srcpath, (err) => {
+          if (err) {
+            err.message = err.message.replace('lstat', 'ensureSymlink')
+            return callback(err)
+          }
+          return callback(null, {
+            toCwd: srcpath,
+            toDst: path.relative(dstdir, srcpath)
+          })
+        })
+      }
+    })
+  }
+}
+
+function symlinkPathsSync (srcpath, dstpath) {
+  let exists
+  if (path.isAbsolute(srcpath)) {
+    exists = fs.existsSync(srcpath)
+    if (!exists) throw new Error('absolute srcpath does not exist')
+    return {
+      toCwd: srcpath,
+      toDst: srcpath
     }
-
-    return buf;
+  } else {
+    const dstdir = path.dirname(dstpath)
+    const relativeToDst = path.join(dstdir, srcpath)
+    exists = fs.existsSync(relativeToDst)
+    if (exists) {
+      return {
+        toCwd: relativeToDst,
+        toDst: srcpath
+      }
+    } else {
+      exists = fs.existsSync(srcpath)
+      if (!exists) throw new Error('relative srcpath does not exist')
+      return {
+        toCwd: srcpath,
+        toDst: path.relative(dstdir, srcpath)
+      }
+    }
   }
-
-  return (0, _stringify.default)(rnds);
 }
 
-var _default = v4;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 4666:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _v = _interopRequireDefault(__nccwpck_require__(3978));
-
-var _sha = _interopRequireDefault(__nccwpck_require__(1554));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const v5 = (0, _v.default)('v5', 0x50, _sha.default);
-var _default = v5;
-exports["default"] = _default;
-
-/***/ }),
-
-/***/ 8575:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
-
-var _regex = _interopRequireDefault(__nccwpck_require__(2801));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function validate(uuid) {
-  return typeof uuid === 'string' && _regex.default.test(uuid);
+module.exports = {
+  symlinkPaths,
+  symlinkPathsSync
 }
 
-var _default = validate;
-exports["default"] = _default;
 
 /***/ }),
 
-/***/ 3340:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ 975:
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = void 0;
+const fs = __webpack_require__(598)
 
-var _validate = _interopRequireDefault(__nccwpck_require__(8575));
+function symlinkType (srcpath, type, callback) {
+  callback = (typeof type === 'function') ? type : callback
+  type = (typeof type === 'function') ? false : type
+  if (type) return callback(null, type)
+  fs.lstat(srcpath, (err, stats) => {
+    if (err) return callback(null, 'file')
+    type = (stats && stats.isDirectory()) ? 'dir' : 'file'
+    callback(null, type)
+  })
+}
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function symlinkTypeSync (srcpath, type) {
+  let stats
 
-function version(uuid) {
-  if (!(0, _validate.default)(uuid)) {
-    throw TypeError('Invalid UUID');
+  if (type) return type
+  try {
+    stats = fs.lstatSync(srcpath)
+  } catch {
+    return 'file'
   }
-
-  return parseInt(uuid.substr(14, 1), 16);
+  return (stats && stats.isDirectory()) ? 'dir' : 'file'
 }
 
-var _default = version;
-exports["default"] = _default;
+module.exports = {
+  symlinkType,
+  symlinkTypeSync
+}
 
-/***/ }),
-
-/***/ 9491:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("assert");
-
-/***/ }),
-
-/***/ 2057:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("constants");
-
-/***/ }),
-
-/***/ 6113:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("crypto");
-
-/***/ }),
-
-/***/ 2361:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("events");
-
-/***/ }),
-
-/***/ 7147:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("fs");
-
-/***/ }),
-
-/***/ 3685:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("http");
-
-/***/ }),
-
-/***/ 5687:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("https");
-
-/***/ }),
-
-/***/ 1808:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("net");
-
-/***/ }),
-
-/***/ 2037:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("os");
-
-/***/ }),
-
-/***/ 1017:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("path");
-
-/***/ }),
-
-/***/ 2781:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("stream");
-
-/***/ }),
-
-/***/ 4404:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("tls");
-
-/***/ }),
-
-/***/ 3837:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("util");
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __nccwpck_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		var threw = true;
-/******/ 		try {
-/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require__);
-/******/ 			threw = false;
-/******/ 		} finally {
-/******/ 			if(threw) delete __webpack_module_cache__[moduleId];
-/******/ 		}
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat */
-/******/ 	
-/******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-const core = __nccwpck_require__(3722);
-const fs = __nccwpck_require__(4399);
-
-async function main() {
-    try {
-
-        let PackageFolderName = core.getInput('packageFolderName', { required: true }); //"Package";
-        //let PackageFolderName = "Package";
-        // Get Directory of AssetsSampleFolder
-        let AssetFolder = core.getInput('assetSampleFolder', { required: true }); //"Assets/Samples"; 
-        //let AssetFolder = "Assets/Samples";
-        if (fs.access(AssetFolder) == false) {
-            console.log("Asset Sample Folder does not exist");
-            return;
-        }
-        // Get Directory of PackageFolder
-        let PackageSampleFolder = PackageFolderName + "/Samples~";
-
-        // check if we have a package sample folder
-        if (fs.access(PackageSampleFolder)) {
-            fs.emptyDirSync(PackageSampleFolder);
-            console.log("Package Folder Exists Clearing Content");
-        } else {
-            fs.mkdirSync(PackageSampleFolder);
-            console.log("Package Folder Does Not Exist Creating Folder");
-        }
-
-        console.log("Copying Files From Asset Folder To Package Folder");
-        fs.copySync(AssetFolder, PackageSampleFolder);
-
-        // get all the folders in the sample package folder
-        let folders = fs.readdirSync(PackageSampleFolder, { withFileTypes: true });
-        // get all there names
-        let folderNames = folders.filter(dirent => dirent.isDirectory()).map(dirent => dirent.name);
-
-        // load the package json file
-        let rawdata = fs.readFileSync(PackageFolderName + "/package.json");
-        // convert to json
-        let packageJSON = JSON.parse(rawdata);
-        // clear sample array
-        packageJSON.samples = [];
-
-        // go through the top level folders
-        folderNames.forEach(foldername => {
-
-            // check if we have a description.txt in the sample folder
-            let dscDir = PackageSampleFolder + "/" + foldername + "/description.txt";
-            // add its description to the package json 
-            let dsc = "This is an example of sample files of " + foldername;
-            try {
-                dsc = fs.readFileSync(dscDir, 'utf8');
-                // dont need the description file anymore YEEET
-                fs.removeSync(dscDir);
-            } catch (err) {}
-
-            console.log("Editing Package.json File with Folder Name: " + foldername);
-            packageJSON.samples.push({
-                displayName: foldername + " Samples",
-                description: dsc,
-                path: "Samples~/" + foldername,
-            });
-
-
-        });
-        // write the package json file
-        let resultJson = JSON.stringify(packageJSON, null, 2);
-        // write back to folder
-        fs.writeFileSync(PackageFolderName + "/package.json", resultJson);
-
-    } catch (error) {
-        core.setFailed(error.message);
-        throw error;
-    }
-}
-
-if (require.main === require.cache[eval('__filename')]) {
-    main()
-        .then(() => process.exit(0))
-        .catch(e => {
-            console.error(e);
-            process.exit(1);
-        });
-}
-})();
-
-module.exports = __webpack_exports__;
-/******/ })()
-;
+/******/ });
