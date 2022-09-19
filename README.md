@@ -14,6 +14,7 @@ Add this step in your workflow file
 ### Input Variables
 
 - `packageFolderName`: Folder name of Package to copy into e.g `Packages/com.thisisaura.*`
+**(Optional)** *default to the first folder in packages.*
 - `assetSampleFolder`: Samples Folder in Unity assets folder `Assets/Samples`
 
 ## Unity
